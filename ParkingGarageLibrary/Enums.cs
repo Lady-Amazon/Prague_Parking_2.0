@@ -7,7 +7,7 @@
             Car = 4,
             Mc = 2,
             Bus = 16,
-            Bicycle 1
+            Bicycle = 1
         }
 
     }
