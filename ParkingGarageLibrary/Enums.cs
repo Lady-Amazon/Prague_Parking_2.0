@@ -10,10 +10,10 @@ namespace ParkingGarageLibrary
     {
         public enum VehicleType
         {
-            Car = 2,
-            Mc = 1,
-            Bus = 5,
-            Bicycle
+            Car = 4,
+            Mc = 2,
+            Bus = 16,
+            Bicycle 1
         }
 
     }
