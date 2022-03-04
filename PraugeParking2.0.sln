@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingGarageLibrary", "ParkingGarageLibrary\ParkingGarageLibrary.csproj", "{0B5FE094-C240-4436-9952-E667290AC3C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PraugeParking", "PraugeParking\PraugeParking.csproj", "{8CE8A371-9550-46B5-94B0-D489DF38255C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "PraugeParking\UI.csproj", "{8CE8A371-9550-46B5-94B0-D489DF38255C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
