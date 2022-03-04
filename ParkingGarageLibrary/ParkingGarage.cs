@@ -7,6 +7,5 @@
         public string vehicleType { get; set; }
         public DateTime checkedIn { get; set; }
         public DateTime checkedOut { get; set; }
-
     }
 }
