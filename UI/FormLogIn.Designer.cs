@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnLogIn = new System.Windows.Forms.Button();
+            this.btnExitLogIn = new System.Windows.Forms.Button();
+            this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,51 +49,55 @@
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
             this.label1.Location = new System.Drawing.Point(150, 177);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 46);
+            this.label1.Size = new System.Drawing.Size(116, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "Log In";
             // 
-            // button1
+            // btnLogIn
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.Location = new System.Drawing.Point(63, 432);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(281, 47);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Log In";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnLogIn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLogIn.Location = new System.Drawing.Point(63, 432);
+            this.btnLogIn.Name = "btnLogIn";
+            this.btnLogIn.Size = new System.Drawing.Size(281, 47);
+            this.btnLogIn.TabIndex = 1;
+            this.btnLogIn.Text = "Log In";
+            this.btnLogIn.UseVisualStyleBackColor = true;
+            this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
-            // button2
+            // btnExitLogIn
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button2.Location = new System.Drawing.Point(63, 505);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(281, 49);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Exit";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnExitLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExitLogIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExitLogIn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnExitLogIn.Location = new System.Drawing.Point(63, 493);
+            this.btnExitLogIn.Name = "btnExitLogIn";
+            this.btnExitLogIn.Size = new System.Drawing.Size(281, 49);
+            this.btnExitLogIn.TabIndex = 2;
+            this.btnExitLogIn.Text = "Exit";
+            this.btnExitLogIn.UseVisualStyleBackColor = true;
+            this.btnExitLogIn.Click += new System.EventHandler(this.btnExitLogIn_Click);
             // 
-            // textBox1
+            // textBoxUserName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox1.Location = new System.Drawing.Point(135, 277);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 27);
-            this.textBox1.TabIndex = 3;
+            this.textBoxUserName.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxUserName.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxUserName.Location = new System.Drawing.Point(135, 277);
+            this.textBoxUserName.Multiline = true;
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(209, 27);
+            this.textBoxUserName.TabIndex = 3;
             // 
-            // textBox2
+            // textBoxPassword
             // 
-            this.textBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox2.Location = new System.Drawing.Point(135, 346);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 27);
-            this.textBox2.TabIndex = 4;
+            this.textBoxPassword.BackColor = System.Drawing.Color.Gainsboro;
+            this.textBoxPassword.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBoxPassword.Location = new System.Drawing.Point(135, 346);
+            this.textBoxPassword.Multiline = true;
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(209, 27);
+            this.textBoxPassword.TabIndex = 4;
             // 
             // label2
             // 
@@ -159,10 +163,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxUserName);
+            this.Controls.Add(this.btnExitLogIn);
+            this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.label1);
             this.Name = "FormLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -176,10 +180,10 @@
         #endregion
 
         private Label label1;
-        private Button button1;
-        private Button button2;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private Button btnLogIn;
+        private Button btnExitLogIn;
+        private TextBox textBoxUserName;
+        private TextBox textBoxPassword;
         private Label label2;
         private Label label3;
         private Label label4;

@@ -30,7 +30,7 @@ namespace UI
             OpenChildForm(new Forms.FormParkingLot(), sender);
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
