@@ -36,7 +36,6 @@
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -130,16 +129,6 @@
             this.checkBox1.Text = "Car";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(387, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 31);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Parking Lot";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -148,24 +137,23 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.GridColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView1.Location = new System.Drawing.Point(156, 82);
+            this.dataGridView1.Location = new System.Drawing.Point(139, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(669, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(686, 495);
             this.dataGridView1.TabIndex = 8;
             // 
             // FormParkingLot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(137)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(119)))));
             this.ClientSize = new System.Drawing.Size(837, 519);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
@@ -187,7 +175,6 @@
         private Label label1;
         private Label label2;
         private DateTimePicker dateTimePicker2;
-        private Label label3;
         private DataGridView dataGridView1;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
