@@ -2,6 +2,6 @@
 
 public class Car : IVehicle
 {
-    public string vehicleType { get; set; }
     public string licenseNum { get; set; }
+    public string vehicleType { get; set; }
 }
