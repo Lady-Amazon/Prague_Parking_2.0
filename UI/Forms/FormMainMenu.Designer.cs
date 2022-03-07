@@ -34,7 +34,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnParkingLotView = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.panelMenu.Controls.Add(this.button4);
             this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.button2);
-            this.panelMenu.Controls.Add(this.button1);
+            this.panelMenu.Controls.Add(this.btnParkingLotView);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -72,11 +72,11 @@
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelTitle.Location = new System.Drawing.Point(728, 44);
+            this.labelTitle.Location = new System.Drawing.Point(728, 38);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(127, 45);
+            this.labelTitle.Size = new System.Drawing.Size(143, 50);
             this.labelTitle.TabIndex = 6;
             this.labelTitle.Text = "HOME";
             // 
@@ -140,22 +140,22 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnParkingLotView
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(210, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 122);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "ParkingLot";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnParkingLotView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnParkingLotView.FlatAppearance.BorderSize = 0;
+            this.btnParkingLotView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParkingLotView.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnParkingLotView.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnParkingLotView.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnParkingLotView.Location = new System.Drawing.Point(210, 0);
+            this.btnParkingLotView.Name = "btnParkingLotView";
+            this.btnParkingLotView.Size = new System.Drawing.Size(99, 122);
+            this.btnParkingLotView.TabIndex = 1;
+            this.btnParkingLotView.Text = "ParkingLot";
+            this.btnParkingLotView.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnParkingLotView.UseVisualStyleBackColor = true;
+            this.btnParkingLotView.Click += new System.EventHandler(this.btnParkingLotView_Click);
             // 
             // panelLogo
             // 
@@ -316,7 +316,7 @@
         private Button button4;
         private Button button3;
         private Button button2;
-        private Button button1;
+        private Button btnParkingLotView;
         private Panel panelLogo;
         private Label label2;
         private Label label1;

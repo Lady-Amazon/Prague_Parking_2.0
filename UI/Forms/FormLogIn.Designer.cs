@@ -43,11 +43,12 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(150, 177);
+            this.label1.Location = new System.Drawing.Point(163, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 45);
             this.label1.TabIndex = 0;
@@ -55,10 +56,11 @@
             // 
             // btnLogIn
             // 
+            this.btnLogIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnLogIn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLogIn.Location = new System.Drawing.Point(63, 432);
+            this.btnLogIn.Location = new System.Drawing.Point(76, 418);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(281, 47);
             this.btnLogIn.TabIndex = 1;
@@ -68,10 +70,11 @@
             // 
             // btnExitLogIn
             // 
+            this.btnExitLogIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExitLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExitLogIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExitLogIn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExitLogIn.Location = new System.Drawing.Point(63, 493);
+            this.btnExitLogIn.Location = new System.Drawing.Point(76, 503);
             this.btnExitLogIn.Name = "btnExitLogIn";
             this.btnExitLogIn.Size = new System.Drawing.Size(281, 49);
             this.btnExitLogIn.TabIndex = 2;
@@ -81,9 +84,10 @@
             // 
             // textBoxUserName
             // 
+            this.textBoxUserName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxUserName.BackColor = System.Drawing.Color.Gainsboro;
             this.textBoxUserName.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxUserName.Location = new System.Drawing.Point(135, 277);
+            this.textBoxUserName.Location = new System.Drawing.Point(148, 263);
             this.textBoxUserName.Multiline = true;
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(209, 27);
@@ -91,9 +95,10 @@
             // 
             // textBoxPassword
             // 
+            this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBoxPassword.BackColor = System.Drawing.Color.Gainsboro;
             this.textBoxPassword.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBoxPassword.Location = new System.Drawing.Point(135, 346);
+            this.textBoxPassword.Location = new System.Drawing.Point(148, 332);
             this.textBoxPassword.Multiline = true;
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(209, 27);
@@ -101,10 +106,11 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(12, 277);
+            this.label2.Location = new System.Drawing.Point(25, 263);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 27);
             this.label2.TabIndex = 5;
@@ -112,10 +118,11 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(12, 346);
+            this.label3.Location = new System.Drawing.Point(25, 332);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 27);
             this.label3.TabIndex = 6;
@@ -123,10 +130,11 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(61, 9);
+            this.label4.Location = new System.Drawing.Point(76, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(277, 49);
             this.label4.TabIndex = 7;
@@ -134,10 +142,11 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label5.Location = new System.Drawing.Point(63, 73);
+            this.label5.Location = new System.Drawing.Point(76, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(269, 27);
             this.label5.TabIndex = 8;

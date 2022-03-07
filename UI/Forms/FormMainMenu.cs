@@ -8,6 +8,15 @@ namespace UI
         {
             InitializeComponent();
         }
+       private void btnParkingLotView_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormParkingLot(), sender);
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
         private void OpenChildForm(Form childForm, object btnSender)//Open other forms in panel(not shifting to other winows)
         {
             if (activeForm != null)
@@ -23,16 +32,6 @@ namespace UI
             childForm.BringToFront();
             childForm.Show();
             labelTitle.Text = childForm.Text;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormParkingLot(), sender);
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
     
