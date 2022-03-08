@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingGarageLibrary", "ParkingGarageLibrary\ParkingGarageLibrary.csproj", "{0B5FE094-C240-4436-9952-E667290AC3C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingGarageLibrary", "ParkingGarageLibrary\ParkingGarageLibrary.csproj", "{0B5FE094-C240-4436-9952-E667290AC3C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{8AE928D5-9A95-4DA5-B426-562D6C8E04FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{8AE928D5-9A95-4DA5-B426-562D6C8E04FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{8AE928D5-9A95-4DA5-B426-562D6C8E04FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AE928D5-9A95-4DA5-B426-562D6C8E04FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AE928D5-9A95-4DA5-B426-562D6C8E04FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

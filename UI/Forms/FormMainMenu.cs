@@ -3,7 +3,7 @@ namespace UI
     public partial class FormMainMenu : Form
     {
         private Form activeForm;
-        private Button currentButton;
+        private Button currentButton; // Not in use 
         public FormMainMenu()
         {
             InitializeComponent();
