@@ -53,15 +53,15 @@ public partial class FormParkingLot : Form
 
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
-        if (checkCar.Checked == true)
+        if (checkCar.Checked)
         {
             txtBoxLicenseNum.Text = car.LicenseNum.ToString();
-            checkCar.Checked = VehicleType.Car;
+           // checkCar.Checked = VehicleType.Car;
         }
-        if (checkMc.Checked == true)
+        if (checkMc.Checked)
         {
             txtBoxLicenseNum.Text = mc.LicenseNum.ToString();
-            checkMc.Checked = VehicleType.Mc;
+            //checkMc.Checked = VehicleType.Mc;
         }
         
     }

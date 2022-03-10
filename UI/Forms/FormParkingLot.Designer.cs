@@ -38,13 +38,12 @@
             this.checkCar = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBoxLicenseNum = new System.Windows.Forms.TextBox();
-            this.viewParkingLot = new System.Windows.Forms.TableLayoutPanel();
             this.listParkedVehicles = new System.Windows.Forms.ListView();
+            this.viewParkingLot = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // btnCheckIn
             // 
-            this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCheckIn.FlatAppearance.BorderSize = 0;
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -59,7 +58,6 @@
             // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -73,7 +71,6 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePicker1.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker1.Location = new System.Drawing.Point(33, 216);
@@ -83,7 +80,6 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
@@ -95,7 +91,6 @@
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
@@ -107,7 +102,6 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker2.Location = new System.Drawing.Point(34, 322);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -116,7 +110,6 @@
             // 
             // checkMc
             // 
-            this.checkMc.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkMc.AutoSize = true;
             this.checkMc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkMc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -131,7 +124,6 @@
             // 
             // checkCar
             // 
-            this.checkCar.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkCar.AutoSize = true;
             this.checkCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkCar.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -146,7 +138,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Gainsboro;
@@ -158,7 +149,6 @@
             // 
             // txtBoxLicenseNum
             // 
-            this.txtBoxLicenseNum.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBoxLicenseNum.BackColor = System.Drawing.Color.Gainsboro;
             this.txtBoxLicenseNum.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtBoxLicenseNum.Location = new System.Drawing.Point(33, 66);
@@ -166,32 +156,28 @@
             this.txtBoxLicenseNum.Size = new System.Drawing.Size(144, 28);
             this.txtBoxLicenseNum.TabIndex = 10;
             // 
-            // viewParkingLot
-            // 
-            this.viewParkingLot.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.viewParkingLot.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.viewParkingLot.ColumnCount = 2;
-            this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewParkingLot.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.viewParkingLot.ForeColor = System.Drawing.Color.Gainsboro;
-            this.viewParkingLot.Location = new System.Drawing.Point(210, 29);
-            this.viewParkingLot.Name = "viewParkingLot";
-            this.viewParkingLot.RowCount = 2;
-            this.viewParkingLot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewParkingLot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewParkingLot.Size = new System.Drawing.Size(817, 421);
-            this.viewParkingLot.TabIndex = 11;
-            // 
             // listParkedVehicles
             // 
             this.listParkedVehicles.BackColor = System.Drawing.Color.WhiteSmoke;
             this.listParkedVehicles.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listParkedVehicles.Location = new System.Drawing.Point(210, 486);
+            this.listParkedVehicles.Location = new System.Drawing.Point(210, 411);
             this.listParkedVehicles.Name = "listParkedVehicles";
             this.listParkedVehicles.Size = new System.Drawing.Size(391, 166);
             this.listParkedVehicles.TabIndex = 12;
             this.listParkedVehicles.UseCompatibleStateImageBehavior = false;
+            // 
+            // viewParkingLot
+            // 
+            this.viewParkingLot.ColumnCount = 2;
+            this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.viewParkingLot.Location = new System.Drawing.Point(229, 66);
+            this.viewParkingLot.Name = "viewParkingLot";
+            this.viewParkingLot.RowCount = 2;
+            this.viewParkingLot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.viewParkingLot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.viewParkingLot.Size = new System.Drawing.Size(515, 309);
+            this.viewParkingLot.TabIndex = 13;
             // 
             // FormParkingLot
             // 
@@ -199,8 +185,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(125)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(1056, 699);
-            this.Controls.Add(this.listParkedVehicles);
             this.Controls.Add(this.viewParkingLot);
+            this.Controls.Add(this.listParkedVehicles);
             this.Controls.Add(this.txtBoxLicenseNum);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.checkMc);
@@ -232,7 +218,7 @@
         private CheckBox checkCar;
         private Label label3;
         private TextBox txtBoxLicenseNum;
-        private TableLayoutPanel viewParkingLot;
         private ListView listParkedVehicles;
+        private TableLayoutPanel viewParkingLot;
     }
 }
