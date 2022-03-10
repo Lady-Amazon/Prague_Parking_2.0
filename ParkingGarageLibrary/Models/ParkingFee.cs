@@ -2,7 +2,7 @@
 {
     public class ParkingFee : ParkingGarage
     {
-        public ParkingFee() 
+        public ParkingFee()
         {
         }
 

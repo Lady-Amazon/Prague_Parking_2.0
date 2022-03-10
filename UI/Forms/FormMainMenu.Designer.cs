@@ -72,8 +72,9 @@
             this.panelMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1282, 137);
+            this.panelMenu.Size = new System.Drawing.Size(1188, 137);
             this.panelMenu.TabIndex = 0;
+            this.panelMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
             // labelMaximize
             // 
@@ -82,7 +83,7 @@
             this.labelMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelMaximize.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelMaximize.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelMaximize.Location = new System.Drawing.Point(1230, 5);
+            this.labelMaximize.Location = new System.Drawing.Point(1136, 5);
             this.labelMaximize.Name = "labelMaximize";
             this.labelMaximize.Size = new System.Drawing.Size(22, 27);
             this.labelMaximize.TabIndex = 10;
@@ -96,7 +97,7 @@
             this.labelMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelMinimize.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelMinimize.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelMinimize.Location = new System.Drawing.Point(1205, 5);
+            this.labelMinimize.Location = new System.Drawing.Point(1111, 5);
             this.labelMinimize.Name = "labelMinimize";
             this.labelMinimize.Size = new System.Drawing.Size(19, 27);
             this.labelMinimize.TabIndex = 9;
@@ -110,7 +111,7 @@
             this.labelExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelExit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelExit.Location = new System.Drawing.Point(1258, 9);
+            this.labelExit.Location = new System.Drawing.Point(1164, 9);
             this.labelExit.Name = "labelExit";
             this.labelExit.Size = new System.Drawing.Size(21, 23);
             this.labelExit.TabIndex = 8;
@@ -249,7 +250,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 137);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 666);
+            this.panel1.Size = new System.Drawing.Size(210, 653);
             this.panel1.TabIndex = 1;
             // 
             // btnExit
@@ -259,7 +260,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Location = new System.Drawing.Point(0, 617);
+            this.btnExit.Location = new System.Drawing.Point(0, 604);
             this.btnExit.Name = "btnExit";
             this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnExit.Size = new System.Drawing.Size(210, 49);
@@ -319,7 +320,7 @@
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(210, 137);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1072, 666);
+            this.panelDesktop.Size = new System.Drawing.Size(978, 653);
             this.panelDesktop.TabIndex = 2;
             // 
             // label7
@@ -328,7 +329,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Palatino Linotype", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(106)))), ((int)(((byte)(138)))));
-            this.label7.Location = new System.Drawing.Point(390, 255);
+            this.label7.Location = new System.Drawing.Point(343, 248);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(284, 81);
             this.label7.TabIndex = 0;
@@ -339,7 +340,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1282, 803);
+            this.ClientSize = new System.Drawing.Size(1188, 790);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);

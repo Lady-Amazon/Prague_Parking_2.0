@@ -1,7 +1,5 @@
 ﻿using DataAccess;
-using Microsoft.Data.SqlClient;
 using ParkingGarageLibrary;
-using static ParkingGarageLibrary.Enums;
 
 namespace UI.Forms;
 
@@ -10,13 +8,13 @@ public partial class FormParkingLot : Form
     ParkingContext parkingContext = new ParkingContext();
     Car car = new Car();
     MC mc = new MC();
-    
-    
+
+
     public FormParkingLot()
     {
         InitializeComponent();
     }
-    
+
     string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
     private void FormParkingLot_Load(object sender, EventArgs e)
     {
@@ -53,28 +51,18 @@ public partial class FormParkingLot : Form
 
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
-        if (checkCar.Checked)
-        {
-            txtBoxLicenseNum.Text = car.LicenseNum.ToString();
-           // checkCar.Checked = VehicleType.Car;
-        }
-        if (checkMc.Checked)
-        {
-            txtBoxLicenseNum.Text = mc.LicenseNum.ToString();
-            //checkMc.Checked = VehicleType.Mc;
-        }
-        
+
+
     }
 
-    private void checkCar_CheckedChanged(object sender, EventArgs e)
+    private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
-        btnCheckIn.Enabled = checkCar.Checked;
-        
-    }
-    private void checkMc_CheckedChanged(object sender, EventArgs e)
-    {
-        btnCheckIn.Enabled = checkMc.Checked;
-    }
-   
 
+
+    }
+
+    private void boxCheckMc_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }

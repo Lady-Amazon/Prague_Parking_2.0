@@ -34,12 +34,12 @@
             this.lblCheckIn = new System.Windows.Forms.Label();
             this.lblCheckOut = new System.Windows.Forms.Label();
             this.timeOut = new System.Windows.Forms.DateTimePicker();
-            this.checkMc = new System.Windows.Forms.CheckBox();
-            this.checkCar = new System.Windows.Forms.CheckBox();
             this.lblLicenseNum = new System.Windows.Forms.Label();
             this.txtBoxLicenseNum = new System.Windows.Forms.TextBox();
             this.listParkedVehicles = new System.Windows.Forms.ListView();
             this.viewParkingLot = new System.Windows.Forms.TableLayoutPanel();
+            this.boxCheckCar = new System.Windows.Forms.RadioButton();
+            this.boxCheckMc = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btnCheckIn
@@ -108,34 +108,6 @@
             this.timeOut.Size = new System.Drawing.Size(120, 27);
             this.timeOut.TabIndex = 5;
             // 
-            // checkMc
-            // 
-            this.checkMc.AutoSize = true;
-            this.checkMc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkMc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkMc.ForeColor = System.Drawing.Color.Gainsboro;
-            this.checkMc.Location = new System.Drawing.Point(40, 138);
-            this.checkMc.Name = "checkMc";
-            this.checkMc.Size = new System.Drawing.Size(64, 31);
-            this.checkMc.TabIndex = 7;
-            this.checkMc.Text = "MC";
-            this.checkMc.UseVisualStyleBackColor = true;
-            this.checkMc.CheckedChanged += new System.EventHandler(this.checkMc_CheckedChanged);
-            // 
-            // checkCar
-            // 
-            this.checkCar.AutoSize = true;
-            this.checkCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkCar.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkCar.ForeColor = System.Drawing.Color.Gainsboro;
-            this.checkCar.Location = new System.Drawing.Point(40, 108);
-            this.checkCar.Name = "checkCar";
-            this.checkCar.Size = new System.Drawing.Size(62, 31);
-            this.checkCar.TabIndex = 6;
-            this.checkCar.Text = "Car";
-            this.checkCar.UseVisualStyleBackColor = true;
-            this.checkCar.CheckedChanged += new System.EventHandler(this.checkCar_CheckedChanged);
-            // 
             // lblLicenseNum
             // 
             this.lblLicenseNum.AutoSize = true;
@@ -160,7 +132,7 @@
             // 
             this.listParkedVehicles.BackColor = System.Drawing.Color.WhiteSmoke;
             this.listParkedVehicles.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listParkedVehicles.Location = new System.Drawing.Point(229, 423);
+            this.listParkedVehicles.Location = new System.Drawing.Point(229, 460);
             this.listParkedVehicles.Name = "listParkedVehicles";
             this.listParkedVehicles.Size = new System.Drawing.Size(391, 166);
             this.listParkedVehicles.TabIndex = 12;
@@ -171,13 +143,41 @@
             this.viewParkingLot.ColumnCount = 2;
             this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewParkingLot.Location = new System.Drawing.Point(229, 66);
+            this.viewParkingLot.Location = new System.Drawing.Point(229, 29);
             this.viewParkingLot.Name = "viewParkingLot";
             this.viewParkingLot.RowCount = 2;
             this.viewParkingLot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.viewParkingLot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.viewParkingLot.Size = new System.Drawing.Size(515, 309);
+            this.viewParkingLot.Size = new System.Drawing.Size(623, 402);
             this.viewParkingLot.TabIndex = 13;
+            // 
+            // boxCheckCar
+            // 
+            this.boxCheckCar.AutoSize = true;
+            this.boxCheckCar.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.boxCheckCar.ForeColor = System.Drawing.Color.Gainsboro;
+            this.boxCheckCar.Location = new System.Drawing.Point(38, 106);
+            this.boxCheckCar.Name = "boxCheckCar";
+            this.boxCheckCar.Size = new System.Drawing.Size(65, 31);
+            this.boxCheckCar.TabIndex = 14;
+            this.boxCheckCar.TabStop = true;
+            this.boxCheckCar.Text = "Car";
+            this.boxCheckCar.UseVisualStyleBackColor = true;
+            this.boxCheckCar.CheckedChanged += new System.EventHandler(this.boxCheckCar_CheckedChanged);
+            // 
+            // boxCheckMc
+            // 
+            this.boxCheckMc.AutoSize = true;
+            this.boxCheckMc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.boxCheckMc.ForeColor = System.Drawing.Color.Gainsboro;
+            this.boxCheckMc.Location = new System.Drawing.Point(38, 136);
+            this.boxCheckMc.Name = "boxCheckMc";
+            this.boxCheckMc.Size = new System.Drawing.Size(67, 31);
+            this.boxCheckMc.TabIndex = 15;
+            this.boxCheckMc.TabStop = true;
+            this.boxCheckMc.Text = "MC";
+            this.boxCheckMc.UseVisualStyleBackColor = true;
+            this.boxCheckMc.CheckedChanged += new System.EventHandler(this.boxCheckMc_CheckedChanged);
             // 
             // FormParkingLot
             // 
@@ -185,12 +185,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(125)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(1056, 699);
+            this.Controls.Add(this.boxCheckMc);
+            this.Controls.Add(this.boxCheckCar);
             this.Controls.Add(this.viewParkingLot);
             this.Controls.Add(this.listParkedVehicles);
             this.Controls.Add(this.txtBoxLicenseNum);
             this.Controls.Add(this.lblLicenseNum);
-            this.Controls.Add(this.checkMc);
-            this.Controls.Add(this.checkCar);
             this.Controls.Add(this.timeOut);
             this.Controls.Add(this.btnCheckIn);
             this.Controls.Add(this.lblCheckOut);
@@ -214,11 +214,11 @@
         private Label lblCheckIn;
         private Label lblCheckOut;
         private DateTimePicker timeOut;
-        private CheckBox checkMc;
-        private CheckBox checkCar;
         private Label lblLicenseNum;
         private TextBox txtBoxLicenseNum;
         private ListView listParkedVehicles;
         private TableLayoutPanel viewParkingLot;
+        private RadioButton boxCheckCar;
+        private RadioButton boxCheckMc;
     }
 }

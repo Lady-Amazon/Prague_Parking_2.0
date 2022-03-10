@@ -1,6 +1,5 @@
 using DataAccess;
-using Microsoft.EntityFrameworkCore;
-using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 
 namespace UI;
@@ -13,21 +12,22 @@ public partial class FormMainMenu : Form
     {
         parkingContext.Database.EnsureCreated();
         InitializeComponent();
-        
+
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
-        OpenChildForm(new Forms.FormParkingLot(), sender);
+        OpenChildForm(new Forms.FormParkingLot());
     }
     private void btnStoreData_Click(object sender, EventArgs e)
     {
-      // OpenChildForm((Forms.FormStoreData)sender);  
+        OpenChildForm(new FormStoreData());  
     }
     private void btnExit_Click(object sender, EventArgs e)
     {
         Application.Exit();
     }
-    private void OpenChildForm(Form childForm, object btnSender)//Open other forms in panel(not shifting to other winows)
+
+    private void OpenChildForm(Form childForm)//Open other forms in panel(not shifting to other winows)
     {
         if (activeForm != null)
         {
@@ -51,7 +51,7 @@ public partial class FormMainMenu : Form
 
     private void labelMinimize_Click(object sender, EventArgs e)
     {
-        WindowState= FormWindowState.Minimized;
+        WindowState = FormWindowState.Minimized;
     }
 
     private void labelMaximize_Click(object sender, EventArgs e)
@@ -66,5 +66,16 @@ public partial class FormMainMenu : Form
         }
 
     }
+
+    private void panelMenu_MouseMove(object sender, MouseEventArgs e)
+    {
+        ReleaseCapture();
+        SendMessage(this.Handle, 0x112, 0xf012, 0);
+     }
+
+    [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
+    private extern static void ReleaseCapture();
+    [DllImport("user32.dll", EntryPoint = "SendMessage")]
+    private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 }
 

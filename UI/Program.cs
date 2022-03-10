@@ -1,5 +1,3 @@
-using UI.Forms;
-
 namespace UI
 {
     internal static class Program

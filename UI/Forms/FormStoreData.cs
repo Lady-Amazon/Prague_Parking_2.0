@@ -1,7 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
-
-namespace UI;
+﻿namespace UI;
 
 public partial class FormStoreData : Form
 {
@@ -11,8 +8,8 @@ public partial class FormStoreData : Form
     }
     private void button1_Click(object sender, EventArgs e)
     {
-        
+
 
     }
-   
+
 }
