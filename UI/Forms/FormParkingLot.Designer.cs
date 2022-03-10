@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnCheckOut = new System.Windows.Forms.Button();
             this.timeIn = new System.Windows.Forms.DateTimePicker();
@@ -36,10 +37,20 @@
             this.timeOut = new System.Windows.Forms.DateTimePicker();
             this.lblLicenseNum = new System.Windows.Forms.Label();
             this.txtBoxLicenseNum = new System.Windows.Forms.TextBox();
-            this.listParkedVehicles = new System.Windows.Forms.ListView();
             this.viewParkingLot = new System.Windows.Forms.TableLayoutPanel();
             this.boxCheckCar = new System.Windows.Forms.RadioButton();
             this.boxCheckMc = new System.Windows.Forms.RadioButton();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.parkingContextBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parkingGarageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parkingSpotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.licenseNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vehicleTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkedInDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkedOutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCheckIn
@@ -128,16 +139,6 @@
             this.txtBoxLicenseNum.Size = new System.Drawing.Size(144, 28);
             this.txtBoxLicenseNum.TabIndex = 10;
             // 
-            // listParkedVehicles
-            // 
-            this.listParkedVehicles.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.listParkedVehicles.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listParkedVehicles.Location = new System.Drawing.Point(229, 460);
-            this.listParkedVehicles.Name = "listParkedVehicles";
-            this.listParkedVehicles.Size = new System.Drawing.Size(391, 166);
-            this.listParkedVehicles.TabIndex = 12;
-            this.listParkedVehicles.UseCompatibleStateImageBehavior = false;
-            // 
             // viewParkingLot
             // 
             this.viewParkingLot.ColumnCount = 2;
@@ -179,16 +180,91 @@
             this.boxCheckMc.UseVisualStyleBackColor = true;
             this.boxCheckMc.CheckedChanged += new System.EventHandler(this.boxCheckMc_CheckedChanged);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.parkingSpotDataGridViewTextBoxColumn,
+            this.licenseNumDataGridViewTextBoxColumn,
+            this.vehicleTypeDataGridViewTextBoxColumn,
+            this.checkedInDataGridViewTextBoxColumn,
+            this.checkedOutDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.parkingGarageBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(38, 471);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(680, 161);
+            this.dataGridView1.TabIndex = 16;
+            // 
+            // parkingContextBindingSource
+            // 
+            this.parkingContextBindingSource.DataSource = typeof(DataAccess.ParkingContext);
+            // 
+            // parkingGarageBindingSource
+            // 
+            this.parkingGarageBindingSource.DataSource = typeof(ParkingGarageLibrary.ParkingGarage);
+            // 
+            // parkingSpotDataGridViewTextBoxColumn
+            // 
+            this.parkingSpotDataGridViewTextBoxColumn.DataPropertyName = "ParkingSpot";
+            this.parkingSpotDataGridViewTextBoxColumn.HeaderText = "ParkingSpot";
+            this.parkingSpotDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.parkingSpotDataGridViewTextBoxColumn.Name = "parkingSpotDataGridViewTextBoxColumn";
+            this.parkingSpotDataGridViewTextBoxColumn.ReadOnly = true;
+            this.parkingSpotDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // licenseNumDataGridViewTextBoxColumn
+            // 
+            this.licenseNumDataGridViewTextBoxColumn.DataPropertyName = "LicenseNum";
+            this.licenseNumDataGridViewTextBoxColumn.HeaderText = "LicenseNum";
+            this.licenseNumDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.licenseNumDataGridViewTextBoxColumn.Name = "licenseNumDataGridViewTextBoxColumn";
+            this.licenseNumDataGridViewTextBoxColumn.ReadOnly = true;
+            this.licenseNumDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // vehicleTypeDataGridViewTextBoxColumn
+            // 
+            this.vehicleTypeDataGridViewTextBoxColumn.DataPropertyName = "VehicleType";
+            this.vehicleTypeDataGridViewTextBoxColumn.HeaderText = "VehicleType";
+            this.vehicleTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.vehicleTypeDataGridViewTextBoxColumn.Name = "vehicleTypeDataGridViewTextBoxColumn";
+            this.vehicleTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.vehicleTypeDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // checkedInDataGridViewTextBoxColumn
+            // 
+            this.checkedInDataGridViewTextBoxColumn.DataPropertyName = "CheckedIn";
+            this.checkedInDataGridViewTextBoxColumn.HeaderText = "CheckedIn";
+            this.checkedInDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.checkedInDataGridViewTextBoxColumn.Name = "checkedInDataGridViewTextBoxColumn";
+            this.checkedInDataGridViewTextBoxColumn.ReadOnly = true;
+            this.checkedInDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // checkedOutDataGridViewTextBoxColumn
+            // 
+            this.checkedOutDataGridViewTextBoxColumn.DataPropertyName = "CheckedOut";
+            this.checkedOutDataGridViewTextBoxColumn.HeaderText = "CheckedOut";
+            this.checkedOutDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.checkedOutDataGridViewTextBoxColumn.Name = "checkedOutDataGridViewTextBoxColumn";
+            this.checkedOutDataGridViewTextBoxColumn.ReadOnly = true;
+            this.checkedOutDataGridViewTextBoxColumn.Width = 125;
+            // 
             // FormParkingLot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(125)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(1056, 699);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.boxCheckMc);
             this.Controls.Add(this.boxCheckCar);
             this.Controls.Add(this.viewParkingLot);
-            this.Controls.Add(this.listParkedVehicles);
             this.Controls.Add(this.txtBoxLicenseNum);
             this.Controls.Add(this.lblLicenseNum);
             this.Controls.Add(this.timeOut);
@@ -200,7 +276,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormParkingLot";
             this.Text = "Parking Lot";
-            this.Load += new System.EventHandler(this.FormParkingLot_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,9 +294,16 @@
         private DateTimePicker timeOut;
         private Label lblLicenseNum;
         private TextBox txtBoxLicenseNum;
-        private ListView listParkedVehicles;
         private TableLayoutPanel viewParkingLot;
         private RadioButton boxCheckCar;
         private RadioButton boxCheckMc;
+        private DataGridView dataGridView1;
+        private BindingSource parkingContextBindingSource;
+        private DataGridViewTextBoxColumn parkingSpotDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn licenseNumDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn vehicleTypeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn checkedInDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn checkedOutDataGridViewTextBoxColumn;
+        private BindingSource parkingGarageBindingSource;
     }
 }

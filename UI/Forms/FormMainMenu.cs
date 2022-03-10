@@ -20,7 +20,7 @@ public partial class FormMainMenu : Form
     }
     private void btnStoreData_Click(object sender, EventArgs e)
     {
-        OpenChildForm(new FormStoreData());  
+        OpenChildForm(new FormStoreData());
     }
     private void btnExit_Click(object sender, EventArgs e)
     {
@@ -71,7 +71,7 @@ public partial class FormMainMenu : Form
     {
         ReleaseCapture();
         SendMessage(this.Handle, 0x112, 0xf012, 0);
-     }
+    }
 
     [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
     private extern static void ReleaseCapture();
