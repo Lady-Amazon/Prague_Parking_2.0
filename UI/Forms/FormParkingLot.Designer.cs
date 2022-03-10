@@ -160,7 +160,7 @@
             // 
             this.listParkedVehicles.BackColor = System.Drawing.Color.WhiteSmoke;
             this.listParkedVehicles.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.listParkedVehicles.Location = new System.Drawing.Point(229, 424);
+            this.listParkedVehicles.Location = new System.Drawing.Point(229, 423);
             this.listParkedVehicles.Name = "listParkedVehicles";
             this.listParkedVehicles.Size = new System.Drawing.Size(391, 166);
             this.listParkedVehicles.TabIndex = 12;
