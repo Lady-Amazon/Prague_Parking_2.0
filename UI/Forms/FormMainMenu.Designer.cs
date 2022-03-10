@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.labelMaximize = new System.Windows.Forms.Label();
+            this.labelMinimize = new System.Windows.Forms.Label();
+            this.labelExit = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -55,6 +58,9 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(0)))), ((int)(((byte)(84)))));
+            this.panelMenu.Controls.Add(this.labelMaximize);
+            this.panelMenu.Controls.Add(this.labelMinimize);
+            this.panelMenu.Controls.Add(this.labelExit);
             this.panelMenu.Controls.Add(this.labelTitle);
             this.panelMenu.Controls.Add(this.button5);
             this.panelMenu.Controls.Add(this.button3);
@@ -68,6 +74,48 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(1282, 137);
             this.panelMenu.TabIndex = 0;
+            // 
+            // labelMaximize
+            // 
+            this.labelMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMaximize.AutoSize = true;
+            this.labelMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelMaximize.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelMaximize.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelMaximize.Location = new System.Drawing.Point(1230, 5);
+            this.labelMaximize.Name = "labelMaximize";
+            this.labelMaximize.Size = new System.Drawing.Size(22, 27);
+            this.labelMaximize.TabIndex = 10;
+            this.labelMaximize.Text = "+";
+            this.labelMaximize.Click += new System.EventHandler(this.labelMaximize_Click);
+            // 
+            // labelMinimize
+            // 
+            this.labelMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMinimize.AutoSize = true;
+            this.labelMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelMinimize.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelMinimize.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelMinimize.Location = new System.Drawing.Point(1205, 5);
+            this.labelMinimize.Name = "labelMinimize";
+            this.labelMinimize.Size = new System.Drawing.Size(19, 27);
+            this.labelMinimize.TabIndex = 9;
+            this.labelMinimize.Text = "-";
+            this.labelMinimize.Click += new System.EventHandler(this.labelMinimize_Click);
+            // 
+            // labelExit
+            // 
+            this.labelExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelExit.AutoSize = true;
+            this.labelExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelExit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelExit.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelExit.Location = new System.Drawing.Point(1258, 9);
+            this.labelExit.Name = "labelExit";
+            this.labelExit.Size = new System.Drawing.Size(21, 23);
+            this.labelExit.TabIndex = 8;
+            this.labelExit.Text = "X";
+            this.labelExit.Click += new System.EventHandler(this.labelExit_Click);
             // 
             // labelTitle
             // 
@@ -295,6 +343,7 @@
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelMenu.ResumeLayout(false);
@@ -329,5 +378,8 @@
         private Label label7;
         private Button btnExit;
         private Label labelTitle;
+        private Label labelMinimize;
+        private Label labelExit;
+        private Label labelMaximize;
     }
 }

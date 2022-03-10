@@ -13,6 +13,7 @@ public partial class FormMainMenu : Form
     {
         parkingContext.Database.EnsureCreated();
         InitializeComponent();
+        
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
@@ -41,7 +42,29 @@ public partial class FormMainMenu : Form
         childForm.BringToFront();
         childForm.Show();
         labelTitle.Text = childForm.Text;
-    }  
+    }
 
+    private void labelExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
+
+    private void labelMinimize_Click(object sender, EventArgs e)
+    {
+        WindowState= FormWindowState.Minimized;
+    }
+
+    private void labelMaximize_Click(object sender, EventArgs e)
+    {
+        if (this.WindowState == FormWindowState.Normal)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+        else
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
+
+    }
 }
 
