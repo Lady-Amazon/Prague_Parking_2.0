@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.btnCheckIn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.btnCheckOut = new System.Windows.Forms.Button();
+            this.timeIn = new System.Windows.Forms.DateTimePicker();
+            this.lblCheckIn = new System.Windows.Forms.Label();
+            this.lblCheckOut = new System.Windows.Forms.Label();
+            this.timeOut = new System.Windows.Forms.DateTimePicker();
             this.checkMc = new System.Windows.Forms.CheckBox();
             this.checkCar = new System.Windows.Forms.CheckBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblLicenseNum = new System.Windows.Forms.Label();
             this.txtBoxLicenseNum = new System.Windows.Forms.TextBox();
             this.listParkedVehicles = new System.Windows.Forms.ListView();
             this.viewParkingLot = new System.Windows.Forms.TableLayoutPanel();
@@ -56,57 +56,57 @@
             this.btnCheckIn.UseVisualStyleBackColor = true;
             this.btnCheckIn.Click += new System.EventHandler(this.btnCheckIn_Click);
             // 
-            // button2
+            // btnCheckOut
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button2.Location = new System.Drawing.Point(14, 355);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(157, 35);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "OUT";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCheckOut.FlatAppearance.BorderSize = 0;
+            this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCheckOut.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCheckOut.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnCheckOut.Location = new System.Drawing.Point(14, 355);
+            this.btnCheckOut.Name = "btnCheckOut";
+            this.btnCheckOut.Size = new System.Drawing.Size(157, 35);
+            this.btnCheckOut.TabIndex = 1;
+            this.btnCheckOut.Text = "OUT";
+            this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // timeIn
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(33, 216);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 28);
-            this.dateTimePicker1.TabIndex = 2;
+            this.timeIn.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.timeIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timeIn.Location = new System.Drawing.Point(33, 216);
+            this.timeIn.Name = "timeIn";
+            this.timeIn.Size = new System.Drawing.Size(121, 28);
+            this.timeIn.TabIndex = 2;
             // 
-            // label1
+            // lblCheckIn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(33, 189);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 24);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Checked In";
+            this.lblCheckIn.AutoSize = true;
+            this.lblCheckIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCheckIn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblCheckIn.Location = new System.Drawing.Point(33, 189);
+            this.lblCheckIn.Name = "lblCheckIn";
+            this.lblCheckIn.Size = new System.Drawing.Size(87, 24);
+            this.lblCheckIn.TabIndex = 3;
+            this.lblCheckIn.Text = "Check In";
             // 
-            // label2
+            // lblCheckOut
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(32, 295);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 24);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Checked Out";
+            this.lblCheckOut.AutoSize = true;
+            this.lblCheckOut.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCheckOut.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblCheckOut.Location = new System.Drawing.Point(32, 295);
+            this.lblCheckOut.Name = "lblCheckOut";
+            this.lblCheckOut.Size = new System.Drawing.Size(102, 24);
+            this.lblCheckOut.TabIndex = 4;
+            this.lblCheckOut.Text = "Check Out";
             // 
-            // dateTimePicker2
+            // timeOut
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(34, 322);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(120, 27);
-            this.dateTimePicker2.TabIndex = 5;
+            this.timeOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.timeOut.Location = new System.Drawing.Point(34, 322);
+            this.timeOut.Name = "timeOut";
+            this.timeOut.Size = new System.Drawing.Size(120, 27);
+            this.timeOut.TabIndex = 5;
             // 
             // checkMc
             // 
@@ -136,16 +136,16 @@
             this.checkCar.UseVisualStyleBackColor = true;
             this.checkCar.CheckedChanged += new System.EventHandler(this.checkCar_CheckedChanged);
             // 
-            // label3
+            // lblLicenseNum
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(33, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 23);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "License Number:";
+            this.lblLicenseNum.AutoSize = true;
+            this.lblLicenseNum.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLicenseNum.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblLicenseNum.Location = new System.Drawing.Point(33, 29);
+            this.lblLicenseNum.Name = "lblLicenseNum";
+            this.lblLicenseNum.Size = new System.Drawing.Size(139, 23);
+            this.lblLicenseNum.TabIndex = 9;
+            this.lblLicenseNum.Text = "License Number:";
             // 
             // txtBoxLicenseNum
             // 
@@ -188,15 +188,15 @@
             this.Controls.Add(this.viewParkingLot);
             this.Controls.Add(this.listParkedVehicles);
             this.Controls.Add(this.txtBoxLicenseNum);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblLicenseNum);
             this.Controls.Add(this.checkMc);
             this.Controls.Add(this.checkCar);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.timeOut);
             this.Controls.Add(this.btnCheckIn);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblCheckOut);
+            this.Controls.Add(this.timeIn);
+            this.Controls.Add(this.btnCheckOut);
+            this.Controls.Add(this.lblCheckIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormParkingLot";
             this.Text = "Parking Lot";
@@ -209,14 +209,14 @@
         #endregion
 
         private Button btnCheckIn;
-        private Button button2;
-        private DateTimePicker dateTimePicker1;
-        private Label label1;
-        private Label label2;
-        private DateTimePicker dateTimePicker2;
+        private Button btnCheckOut;
+        private DateTimePicker timeIn;
+        private Label lblCheckIn;
+        private Label lblCheckOut;
+        private DateTimePicker timeOut;
         private CheckBox checkMc;
         private CheckBox checkCar;
-        private Label label3;
+        private Label lblLicenseNum;
         private TextBox txtBoxLicenseNum;
         private ListView listParkedVehicles;
         private TableLayoutPanel viewParkingLot;
