@@ -21,6 +21,7 @@ public partial class FormMainMenu : Form
     private void btnStoreData_Click(object sender, EventArgs e)
     {
         OpenChildForm(new FormStoreData());
+        labelTitle.Text = activeForm.Text; 
     }
     private void btnExit_Click(object sender, EventArgs e)
     {

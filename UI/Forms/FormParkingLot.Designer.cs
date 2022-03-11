@@ -41,16 +41,17 @@
             this.boxCheckCar = new System.Windows.Forms.RadioButton();
             this.boxCheckMc = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.parkingContextBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.parkingGarageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.parkingSpotDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.licenseNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vehicleTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkedInDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.checkedOutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parkingGarageBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.parkingContextBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelParkingSpot = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCheckIn
@@ -59,7 +60,7 @@
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCheckIn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCheckIn.Location = new System.Drawing.Point(14, 249);
+            this.btnCheckIn.Location = new System.Drawing.Point(14, 304);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(157, 33);
             this.btnCheckIn.TabIndex = 0;
@@ -73,7 +74,7 @@
             this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckOut.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCheckOut.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCheckOut.Location = new System.Drawing.Point(14, 355);
+            this.btnCheckOut.Location = new System.Drawing.Point(14, 410);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(157, 35);
             this.btnCheckOut.TabIndex = 1;
@@ -84,7 +85,7 @@
             // 
             this.timeIn.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.timeIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timeIn.Location = new System.Drawing.Point(33, 216);
+            this.timeIn.Location = new System.Drawing.Point(33, 271);
             this.timeIn.Name = "timeIn";
             this.timeIn.Size = new System.Drawing.Size(121, 28);
             this.timeIn.TabIndex = 2;
@@ -94,7 +95,7 @@
             this.lblCheckIn.AutoSize = true;
             this.lblCheckIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCheckIn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblCheckIn.Location = new System.Drawing.Point(33, 189);
+            this.lblCheckIn.Location = new System.Drawing.Point(33, 244);
             this.lblCheckIn.Name = "lblCheckIn";
             this.lblCheckIn.Size = new System.Drawing.Size(87, 24);
             this.lblCheckIn.TabIndex = 3;
@@ -105,7 +106,7 @@
             this.lblCheckOut.AutoSize = true;
             this.lblCheckOut.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCheckOut.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblCheckOut.Location = new System.Drawing.Point(32, 295);
+            this.lblCheckOut.Location = new System.Drawing.Point(32, 350);
             this.lblCheckOut.Name = "lblCheckOut";
             this.lblCheckOut.Size = new System.Drawing.Size(102, 24);
             this.lblCheckOut.TabIndex = 4;
@@ -114,7 +115,7 @@
             // timeOut
             // 
             this.timeOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timeOut.Location = new System.Drawing.Point(34, 322);
+            this.timeOut.Location = new System.Drawing.Point(34, 377);
             this.timeOut.Name = "timeOut";
             this.timeOut.Size = new System.Drawing.Size(120, 27);
             this.timeOut.TabIndex = 5;
@@ -202,14 +203,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(680, 161);
             this.dataGridView1.TabIndex = 16;
             // 
-            // parkingContextBindingSource
-            // 
-            this.parkingContextBindingSource.DataSource = typeof(DataAccess.ParkingContext);
-            // 
-            // parkingGarageBindingSource
-            // 
-            this.parkingGarageBindingSource.DataSource = typeof(ParkingGarageLibrary.ParkingGarage);
-            // 
             // parkingSpotDataGridViewTextBoxColumn
             // 
             this.parkingSpotDataGridViewTextBoxColumn.DataPropertyName = "ParkingSpot";
@@ -255,12 +248,31 @@
             this.checkedOutDataGridViewTextBoxColumn.ReadOnly = true;
             this.checkedOutDataGridViewTextBoxColumn.Width = 125;
             // 
+            // parkingGarageBindingSource
+            // 
+            this.parkingGarageBindingSource.DataSource = typeof(ParkingGarageLibrary.ParkingGarage);
+            // 
+            // parkingContextBindingSource
+            // 
+            this.parkingContextBindingSource.DataSource = typeof(DataAccess.ParkingContext);
+            // 
+            // labelParkingSpot
+            // 
+            this.labelParkingSpot.AutoSize = true;
+            this.labelParkingSpot.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelParkingSpot.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelParkingSpot.Location = new System.Drawing.Point(34, 194);
+            this.labelParkingSpot.Name = "labelParkingSpot";
+            this.labelParkingSpot.Size = new System.Drawing.Size(0, 31);
+            this.labelParkingSpot.TabIndex = 17;
+            // 
             // FormParkingLot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(125)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(1056, 699);
+            this.ClientSize = new System.Drawing.Size(989, 699);
+            this.Controls.Add(this.labelParkingSpot);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.boxCheckMc);
             this.Controls.Add(this.boxCheckCar);
@@ -277,8 +289,8 @@
             this.Name = "FormParkingLot";
             this.Text = "Parking Lot";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,5 +317,6 @@
         private DataGridViewTextBoxColumn checkedInDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn checkedOutDataGridViewTextBoxColumn;
         private BindingSource parkingGarageBindingSource;
+        private Label labelParkingSpot;
     }
 }

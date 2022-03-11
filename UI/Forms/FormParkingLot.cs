@@ -1,7 +1,7 @@
 ﻿using DataAccess;
 using Microsoft.Data.SqlClient;
 using ParkingGarageLibrary;
-using System.Configuration;
+using System.Data;
 
 namespace UI.Forms;
 
@@ -10,6 +10,10 @@ public partial class FormParkingLot : Form
     ParkingContext parkingContext = new ParkingContext();
     Car car = new Car();
     MC mc = new MC();
+    private DataSet dataSet;
+    private SqlDataAdapter adapter;
+
+    private BindingManagerBase binding;
     //string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
 
     public FormParkingLot()
@@ -33,10 +37,10 @@ public partial class FormParkingLot : Form
         string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
         using (SqlConnection con = new SqlConnection(connstring))
         {
-            using (SqlCommand cmd = new SqlCommand("INSERT INTO PraugeParking( LicenseNum, VechicleType) VALUES( @LicenseNum,@VehicleType)"))
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO PraugeParking(LicenseNum, VechicleType) VALUES( @LicenseNum,@VehicleType)"))
             {
                 cmd.Connection = con;
-                cmd.Parameters.AddWithValue("@LicensNum", txtBoxLicenseNum );
+                cmd.Parameters.AddWithValue("@LicensNum", txtBoxLicenseNum);
                 cmd.Parameters.AddWithValue("@VehicleType", vehicleType);
                 con.Open();
                 cmd.ExecuteNonQuery();//System.ArgumentException: 'No mapping exists from object type System.Windows.Forms.TextBox to a known managed provider native type.'
@@ -72,13 +76,12 @@ public partial class FormParkingLot : Form
     private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Inte får till att valet sparas
     {
         Button clickedButton = (Button)sender;
-        Point location = (Point)clickedButton.Tag;
+        //Point location = (Point)clickedButton.Tag;
+        string test = clickedButton.Tag.ToString();
+        labelParkingSpot.Text = test.Substring(test.Count()-2,2);
 
-        int x = location.X;
-        int y = location.Y;
 
-
-        MessageBox.Show("You clicked a button");
+        //MessageBox.Show("You clicked a button");
     }
     private void populateParking()
     {
@@ -110,7 +113,8 @@ public partial class FormParkingLot : Form
                 button.Dock = DockStyle.Fill;
                 viewParkingLot.Controls.Add(button, j, i);
                 button.Click += PickParkingSpot_Click;
-                button.Tag = new Point(i, j);
+                button.Tag = button;
+                
             }
         }
     }
