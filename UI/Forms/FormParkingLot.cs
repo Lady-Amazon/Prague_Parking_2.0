@@ -10,10 +10,7 @@ public partial class FormParkingLot : Form
     ParkingContext parkingContext = new ParkingContext();
     Car car = new Car();
     MC mc = new MC();
-    private DataSet dataSet;
-    private SqlDataAdapter adapter;
-
-    private BindingManagerBase binding;
+    
     //string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
 
     public FormParkingLot()
@@ -25,21 +22,33 @@ public partial class FormParkingLot : Form
     {
         txtBoxLicenseNum.Text = string.Empty;
         string vehicleType = string.Empty;
-        if (boxCheckCar.Checked)
+        try
         {
-            vehicleType = "Car";
+            if (boxCheckCar.Checked && PickParkingSpot_Click != null)
+            {
+                vehicleType = "Car";
+            }
+            else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
+            {
+                vehicleType = "Mc";
+            }
+            else
+            {
+                MessageBox.Show("You have to enter LicenseNum, VehicleType and ParkingSpot!");
+            }
         }
-        else if (boxCheckMc.Checked)
+        catch (Exception ex)
         {
-            vehicleType = "Mc";
+            MessageBox.Show(ex.Message);
         }
-        //string constr = ConfigurationManager.ConnectionStrings["MyConn"].ConnectionString;
+        
         string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
         using (SqlConnection con = new SqlConnection(connstring))
         {
-            using (SqlCommand cmd = new SqlCommand("INSERT INTO PraugeParking(LicenseNum, VechicleType) VALUES( @LicenseNum,@VehicleType)"))
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO PraugeParking(ParkingSpot,LicenseNum, VechicleType) VALUES(@ParkingSpot, @LicenseNum,@VehicleType)"))
             {
                 cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@ParkingSpot", labelParkingSpot.Text);
                 cmd.Parameters.AddWithValue("@LicensNum", txtBoxLicenseNum);
                 cmd.Parameters.AddWithValue("@VehicleType", vehicleType);
                 con.Open();
@@ -73,15 +82,11 @@ public partial class FormParkingLot : Form
         }
         btnCheckIn.Enabled = boxCheckMc.Checked;
     }
-    private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Inte får till att valet sparas
+    private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Valet skrivs ut i en label
     {
         Button clickedButton = (Button)sender;
-        //Point location = (Point)clickedButton.Tag;
         string test = clickedButton.Tag.ToString();
         labelParkingSpot.Text = test.Substring(test.Count()-2,2);
-
-
-        //MessageBox.Show("You clicked a button");
     }
     private void populateParking()
     {
