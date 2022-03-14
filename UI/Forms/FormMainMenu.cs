@@ -13,19 +13,18 @@ public partial class FormMainMenu : Form
     {
         parkingContext.Database.EnsureCreated();
         InitializeComponent();
-
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormParkingLot());
 
     }
-    private void btnStoreData_Click(object sender, EventArgs e)
+    private void btnSales_Click(object sender, EventArgs e)
     {
-        OpenChildForm(new FormStoreData());
+        OpenChildForm(new FormSales());
         labelTitle.Text = activeForm.Text;
     }
-    private void button5_Click(object sender, EventArgs e)
+    private void btnSettings_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormSettings());
         labelTitle.Text = activeForm.Text;
@@ -64,13 +63,13 @@ public partial class FormMainMenu : Form
 
     private void labelMaximize_Click(object sender, EventArgs e)
     {
-        if (this.WindowState == FormWindowState.Normal)
+        if (WindowState == FormWindowState.Normal)
         {
-            this.WindowState = FormWindowState.Maximized;
+            WindowState = FormWindowState.Maximized;
         }
         else
         {
-            this.WindowState = FormWindowState.Normal;
+            WindowState = FormWindowState.Normal;
         }
 
     }
@@ -78,7 +77,18 @@ public partial class FormMainMenu : Form
     private void panelMenu_MouseMove(object sender, MouseEventArgs e)
     {
         ReleaseCapture();
-        SendMessage(this.Handle, 0x112, 0xf012, 0);
+        SendMessage(Handle, 0x112, 0xf012, 0);
+    }
+    //private void FormMainMenu_Load(object sender, EventArgs e)//Ingen bra idé att ha igång när en ett fel uppstår, kommenterar ut så länge
+    //{
+    //    TopMost = true;
+    //    FormBorderStyle = FormBorderStyle.None;
+    //    WindowState = FormWindowState.Maximized;
+    //}
+    public void Values(string available, string occupied)//Fungerar inte än. Är till för att kunna se hur många bilar som står parkerade. Information från FomrParkinglot ska över hit
+    {
+        lblCountAvailable.Text = available.ToString();
+        lblCountOccupied.Text = occupied.ToString();
     }
 
     [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]

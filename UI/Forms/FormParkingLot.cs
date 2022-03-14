@@ -1,22 +1,13 @@
 ﻿using DataAccess;
 using ParkingGarageLibrary;
-using System.Linq;
 
 namespace UI.Forms;
 
 public partial class FormParkingLot : Form
 {
     ParkingContext parkingContext = new ParkingContext();
-    //Behöver skapa en json/config fil och prislista. Behöver ordna med parkeringen så att fler fordon inte kan stå i samma ruta. Utskrift av dbn i gridviewn 
-    public List<ParkingGarage> parkingGarages { get; set; }
-
-    int occupied = 0;
-    int available = 4;
+    public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     int numVehicles = 0;
-    string attendant;
-
-
-
     public FormParkingLot()
     {
         InitializeComponent();
@@ -26,26 +17,25 @@ public partial class FormParkingLot : Form
     {
 
         txtBoxLicenseNum.Text = txtBoxLicenseNum.Text.Trim();
-        string vehicleType = boxCheckCar.Text;
+        string vehicleTypeCar = boxCheckCar.Text;
+        string vehicleTypeMc = boxCheckMc.Text;
+
         try
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null)
             {
-
-                using (ParkingContext context = new ParkingContext())
+                using (parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
                     {
                         ParkingSpot = int.Parse(labelParkingSpot.Text),
                         LicenseNum = txtBoxLicenseNum.Text,
-                        VehicleType = vehicleType,
+                        VehicleType = vehicleTypeCar,
                         CheckedIn = DateTime.Now,
                         CheckedOut = null,
                         VehicleSize = 4
-                       
-
                     };
-                    
+
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Car Parked");
@@ -55,13 +45,13 @@ public partial class FormParkingLot : Form
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
-                using (ParkingContext context = new ParkingContext())
+                using (parkingContext = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
                     {
                         ParkingSpot = int.Parse(labelParkingSpot.Text),
                         LicenseNum = txtBoxLicenseNum.Text,
-                        VehicleType = vehicleType,
+                        VehicleType = vehicleTypeMc,
                         CheckedIn = DateTime.Now,
                         CheckedOut = null
                     };
@@ -71,6 +61,7 @@ public partial class FormParkingLot : Form
                 }
                 txtBoxLicenseNum.Clear();
                 boxCheckMc.Checked = false;
+                btnCheckIn.Enabled = false;
             }
             else
             {
@@ -79,19 +70,53 @@ public partial class FormParkingLot : Form
         }
         catch (Exception ex)
         {
-            if (PickParkingSpot_Click != null)
-            {
-                MessageBox.Show("Parking spot already taken!", ex.Message);
-            }
+            //if (PickParkingSpot_Click == )
+            //{
+            //    MessageBox.Show("Parking spot already taken!", ex.Message);
+            //}
         }
-
-        using (ParkingContext context = new ParkingContext())
+        using (parkingContext = new ParkingContext())
         {
-            parkingGarages = context.ParkingGarage.ToList();
+            parkingGarages = parkingContext.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
     }
 
+    private void btnCheckOut_Click(object sender, EventArgs e)//Work in progress för att checka ut fordon
+    {
+        DateTime timeIn = DateTime.Parse(pickTimeIn.Text);
+        DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
+
+        float duration = float.Parse((timeOut - timeIn).TotalMinutes.ToString());
+        var span = TimeSpan.FromMinutes(duration);
+        var hour = ((int)span.TotalHours).ToString();
+        var Minute = span.Minutes.ToString();
+
+        txtBoxDuration.Text = hour + "hr " + Minute + "min";
+
+        float numHours = duration / 60;
+        int price;
+
+        if (numHours > 0)
+        {
+            if (duration / 60 <= 0.25)
+            {
+                txtBoxTotalCharge.Text = "₱" + 0;
+            }
+            else if (numHours <= 3 && numHours > 0.25)
+            {
+                txtBoxTotalCharge.Text = "₱" + 20;
+            }
+            else if (numHours > 3)
+            {
+                price = 50 + ((int)Math.Ceiling(numHours) - 3) * 20;
+                txtBoxTotalCharge.Text = "₱" + price;
+            }
+
+        }
+        numVehicles = numVehicles + 1;
+
+    }
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -109,21 +134,27 @@ public partial class FormParkingLot : Form
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
-
-
-
-        
     }
-    public void ab(string a)
-    {
-        attendant = a.ToString();
-    }
+
+    //public void Calculation() //Fungerar inte än
+    //{
+    //    int maxSize = 4;
+    //    int tempInt = 2;
+    //    using (parkingContext = new ParkingContext())
+    //    { 
+    //        var result = parkingContext.ParkingGarage
+    //        .Where(x => x.ParkingSpot)
+    //        .SUM(x => x.Occupied)
+    //        .SUM(x => x.VehicleSize) = maxSize;
+    //        MessageBox.Show("Parking spot already taken!");
+    //    };
+    //}
     private void populateParking()
     {
         var rowCount = 10;
         var columnCount = 10;
 
-        viewParkingLot.ColumnCount = columnCount;
+        viewParkingLot.ColumnCount = columnCount;//viewParkingLot = TabelLayoutPanel
         viewParkingLot.RowCount = rowCount;
 
         viewParkingLot.ColumnStyles.Clear();
@@ -156,10 +187,20 @@ public partial class FormParkingLot : Form
 
     private void FormParkingLot_Load(object sender, EventArgs e)
     {
-        using (ParkingContext context = new ParkingContext())
+        using (ParkingContext parkingContext = new ParkingContext())
         {
-            parkingGarages = context.ParkingGarage.ToList();
+            parkingGarages = parkingContext.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
     }
+
+    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//Klickar man på ett regnummer kommer det upp i Textrutan där man skriver in nya fordon
+    {
+        if (e.RowIndex >= 0 && e.ColumnIndex >= 0) 
+        {
+            txtBoxLicenseNum.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+        }
+    }
+
 }
+

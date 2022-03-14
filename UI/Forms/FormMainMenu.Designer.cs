@@ -36,16 +36,16 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.btnStoreData = new System.Windows.Forms.Button();
+            this.btnSales = new System.Windows.Forms.Button();
             this.btnParkingLotView = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblCountAvailable = new System.Windows.Forms.Label();
             this.labelAvailable = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblCountOccupied = new System.Windows.Forms.Label();
             this.labelOccupied = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -65,7 +65,7 @@
             this.panelMenu.Controls.Add(this.btnSettings);
             this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.button4);
-            this.panelMenu.Controls.Add(this.btnStoreData);
+            this.panelMenu.Controls.Add(this.btnSales);
             this.panelMenu.Controls.Add(this.btnParkingLotView);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -81,11 +81,11 @@
             this.labelMaximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMaximize.AutoSize = true;
             this.labelMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelMaximize.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelMaximize.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelMaximize.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelMaximize.Location = new System.Drawing.Point(1136, 5);
+            this.labelMaximize.Location = new System.Drawing.Point(1118, 5);
             this.labelMaximize.Name = "labelMaximize";
-            this.labelMaximize.Size = new System.Drawing.Size(22, 27);
+            this.labelMaximize.Size = new System.Drawing.Size(31, 38);
             this.labelMaximize.TabIndex = 10;
             this.labelMaximize.Text = "+";
             this.labelMaximize.Click += new System.EventHandler(this.labelMaximize_Click);
@@ -95,11 +95,11 @@
             this.labelMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMinimize.AutoSize = true;
             this.labelMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelMinimize.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelMinimize.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelMinimize.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelMinimize.Location = new System.Drawing.Point(1111, 5);
+            this.labelMinimize.Location = new System.Drawing.Point(1093, 5);
             this.labelMinimize.Name = "labelMinimize";
-            this.labelMinimize.Size = new System.Drawing.Size(19, 27);
+            this.labelMinimize.Size = new System.Drawing.Size(26, 38);
             this.labelMinimize.TabIndex = 9;
             this.labelMinimize.Text = "-";
             this.labelMinimize.Click += new System.EventHandler(this.labelMinimize_Click);
@@ -109,11 +109,11 @@
             this.labelExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelExit.AutoSize = true;
             this.labelExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelExit.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelExit.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelExit.Location = new System.Drawing.Point(1164, 9);
+            this.labelExit.Location = new System.Drawing.Point(1155, 12);
             this.labelExit.Name = "labelExit";
-            this.labelExit.Size = new System.Drawing.Size(21, 23);
+            this.labelExit.Size = new System.Drawing.Size(25, 27);
             this.labelExit.TabIndex = 8;
             this.labelExit.Text = "X";
             this.labelExit.Click += new System.EventHandler(this.labelExit_Click);
@@ -144,7 +144,7 @@
             this.btnSettings.Text = "Settings";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.button5_Click);
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // button3
             // 
@@ -176,20 +176,20 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // btnStoreData
+            // btnSales
             // 
-            this.btnStoreData.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnStoreData.FlatAppearance.BorderSize = 0;
-            this.btnStoreData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStoreData.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStoreData.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnStoreData.Location = new System.Drawing.Point(331, 0);
-            this.btnStoreData.Name = "btnStoreData";
-            this.btnStoreData.Size = new System.Drawing.Size(117, 137);
-            this.btnStoreData.TabIndex = 7;
-            this.btnStoreData.Text = "Store Data";
-            this.btnStoreData.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnStoreData.Click += new System.EventHandler(this.btnStoreData_Click);
+            this.btnSales.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSales.FlatAppearance.BorderSize = 0;
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSales.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSales.Location = new System.Drawing.Point(331, 0);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(117, 137);
+            this.btnSales.TabIndex = 7;
+            this.btnSales.Text = "Sales";
+            this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // btnParkingLotView
             // 
@@ -245,9 +245,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(0)))), ((int)(((byte)(84)))));
             this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.lblCountAvailable);
             this.panel1.Controls.Add(this.labelAvailable);
-            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.lblCountOccupied);
             this.panel1.Controls.Add(this.labelOccupied);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 137);
@@ -271,16 +271,16 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // label6
+            // lblCountAvailable
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label6.Location = new System.Drawing.Point(62, 246);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 38);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "100";
+            this.lblCountAvailable.AutoSize = true;
+            this.lblCountAvailable.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCountAvailable.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblCountAvailable.Location = new System.Drawing.Point(62, 246);
+            this.lblCountAvailable.Name = "lblCountAvailable";
+            this.lblCountAvailable.Size = new System.Drawing.Size(59, 38);
+            this.lblCountAvailable.TabIndex = 3;
+            this.lblCountAvailable.Text = "100";
             // 
             // labelAvailable
             // 
@@ -293,16 +293,16 @@
             this.labelAvailable.TabIndex = 2;
             this.labelAvailable.Text = "Available";
             // 
-            // label4
+            // lblCountOccupied
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(62, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 38);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "000";
+            this.lblCountOccupied.AutoSize = true;
+            this.lblCountOccupied.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCountOccupied.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblCountOccupied.Location = new System.Drawing.Point(62, 109);
+            this.lblCountOccupied.Name = "lblCountOccupied";
+            this.lblCountOccupied.Size = new System.Drawing.Size(59, 38);
+            this.lblCountOccupied.TabIndex = 1;
+            this.lblCountOccupied.Text = "000";
             // 
             // labelOccupied
             // 
@@ -349,6 +349,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            //this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
@@ -367,15 +368,15 @@
         private Button btnSettings;
         private Button button4;
         private Button button3;
-        private Button btnStoreData;
+        private Button btnSales;
         private Button btnParkingLotView;
         private Panel panelLogo;
         private Label label2;
         private Label label1;
         private Panel panel1;
-        private Label label6;
+        private Label lblCountAvailable;
         private Label labelAvailable;
-        private Label label4;
+        private Label lblCountOccupied;
         private Label labelOccupied;
         private Panel panelDesktop;
         private Label label7;
