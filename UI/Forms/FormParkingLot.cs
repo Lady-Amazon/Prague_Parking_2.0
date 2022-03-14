@@ -14,7 +14,12 @@ public partial class FormParkingLot : Form
     int numVehicles = 0;
     string attendant;
 
-
+    public void Calculations()
+    {
+        var data = parkingGarages
+            .Where(x=> x.ParkingSpot = )
+            .Sum(x=> x.VehicleType.)
+    }
 
     public FormParkingLot()
     {
