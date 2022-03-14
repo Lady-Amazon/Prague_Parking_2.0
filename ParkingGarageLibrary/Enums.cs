@@ -4,10 +4,10 @@
     {
         public enum VehicleType
         {
-            Bicycle = 1,
-            Mc = 2,
-            Car = 4,
-            Bus = 16
+            Bicycle,
+            Mc,
+            Car,
+            Bus
         }
 
     }
