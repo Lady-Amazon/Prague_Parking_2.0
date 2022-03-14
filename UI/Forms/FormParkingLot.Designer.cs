@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnCheckOut = new System.Windows.Forms.Button();
-            this.timeIn = new System.Windows.Forms.DateTimePicker();
+            this.pickTimeIn = new System.Windows.Forms.DateTimePicker();
             this.lblCheckIn = new System.Windows.Forms.Label();
             this.lblCheckOut = new System.Windows.Forms.Label();
-            this.timeOut = new System.Windows.Forms.DateTimePicker();
+            this.pickTimeOut = new System.Windows.Forms.DateTimePicker();
             this.lblLicenseNum = new System.Windows.Forms.Label();
             this.txtBoxLicenseNum = new System.Windows.Forms.TextBox();
             this.viewParkingLot = new System.Windows.Forms.TableLayoutPanel();
@@ -81,14 +81,14 @@
             this.btnCheckOut.Text = "OUT";
             this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // timeIn
+            // pickTimeIn
             // 
-            this.timeIn.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.timeIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timeIn.Location = new System.Drawing.Point(33, 271);
-            this.timeIn.Name = "timeIn";
-            this.timeIn.Size = new System.Drawing.Size(121, 28);
-            this.timeIn.TabIndex = 2;
+            this.pickTimeIn.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.pickTimeIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.pickTimeIn.Location = new System.Drawing.Point(33, 271);
+            this.pickTimeIn.Name = "pickTimeIn";
+            this.pickTimeIn.Size = new System.Drawing.Size(121, 28);
+            this.pickTimeIn.TabIndex = 2;
             // 
             // lblCheckIn
             // 
@@ -112,13 +112,13 @@
             this.lblCheckOut.TabIndex = 4;
             this.lblCheckOut.Text = "Check Out";
             // 
-            // timeOut
+            // pickTimeOut
             // 
-            this.timeOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.timeOut.Location = new System.Drawing.Point(34, 377);
-            this.timeOut.Name = "timeOut";
-            this.timeOut.Size = new System.Drawing.Size(120, 27);
-            this.timeOut.TabIndex = 5;
+            this.pickTimeOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.pickTimeOut.Location = new System.Drawing.Point(34, 377);
+            this.pickTimeOut.Name = "pickTimeOut";
+            this.pickTimeOut.Size = new System.Drawing.Size(120, 27);
+            this.pickTimeOut.TabIndex = 5;
             // 
             // lblLicenseNum
             // 
@@ -195,7 +195,7 @@
             this.checkedInDataGridViewTextBoxColumn,
             this.checkedOutDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.parkingGarageBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(38, 471);
+            this.dataGridView1.Location = new System.Drawing.Point(32, 470);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -279,10 +279,10 @@
             this.Controls.Add(this.viewParkingLot);
             this.Controls.Add(this.txtBoxLicenseNum);
             this.Controls.Add(this.lblLicenseNum);
-            this.Controls.Add(this.timeOut);
+            this.Controls.Add(this.pickTimeOut);
             this.Controls.Add(this.btnCheckIn);
             this.Controls.Add(this.lblCheckOut);
-            this.Controls.Add(this.timeIn);
+            this.Controls.Add(this.pickTimeIn);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.lblCheckIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -300,10 +300,10 @@
 
         private Button btnCheckIn;
         private Button btnCheckOut;
-        private DateTimePicker timeIn;
+        private DateTimePicker pickTimeIn;
         private Label lblCheckIn;
         private Label lblCheckOut;
-        private DateTimePicker timeOut;
+        private DateTimePicker pickTimeOut;
         private Label lblLicenseNum;
         private TextBox txtBoxLicenseNum;
         private TableLayoutPanel viewParkingLot;

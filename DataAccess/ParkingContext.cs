@@ -17,7 +17,7 @@ public class ParkingContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<ParkingGarage>(entity =>
         {
-            entity.HasKey(e => e.ParkingSpot);
+            entity.HasKey(e => e.Id);
         });
         modelBuilder.Entity<ParkingFee>()
         .ToTable("Fees");

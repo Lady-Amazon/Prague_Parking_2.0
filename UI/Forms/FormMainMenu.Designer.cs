@@ -33,7 +33,7 @@
             this.labelMinimize = new System.Windows.Forms.Label();
             this.labelExit = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnStoreData = new System.Windows.Forms.Button();
@@ -44,9 +44,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnExit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelAvailable = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelOccupied = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
@@ -62,7 +62,7 @@
             this.panelMenu.Controls.Add(this.labelMinimize);
             this.panelMenu.Controls.Add(this.labelExit);
             this.panelMenu.Controls.Add(this.labelTitle);
-            this.panelMenu.Controls.Add(this.button5);
+            this.panelMenu.Controls.Add(this.btnSettings);
             this.panelMenu.Controls.Add(this.button3);
             this.panelMenu.Controls.Add(this.button4);
             this.panelMenu.Controls.Add(this.btnStoreData);
@@ -129,20 +129,22 @@
             this.labelTitle.TabIndex = 6;
             this.labelTitle.Text = "HOME";
             // 
-            // button5
+            // btnSettings
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(603, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 137);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "button5";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSettings.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnSettings.Location = new System.Drawing.Point(636, 0);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(94, 137);
+            this.btnSettings.TabIndex = 5;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.button5_Click);
             // 
             // button3
             // 
@@ -151,7 +153,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.Gainsboro;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(509, 0);
+            this.button3.Location = new System.Drawing.Point(542, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 137);
             this.button3.TabIndex = 3;
@@ -166,7 +168,7 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.Gainsboro;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(415, 0);
+            this.button4.Location = new System.Drawing.Point(448, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(94, 137);
             this.button4.TabIndex = 4;
@@ -179,11 +181,11 @@
             this.btnStoreData.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnStoreData.FlatAppearance.BorderSize = 0;
             this.btnStoreData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStoreData.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnStoreData.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnStoreData.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnStoreData.Location = new System.Drawing.Point(314, 0);
+            this.btnStoreData.Location = new System.Drawing.Point(331, 0);
             this.btnStoreData.Name = "btnStoreData";
-            this.btnStoreData.Size = new System.Drawing.Size(101, 137);
+            this.btnStoreData.Size = new System.Drawing.Size(117, 137);
             this.btnStoreData.TabIndex = 7;
             this.btnStoreData.Text = "Store Data";
             this.btnStoreData.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -194,12 +196,12 @@
             this.btnParkingLotView.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnParkingLotView.FlatAppearance.BorderSize = 0;
             this.btnParkingLotView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParkingLotView.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnParkingLotView.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnParkingLotView.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnParkingLotView.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnParkingLotView.Location = new System.Drawing.Point(210, 0);
             this.btnParkingLotView.Name = "btnParkingLotView";
-            this.btnParkingLotView.Size = new System.Drawing.Size(104, 137);
+            this.btnParkingLotView.Size = new System.Drawing.Size(121, 137);
             this.btnParkingLotView.TabIndex = 1;
             this.btnParkingLotView.Text = "ParkingLot";
             this.btnParkingLotView.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -244,9 +246,9 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(0)))), ((int)(((byte)(84)))));
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.labelAvailable);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.labelOccupied);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 137);
             this.panel1.Name = "panel1";
@@ -280,16 +282,16 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "100";
             // 
-            // label5
+            // labelAvailable
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label5.Location = new System.Drawing.Point(27, 176);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 38);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Available";
+            this.labelAvailable.AutoSize = true;
+            this.labelAvailable.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelAvailable.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelAvailable.Location = new System.Drawing.Point(27, 176);
+            this.labelAvailable.Name = "labelAvailable";
+            this.labelAvailable.Size = new System.Drawing.Size(138, 38);
+            this.labelAvailable.TabIndex = 2;
+            this.labelAvailable.Text = "Available";
             // 
             // label4
             // 
@@ -302,16 +304,16 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "000";
             // 
-            // label3
+            // labelOccupied
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label3.Location = new System.Drawing.Point(27, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(138, 38);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Occupied";
+            this.labelOccupied.AutoSize = true;
+            this.labelOccupied.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelOccupied.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelOccupied.Location = new System.Drawing.Point(27, 51);
+            this.labelOccupied.Name = "labelOccupied";
+            this.labelOccupied.Size = new System.Drawing.Size(138, 38);
+            this.labelOccupied.TabIndex = 0;
+            this.labelOccupied.Text = "Occupied";
             // 
             // panelDesktop
             // 
@@ -362,7 +364,7 @@
         #endregion
 
         private Panel panelMenu;
-        private Button button5;
+        private Button btnSettings;
         private Button button4;
         private Button button3;
         private Button btnStoreData;
@@ -372,9 +374,9 @@
         private Label label1;
         private Panel panel1;
         private Label label6;
-        private Label label5;
+        private Label labelAvailable;
         private Label label4;
-        private Label label3;
+        private Label labelOccupied;
         private Panel panelDesktop;
         private Label label7;
         private Button btnExit;

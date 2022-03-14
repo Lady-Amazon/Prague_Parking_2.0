@@ -177,6 +177,7 @@
             this.Controls.Add(this.btnExitLogIn);
             this.Controls.Add(this.btnLogIn);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormLogIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);

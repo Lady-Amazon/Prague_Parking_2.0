@@ -1,36 +1,64 @@
 ﻿using DataAccess;
-using Microsoft.Data.SqlClient;
 using ParkingGarageLibrary;
-using System.Data;
 
 namespace UI.Forms;
 
 public partial class FormParkingLot : Form
 {
     ParkingContext parkingContext = new ParkingContext();
-    Car car = new Car();
-    MC mc = new MC();
-    
-    //string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
+    //Behöver skapa en json/config fil och prislista. Behöver ordna med parkeringen så att fler fordon inte kan stå i samma ruta. Utskrift av dbn i gridviewn 
 
+    int occupied = 0;
+    int available = 100;
+    int numVehicles = 0;
+    string attendant;
     public FormParkingLot()
     {
         InitializeComponent();
         populateParking();
     }
-    private void btnCheckIn_Click(object sender, EventArgs e)//Fungerar inte ännu. Fler saker måste fixas som tex PickParkingSpot_Click
+    private void btnCheckIn_Click(object sender, EventArgs e)//Fungerar till viss del, går att lägga in bilar/mc men inget felmeddelande om det redan står fordon där
     {
-        txtBoxLicenseNum.Text = string.Empty;
-        string vehicleType = string.Empty;
+
+        txtBoxLicenseNum.Text = txtBoxLicenseNum.Text.Trim();
+        string vehicleType = boxCheckCar.Text;
         try
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null)
             {
-                vehicleType = "Car";
+
+                using (parkingContext)
+                {
+                    var car = new ParkingGarage()
+                    {
+                        ParkingSpot = int.Parse(labelParkingSpot.Text),
+                        LicenseNum = txtBoxLicenseNum.Text,
+                        VehicleType = vehicleType,
+                        CheckedIn = DateTime.Now,
+                        CheckedOut = null
+
+                    };
+                    parkingContext.ParkingGarage.Add(car);
+                    parkingContext.SaveChanges();
+                    MessageBox.Show("Car Parked");
+                }
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
-                vehicleType = "Mc";
+                using (parkingContext)
+                {
+                    var mc = new ParkingGarage()
+                    {
+                        ParkingSpot = int.Parse(labelParkingSpot.Text),
+                        LicenseNum = txtBoxLicenseNum.Text,
+                        VehicleType = vehicleType,
+                        CheckedIn = DateTime.Now,
+                        CheckedOut = null
+                    };
+                    parkingContext.ParkingGarage.Add(mc);
+                    parkingContext.SaveChanges();
+                    MessageBox.Show("Mc Parked");
+                }
             }
             else
             {
@@ -39,54 +67,34 @@ public partial class FormParkingLot : Form
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message);
-        }
-        
-        string connstring = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
-        using (SqlConnection con = new SqlConnection(connstring))
-        {
-            using (SqlCommand cmd = new SqlCommand("INSERT INTO PraugeParking(ParkingSpot,LicenseNum, VechicleType) VALUES(@ParkingSpot, @LicenseNum,@VehicleType)"))
+            if (PickParkingSpot_Click != null)
             {
-                cmd.Connection = con;
-                cmd.Parameters.AddWithValue("@ParkingSpot", labelParkingSpot.Text);
-                cmd.Parameters.AddWithValue("@LicensNum", txtBoxLicenseNum);
-                cmd.Parameters.AddWithValue("@VehicleType", vehicleType);
-                con.Open();
-                cmd.ExecuteNonQuery();//System.ArgumentException: 'No mapping exists from object type System.Windows.Forms.TextBox to a known managed provider native type.'
-
-                con.Close();
+                MessageBox.Show("Parking spot already taken!", ex.Message);
             }
         }
-        dataGridView1.ReadOnly = true;
-        dataGridView1.DataSource = car;
-
-
-        MessageBox.Show("Pick Parkingspot");
-
     }
 
-    private void boxCheckCar_CheckedChanged(object sender, EventArgs e)//Vet ej om det fungerar så här
+    private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
-        if (btnCheckIn.Enabled = boxCheckCar.Checked)
-        {
-            car = new Car();
-        }
+
         btnCheckIn.Enabled = boxCheckCar.Checked;
     }
 
-    private void boxCheckMc_CheckedChanged(object sender, EventArgs e)//Vet ej om det fungerar så här
+    private void boxCheckMc_CheckedChanged(object sender, EventArgs e)
     {
-        if (btnCheckIn.Enabled = boxCheckMc.Checked)
-        {
-            mc = new MC();
-        }
+
         btnCheckIn.Enabled = boxCheckMc.Checked;
     }
+
     private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Valet skrivs ut i en label
     {
         Button clickedButton = (Button)sender;
-        string test = clickedButton.Tag.ToString();
-        labelParkingSpot.Text = test.Substring(test.Count()-2,2);
+        string Space = clickedButton.Tag.ToString();
+        labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
+    }
+    public void ab(string a)
+    {
+        attendant = a.ToString();
     }
     private void populateParking()
     {
@@ -119,7 +127,7 @@ public partial class FormParkingLot : Form
                 viewParkingLot.Controls.Add(button, j, i);
                 button.Click += PickParkingSpot_Click;
                 button.Tag = button;
-                
+
             }
         }
     }

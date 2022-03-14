@@ -8,6 +8,7 @@ public partial class FormMainMenu : Form
 {
     private Form activeForm;
     ParkingContext parkingContext = new ParkingContext();
+
     public FormMainMenu()
     {
         parkingContext.Database.EnsureCreated();
@@ -21,7 +22,12 @@ public partial class FormMainMenu : Form
     private void btnStoreData_Click(object sender, EventArgs e)
     {
         OpenChildForm(new FormStoreData());
-        labelTitle.Text = activeForm.Text; 
+        labelTitle.Text = activeForm.Text;
+    }
+    private void button5_Click(object sender, EventArgs e)
+    {
+        OpenChildForm(new Forms.FormSettings());
+        labelTitle.Text = activeForm.Text;
     }
     private void btnExit_Click(object sender, EventArgs e)
     {
@@ -78,5 +84,7 @@ public partial class FormMainMenu : Form
     private extern static void ReleaseCapture();
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+
 }
 
