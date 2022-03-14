@@ -18,6 +18,7 @@ public partial class FormMainMenu : Form
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormParkingLot());
+
     }
     private void btnStoreData_Click(object sender, EventArgs e)
     {

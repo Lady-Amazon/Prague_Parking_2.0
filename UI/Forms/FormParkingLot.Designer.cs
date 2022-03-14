@@ -288,6 +288,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormParkingLot";
             this.Text = "Parking Lot";
+            this.Load += new System.EventHandler(this.FormParkingLot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).EndInit();

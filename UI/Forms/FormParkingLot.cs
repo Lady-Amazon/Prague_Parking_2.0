@@ -7,11 +7,15 @@ public partial class FormParkingLot : Form
 {
     ParkingContext parkingContext = new ParkingContext();
     //Behöver skapa en json/config fil och prislista. Behöver ordna med parkeringen så att fler fordon inte kan stå i samma ruta. Utskrift av dbn i gridviewn 
+    public List<ParkingGarage> parkingGarages { get; set; }
 
     int occupied = 0;
     int available = 100;
     int numVehicles = 0;
     string attendant;
+
+
+
     public FormParkingLot()
     {
         InitializeComponent();
@@ -42,6 +46,8 @@ public partial class FormParkingLot : Form
                     parkingContext.SaveChanges();
                     MessageBox.Show("Car Parked");
                 }
+                txtBoxLicenseNum.Clear();
+                boxCheckCar.Checked = false;
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
@@ -59,6 +65,8 @@ public partial class FormParkingLot : Form
                     parkingContext.SaveChanges();
                     MessageBox.Show("Mc Parked");
                 }
+                txtBoxLicenseNum.Clear();
+                boxCheckMc.Checked = false;
             }
             else
             {
@@ -72,6 +80,12 @@ public partial class FormParkingLot : Form
                 MessageBox.Show("Parking spot already taken!", ex.Message);
             }
         }
+
+        using (ParkingContext context = new ParkingContext())
+        {
+            parkingGarages = context.ParkingGarage.ToList();
+        }
+        dataGridView1.DataSource = parkingGarages;
     }
 
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
@@ -91,6 +105,10 @@ public partial class FormParkingLot : Form
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
+
+
+
+        
     }
     public void ab(string a)
     {
@@ -130,5 +148,14 @@ public partial class FormParkingLot : Form
 
             }
         }
+    }
+
+    private void FormParkingLot_Load(object sender, EventArgs e)
+    {
+        using (ParkingContext context = new ParkingContext())
+        {
+            parkingGarages = context.ParkingGarage.ToList();
+        }
+        dataGridView1.DataSource = parkingGarages;
     }
 }
