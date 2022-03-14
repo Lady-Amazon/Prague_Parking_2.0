@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using ParkingGarageLibrary;
+using System.Linq;
 
 namespace UI.Forms;
 
@@ -10,7 +11,7 @@ public partial class FormParkingLot : Form
     public List<ParkingGarage> parkingGarages { get; set; }
 
     int occupied = 0;
-    int available = 100;
+    int available = 4;
     int numVehicles = 0;
     string attendant;
 
@@ -31,7 +32,7 @@ public partial class FormParkingLot : Form
             if (boxCheckCar.Checked && PickParkingSpot_Click != null)
             {
 
-                using (parkingContext)
+                using (ParkingContext context = new ParkingContext())
                 {
                     var car = new ParkingGarage()
                     {
@@ -39,9 +40,12 @@ public partial class FormParkingLot : Form
                         LicenseNum = txtBoxLicenseNum.Text,
                         VehicleType = vehicleType,
                         CheckedIn = DateTime.Now,
-                        CheckedOut = null
+                        CheckedOut = null,
+                        VehicleSize = 4
+                       
 
                     };
+                    
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Car Parked");
@@ -51,7 +55,7 @@ public partial class FormParkingLot : Form
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
-                using (parkingContext)
+                using (ParkingContext context = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
                     {
