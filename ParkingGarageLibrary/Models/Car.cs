@@ -8,11 +8,11 @@ public class Car : IVehicle
     public string VehicleType { get; set; }
     public int Size { get; set; }
 
-    public Car(string licenseNum, string vehicleType)
+    public Car(string licenseNum, string vehicleType, int size)
     {
         LicenseNum = licenseNum;
         VehicleType = vehicleType;
-        Size = 4;
+        Size = size;
     }
 
     public Car()

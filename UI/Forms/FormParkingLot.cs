@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using ParkingGarageLibrary;
+using static ParkingGarageLibrary.Enums;
 
 namespace UI.Forms;
 
@@ -7,40 +8,58 @@ public partial class FormParkingLot : Form
 {
     ParkingContext parkingContext = new ParkingContext();
     //Behöver skapa en json/config fil och prislista. Behöver ordna med parkeringen så att fler fordon inte kan stå i samma ruta. Utskrift av dbn i gridviewn 
+<<<<<<< HEAD
+   
+=======
     public List<ParkingGarage> parkingGarages { get; set; }
+>>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
 
+    //dessa är inte i bruk än. Kanske måste Flyttas till FomrMainMenu
     int occupied = 0;
     int available = 100;
     int numVehicles = 0;
     string attendant;
+<<<<<<< HEAD
+    
+=======
 
 
 
+>>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
     public FormParkingLot()
     {
         InitializeComponent();
         populateParking();
+
     }
     private void btnCheckIn_Click(object sender, EventArgs e)//Fungerar till viss del, går att lägga in bilar/mc men inget felmeddelande om det redan står fordon där
     {
-
         txtBoxLicenseNum.Text = txtBoxLicenseNum.Text.Trim();
-        string vehicleType = boxCheckCar.Text;
+        string vehicleTypeCar = boxCheckCar.Text;
+        string vehicleTypeMc = boxCheckMc.Text;
         try
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null)
             {
-
-                using (parkingContext)
-                {
-                    var car = new ParkingGarage()
+                    using (parkingContext)
                     {
-                        ParkingSpot = int.Parse(labelParkingSpot.Text),
-                        LicenseNum = txtBoxLicenseNum.Text,
-                        VehicleType = vehicleType,
-                        CheckedIn = DateTime.Now,
-                        CheckedOut = null
+                        var car = new ParkingGarage()
+                        {
+                            ParkingSpot = int.Parse(labelParkingSpot.Text),
+                            LicenseNum = txtBoxLicenseNum.Text,
+                            VehicleType = vehicleTypeCar,
+                            CheckedIn = DateTime.Now,
+                            CheckedOut = null
 
+<<<<<<< HEAD
+                        };
+                        parkingContext.ParkingGarage.Add(car);
+                        parkingContext.SaveChanges();
+                        MessageBox.Show("Car Parked");
+                    }
+                    txtBoxLicenseNum.Clear();
+                    boxCheckCar.Checked = false;
+=======
                     };
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
@@ -48,6 +67,7 @@ public partial class FormParkingLot : Form
                 }
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
+>>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
@@ -57,7 +77,7 @@ public partial class FormParkingLot : Form
                     {
                         ParkingSpot = int.Parse(labelParkingSpot.Text),
                         LicenseNum = txtBoxLicenseNum.Text,
-                        VehicleType = vehicleType,
+                        VehicleType = vehicleTypeMc,
                         CheckedIn = DateTime.Now,
                         CheckedOut = null
                     };
@@ -72,6 +92,7 @@ public partial class FormParkingLot : Form
             {
                 MessageBox.Show("You have to enter LicenseNum, VehicleType and ParkingSpot!");
             }
+            
         }
         catch (Exception ex)
         {
@@ -105,6 +126,9 @@ public partial class FormParkingLot : Form
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
+<<<<<<< HEAD
+     
+=======
 
 
 
@@ -113,6 +137,7 @@ public partial class FormParkingLot : Form
     public void ab(string a)
     {
         attendant = a.ToString();
+>>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
     }
     private void populateParking()
     {
