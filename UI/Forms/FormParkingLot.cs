@@ -164,7 +164,7 @@ public partial class FormParkingLot : Form
 
         
         
-                GetSumVehicleSize();
+        GetSumVehicleSize();
         Calculation();
      
     }
