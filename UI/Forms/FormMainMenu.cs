@@ -80,18 +80,18 @@ public partial class FormMainMenu : Form
         ReleaseCapture();
         SendMessage(this.Handle, 0x112, 0xf012, 0);
     }
-    
+
+    //private void FormMainMenu_Load_1(object sender, EventArgs e)//Ingen bra idé att ha igång när en ett fel uppstår, kommenterar ut så länge
+    //{
+    //    TopMost = true;
+    //    FormBorderStyle = FormBorderStyle.None;
+    //    WindowState = FormWindowState.Maximized;
+    //}
 
     [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
     private extern static void ReleaseCapture();
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-    private void FormMainMenu_Load(object sender, EventArgs e)
-    {
-        TopMost = true;
-        FormBorderStyle = FormBorderStyle.None;
-        WindowState = FormWindowState.Maximized;
-    }
+    
 }
 
