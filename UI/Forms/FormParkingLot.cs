@@ -162,19 +162,13 @@ public partial class FormParkingLot : Form
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
-
-<<<<<<< HEAD
-=======
-        
-        
->>>>>>> 5d94187ae09501027266f966d47e67f5787f6f9f
+      
         GetSumVehicleSize();
         Calculation();
-
     }
+    
     public int GetSumVehicleSize()
     {
-
         using (ParkingContext context = new ParkingContext())
         {
             var result = context.ParkingGarage
@@ -182,7 +176,6 @@ public partial class FormParkingLot : Form
                  .Sum(p => p.VehicleSize);
             return result;
         }
-
     }
     public void Calculation()
     {
@@ -192,8 +185,6 @@ public partial class FormParkingLot : Form
         int newSize;
         if (boxCheckCar.Checked)
         {
-
-
             if (GetSumVehicleSize() <= minSize)
             {
                 MessageBox.Show("Empty parkingSpot");
@@ -216,7 +207,6 @@ public partial class FormParkingLot : Form
             {
                 MessageBox.Show($"ParkingSpot already full:");
             }
-
         }
 
     }
