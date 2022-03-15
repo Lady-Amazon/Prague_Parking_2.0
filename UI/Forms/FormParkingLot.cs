@@ -14,7 +14,7 @@ public partial class FormParkingLot : Form
         InitializeComponent();
         populateParking();
     }
-    private void btnCheckIn_Click(object sender, EventArgs e)//Fungerar till viss del, går att lägga in bilar/mc men inget felmeddelande om det redan står fordon där
+    private void btnCheckIn_Click(object sender, EventArgs e)
     {
 
         txtBoxLicenseNum.Text = txtBoxLicenseNum.Text.Trim();
