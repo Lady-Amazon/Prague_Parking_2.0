@@ -10,7 +10,14 @@ public class ParkingContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        //if (!optionsBuilder.IsConfigured)
+        //{
+        //    IConfigurationBuilder configurationBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json");
+        //    IConfiguration configuration = configurationBuilder.Build();
+        //    
+        //}
         optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True");
+
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

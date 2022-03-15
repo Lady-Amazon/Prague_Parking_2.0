@@ -6,6 +6,7 @@ namespace UI.Forms;
 public partial class FormParkingLot : Form
 {
     ParkingContext parkingContext = new ParkingContext();
+    
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     int numVehicles = 0;
     public FormParkingLot()
@@ -42,6 +43,7 @@ public partial class FormParkingLot : Form
                 }
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
+
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
@@ -53,7 +55,8 @@ public partial class FormParkingLot : Form
                         LicenseNum = txtBoxLicenseNum.Text,
                         VehicleType = vehicleTypeMc,
                         CheckedIn = DateTime.Now,
-                        CheckedOut = null
+                        CheckedOut = null,
+                        VehicleSize = 2
                     };
                     parkingContext.ParkingGarage.Add(mc);
                     parkingContext.SaveChanges();
@@ -61,16 +64,19 @@ public partial class FormParkingLot : Form
                 }
                 txtBoxLicenseNum.Clear();
                 boxCheckMc.Checked = false;
-                btnCheckIn.Enabled = false;
+
             }
             else
             {
                 MessageBox.Show("You have to enter LicenseNum, VehicleType and ParkingSpot!");
+                txtBoxLicenseNum.Clear();
+                boxCheckCar.Checked = false;
+                boxCheckMc.Checked = false;
             }
         }
         catch (Exception ex)
         {
-            //if (PickParkingSpot_Click == )
+            //if (PickParkingSpot_Click != null)
             //{
             //    MessageBox.Show("Parking spot already taken!", ex.Message);
             //}
@@ -81,7 +87,6 @@ public partial class FormParkingLot : Form
         }
         dataGridView1.DataSource = parkingGarages;
     }
-
     private void btnCheckOut_Click(object sender, EventArgs e)//Work in progress för att checka ut fordon
     {
         DateTime timeIn = DateTime.Parse(pickTimeIn.Text);
@@ -101,32 +106,64 @@ public partial class FormParkingLot : Form
         {
             if (duration / 60 <= 0.25)
             {
-                txtBoxTotalCharge.Text = "₱" + 0;
+                txtBoxTotalCharge.Text = "CZK" + 0;
             }
             else if (numHours <= 3 && numHours > 0.25)
             {
-                txtBoxTotalCharge.Text = "₱" + 20;
+                txtBoxTotalCharge.Text = "CZK" + 20;
             }
             else if (numHours > 3)
             {
-                price = 50 + ((int)Math.Ceiling(numHours) - 3) * 20;
-                txtBoxTotalCharge.Text = "₱" + price;
+                price = 20 + ((int)Math.Ceiling(numHours) - 3) * 20;
+                txtBoxTotalCharge.Text = "CZK" + price;
             }
-
         }
-        numVehicles = numVehicles + 1;
+        //numVehicles = numVehicles + 1;
+        
+        //if (!(txtBoxLicenseNum.Text == string.Empty))
+        //{
+        //    string str = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
+        //    SqlConnection con = new SqlConnection(str);
+        //    string query = "DELETE FROM ParkingGarage WHERE LicenseNum = '" + txtBoxLicenseNum + "'";
+        //    SqlCommand cmd = new SqlCommand(query, con);
+        //    SqlDataReader myreader;
+        //    try
+        //    {
+        //        con.Open();
+        //        myreader = cmd.ExecuteReader();
+        //        MessageBox.Show("successfully data Deleted");
+        //        while (myreader.Read())
+        //        {
+        //        }
+        //        con.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
+        //else
+        //{
+        //    MessageBox.Show("Choose a Vehicle!");
+        //}
 
     }
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
-
         btnCheckIn.Enabled = boxCheckCar.Checked;
     }
 
     private void boxCheckMc_CheckedChanged(object sender, EventArgs e)
     {
-
-        btnCheckIn.Enabled = boxCheckMc.Checked;
+        if (boxCheckMc.Checked)
+        {
+            btnCheckIn.Enabled = boxCheckMc.Checked;
+        }
+        else
+        {
+            btnCheckIn.Enabled = false;
+        }
+        
     }
 
     private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Valet skrivs ut i en label
@@ -135,20 +172,6 @@ public partial class FormParkingLot : Form
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
     }
-
-    //public void Calculation() //Fungerar inte än
-    //{
-    //    int maxSize = 4;
-    //    int tempInt = 2;
-    //    using (parkingContext = new ParkingContext())
-    //    { 
-    //        var result = parkingContext.ParkingGarage
-    //        .Where(x => x.ParkingSpot)
-    //        .SUM(x => x.Occupied)
-    //        .SUM(x => x.VehicleSize) = maxSize;
-    //        MessageBox.Show("Parking spot already taken!");
-    //    };
-    //}
     private void populateParking()
     {
         var rowCount = 10;
@@ -196,7 +219,7 @@ public partial class FormParkingLot : Form
 
     private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//Klickar man på ett regnummer kommer det upp i Textrutan där man skriver in nya fordon
     {
-        if (e.RowIndex >= 0 && e.ColumnIndex >= 0) 
+        if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
         {
             txtBoxLicenseNum.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
         }

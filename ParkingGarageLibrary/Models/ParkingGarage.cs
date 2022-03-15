@@ -12,5 +12,8 @@ namespace ParkingGarageLibrary
         public DateTime CheckedIn { get; set; }
         public DateTime? CheckedOut { get; set; }
         public int VehicleSize { get; set; }
+
+        public ParkingGarage() { }
+
     }
 }

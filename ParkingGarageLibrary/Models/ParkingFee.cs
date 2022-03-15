@@ -2,9 +2,7 @@
 {
     public class ParkingFee : ParkingGarage
     {
-        public ParkingFee()
-        {
-        }
+        public ParkingFee() { }
 
         //First 10 min is free of charge
         public string LicenseNum { get; set; }
