@@ -1,36 +1,74 @@
 ﻿using DataAccess;
 using ParkingGarageLibrary;
+using System.Linq;
 using static ParkingGarageLibrary.Enums;
 
 namespace UI.Forms;
 
 public partial class FormParkingLot : Form
 {
+    
+    public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     ParkingContext parkingContext = new ParkingContext();
     //Behöver skapa en json/config fil och prislista. Behöver ordna med parkeringen så att fler fordon inte kan stå i samma ruta. Utskrift av dbn i gridviewn 
-<<<<<<< HEAD
-   
-=======
-    public List<ParkingGarage> parkingGarages { get; set; }
->>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
+    
 
     //dessa är inte i bruk än. Kanske måste Flyttas till FomrMainMenu
     int occupied = 0;
     int available = 100;
     int numVehicles = 0;
     string attendant;
-<<<<<<< HEAD
-    
-=======
 
-    public void Calculations()
+
+    public int GetSumVehicleSize()
     {
-        var data = parkingGarages
-            .Where(x=> x.ParkingSpot = )
-            .Sum(x=> x.VehicleType.)
+
+        using (ParkingContext context = new ParkingContext())
+        {
+           var result = context.ParkingGarage
+                .Where(p => p.ParkingSpot.Equals(int.Parse(labelParkingSpot.Text)))
+                .Sum(p => p.VehicleSize);
+            return result;
+        }
+
+    }
+    public void Calculation()
+    {
+        int maxCarSize = 4;
+        int maxMcSize = 2;
+        int minSize = 0;
+        int newSize;
+        if (boxCheckCar.Checked)
+        {
+            
+
+            if (GetSumVehicleSize() <= minSize)
+            {
+                MessageBox.Show("Empty parkingSpot");
+            }
+            else if (GetSumVehicleSize() > minSize)
+            {
+                MessageBox.Show($"ParkingSpot already full : {GetSumVehicleSize()}");
+            }
+
+        }
+        else if (boxCheckMc.Checked)
+        {
+            newSize = 2;
+
+            if (GetSumVehicleSize() <= minSize)
+            {
+                MessageBox.Show("Empty parkingSpot");
+            }
+            else if (GetSumVehicleSize() > maxMcSize)
+            {
+                MessageBox.Show($"ParkingSpot already full: {GetSumVehicleSize()}");
+            }
+
+        }
+
     }
 
->>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
     public FormParkingLot()
     {
         InitializeComponent();
@@ -46,17 +84,17 @@ public partial class FormParkingLot : Form
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null)
             {
-                    using (parkingContext)
+                    using (ParkingContext context = new ParkingContext())
                     {
                         var car = new ParkingGarage()
                         {
                             ParkingSpot = int.Parse(labelParkingSpot.Text),
                             LicenseNum = txtBoxLicenseNum.Text,
                             VehicleType = vehicleTypeCar,
+                            VehicleSize = 4,
                             CheckedIn = DateTime.Now,
                             CheckedOut = null
 
-<<<<<<< HEAD
                         };
                         parkingContext.ParkingGarage.Add(car);
                         parkingContext.SaveChanges();
@@ -64,25 +102,17 @@ public partial class FormParkingLot : Form
                     }
                     txtBoxLicenseNum.Clear();
                     boxCheckCar.Checked = false;
-=======
-                    };
-                    parkingContext.ParkingGarage.Add(car);
-                    parkingContext.SaveChanges();
-                    MessageBox.Show("Car Parked");
-                }
-                txtBoxLicenseNum.Clear();
-                boxCheckCar.Checked = false;
->>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
-                using (parkingContext)
+                using (ParkingContext context = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
                     {
                         ParkingSpot = int.Parse(labelParkingSpot.Text),
                         LicenseNum = txtBoxLicenseNum.Text,
                         VehicleType = vehicleTypeMc,
+                        VehicleSize= 2,
                         CheckedIn = DateTime.Now,
                         CheckedOut = null
                     };
@@ -131,18 +161,12 @@ public partial class FormParkingLot : Form
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
-<<<<<<< HEAD
-     
-=======
-
-
 
         
-    }
-    public void ab(string a)
-    {
-        attendant = a.ToString();
->>>>>>> 39cec9b23826a1c4e99a4bc4ab9b8f6c495d1e29
+        
+                GetSumVehicleSize();
+        Calculation();
+     
     }
     private void populateParking()
     {

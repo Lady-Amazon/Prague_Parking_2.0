@@ -87,6 +87,11 @@ public partial class FormMainMenu : Form
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-
+    private void FormMainMenu_Load(object sender, EventArgs e)
+    {
+        TopMost = true;
+        FormBorderStyle = FormBorderStyle.None;
+        WindowState = FormWindowState.Maximized;
+    }
 }
 

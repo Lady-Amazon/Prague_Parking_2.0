@@ -10,6 +10,8 @@ namespace ParkingGarageLibrary
         public int ParkingSpot { get; set; }
         public string LicenseNum { get; set; }
         public string VehicleType { get; set; }
+
+        public int VehicleSize { get; set; }
         public DateTime CheckedIn { get; set; }
         public DateTime? CheckedOut { get; set; }
         //public List<ParkingFee> ParkingFees { get; set; } = new List<ParkingFee>(); Vet int eriktigt vad jag vill med denna, och om den
