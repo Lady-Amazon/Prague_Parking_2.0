@@ -92,6 +92,6 @@ public partial class FormMainMenu : Form
     private extern static void ReleaseCapture();
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-    
+
 }
 

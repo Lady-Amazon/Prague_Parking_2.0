@@ -42,6 +42,8 @@ public partial class FormParkingLot : Form
                 }
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
+                labelParkingSpot.ResetText();
+                parkingavailability.ResetText();
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
@@ -62,6 +64,8 @@ public partial class FormParkingLot : Form
                 }
                 txtBoxLicenseNum.Clear();
                 boxCheckMc.Checked = false;
+                labelParkingSpot.ResetText();
+                parkingavailability.ResetText();
             }
             else
             {
@@ -159,14 +163,18 @@ public partial class FormParkingLot : Form
 
     private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Valet skrivs ut i en label
     {
+        string vehicles;
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
-      
+
         GetSumVehicleSize();
         Calculation();
     }
-    
+    static void ChangeColor(Label label, Color color, int size)
+    {
+        label.BackColor = color;
+    }
     public int GetSumVehicleSize()
     {
         using (ParkingContext context = new ParkingContext())
@@ -182,33 +190,38 @@ public partial class FormParkingLot : Form
         int maxCarSize = 4;
         int maxMcSize = 2;
         int minSize = 0;
-        int newSize;
-        if (boxCheckCar.Checked)
+    
+        if (boxCheckCar.Checked)//Nu fungerar denna som det ska.
         {
             if (GetSumVehicleSize() <= minSize)
             {
-                MessageBox.Show("Empty parkingSpot");
+                ChangeColor(labelParkingSpot, Color.Green, minSize);
+                parkingavailability.Text = "Empty spot";
+                btnCheckIn.Enabled = true;
             }
             else if (GetSumVehicleSize() > minSize)
             {
-                MessageBox.Show($"ParkingSpot already full : ");
+                ChangeColor(labelParkingSpot, Color.Red, maxCarSize);
+                parkingavailability.Text = "Parking spot is already taken";
+                btnCheckIn.Enabled = false;
             }
-
         }
         else if (boxCheckMc.Checked)
         {
-            newSize = 2;
-
-            if (GetSumVehicleSize() <= minSize)
+            
+            if (GetSumVehicleSize() <= maxMcSize)
             {
-                MessageBox.Show("Empty parkingSpot");
+                ChangeColor(labelParkingSpot, Color.Green, maxMcSize);
+                parkingavailability.Text = "Empty spot";
+                btnCheckIn.Enabled = true;
             }
-            else if (GetSumVehicleSize() > maxMcSize)
+            else if (GetSumVehicleSize() >= maxCarSize)//Ändrade här til >= så nu säger den ifrån om 2 mc står på samma ruta
             {
-                MessageBox.Show($"ParkingSpot already full:");
+                ChangeColor(labelParkingSpot, Color.Red, maxCarSize);
+                parkingavailability.Text = "Parking spot is already taken";
+                btnCheckIn.Enabled = false;
             }
         }
-
     }
     private void populateParking()
     {

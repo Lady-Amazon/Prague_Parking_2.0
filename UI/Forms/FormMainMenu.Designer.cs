@@ -187,7 +187,7 @@
             this.btnStoreData.Name = "btnStoreData";
             this.btnStoreData.Size = new System.Drawing.Size(117, 137);
             this.btnStoreData.TabIndex = 7;
-            this.btnStoreData.Text = "Store Data";
+            this.btnStoreData.Text = "Sales";
             this.btnStoreData.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnStoreData.Click += new System.EventHandler(this.btnStoreData_Click);
             // 
@@ -349,7 +349,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            //this.Load += new System.EventHandler(this.FormMainMenu_Load_1);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);

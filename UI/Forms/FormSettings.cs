@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+
 namespace UI.Forms;
 
 public partial class FormSettings : Form
@@ -11,11 +12,6 @@ public partial class FormSettings : Form
     public FormSettings()
     {
         InitializeComponent();
-        //_config
-        //.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-        //.AddJsonFile("appsettings.json")
-        //.Build()
-        //.Get<Config>();
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -25,10 +21,6 @@ public partial class FormSettings : Form
           .AddJsonFile("appsettings.json")
           .Build()
           .Get<Config>();
-
-
-        //_config.ParkingGarageClientConfig.TimeOut = 1000;
-        //_config.ParkingGarageClientConfig.TemperatureUnits = ParkingSpots.Celcius;
 
         config.DebugEnabled = bool.Parse(textBox1.Text);
 

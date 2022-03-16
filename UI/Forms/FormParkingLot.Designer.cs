@@ -53,6 +53,7 @@
             this.lblTotalCharge = new System.Windows.Forms.Label();
             this.txtBoxDuration = new System.Windows.Forms.TextBox();
             this.txtBoxTotalCharge = new System.Windows.Forms.TextBox();
+            this.parkingavailability = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).BeginInit();
@@ -60,7 +61,7 @@
             // 
             // btnCheckIn
             // 
-            this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCheckIn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnCheckIn.FlatAppearance.BorderSize = 0;
             this.btnCheckIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckIn.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -75,7 +76,7 @@
             // 
             // btnCheckOut
             // 
-            this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCheckOut.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnCheckOut.FlatAppearance.BorderSize = 0;
             this.btnCheckOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckOut.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -89,7 +90,7 @@
             // 
             // pickTimeIn
             // 
-            this.pickTimeIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pickTimeIn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pickTimeIn.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.pickTimeIn.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.pickTimeIn.Location = new System.Drawing.Point(30, 276);
@@ -99,7 +100,7 @@
             // 
             // lblCheckIn
             // 
-            this.lblCheckIn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCheckIn.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCheckIn.AutoSize = true;
             this.lblCheckIn.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.lblCheckIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -111,7 +112,7 @@
             // 
             // lblCheckOut
             // 
-            this.lblCheckOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblCheckOut.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblCheckOut.AutoSize = true;
             this.lblCheckOut.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.lblCheckOut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -123,7 +124,7 @@
             // 
             // pickTimeOut
             // 
-            this.pickTimeOut.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pickTimeOut.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pickTimeOut.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.pickTimeOut.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.pickTimeOut.Location = new System.Drawing.Point(30, 395);
@@ -133,7 +134,7 @@
             // 
             // lblLicenseNum
             // 
-            this.lblLicenseNum.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblLicenseNum.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblLicenseNum.AutoSize = true;
             this.lblLicenseNum.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblLicenseNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -145,7 +146,7 @@
             // 
             // txtBoxLicenseNum
             // 
-            this.txtBoxLicenseNum.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBoxLicenseNum.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtBoxLicenseNum.BackColor = System.Drawing.Color.Gainsboro;
             this.txtBoxLicenseNum.Font = new System.Drawing.Font("Palatino Linotype", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtBoxLicenseNum.Location = new System.Drawing.Point(12, 46);
@@ -169,7 +170,7 @@
             // 
             // boxCheckCar
             // 
-            this.boxCheckCar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.boxCheckCar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.boxCheckCar.AutoSize = true;
             this.boxCheckCar.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boxCheckCar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -184,7 +185,7 @@
             // 
             // boxCheckMc
             // 
-            this.boxCheckMc.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.boxCheckMc.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.boxCheckMc.AutoSize = true;
             this.boxCheckMc.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.boxCheckMc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -216,7 +217,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(698, 161);
+            this.dataGridView1.Size = new System.Drawing.Size(698, 189);
             this.dataGridView1.TabIndex = 16;
             // 
             // parkingSpotDataGridViewTextBoxColumn
@@ -274,7 +275,7 @@
             // 
             // labelParkingSpot
             // 
-            this.labelParkingSpot.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelParkingSpot.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelParkingSpot.AutoSize = true;
             this.labelParkingSpot.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelParkingSpot.ForeColor = System.Drawing.Color.Gainsboro;
@@ -285,7 +286,7 @@
             // 
             // lblDuration
             // 
-            this.lblDuration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDuration.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -297,7 +298,7 @@
             // 
             // lblTotalCharge
             // 
-            this.lblTotalCharge.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTotalCharge.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblTotalCharge.AutoSize = true;
             this.lblTotalCharge.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblTotalCharge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
@@ -309,7 +310,7 @@
             // 
             // txtBoxDuration
             // 
-            this.txtBoxDuration.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBoxDuration.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtBoxDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
             this.txtBoxDuration.Location = new System.Drawing.Point(33, 527);
             this.txtBoxDuration.Multiline = true;
@@ -319,7 +320,7 @@
             // 
             // txtBoxTotalCharge
             // 
-            this.txtBoxTotalCharge.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtBoxTotalCharge.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtBoxTotalCharge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
             this.txtBoxTotalCharge.Location = new System.Drawing.Point(35, 625);
             this.txtBoxTotalCharge.Multiline = true;
@@ -327,12 +328,24 @@
             this.txtBoxTotalCharge.Size = new System.Drawing.Size(136, 31);
             this.txtBoxTotalCharge.TabIndex = 21;
             // 
+            // parkingavailability
+            // 
+            this.parkingavailability.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.parkingavailability.AutoSize = true;
+            this.parkingavailability.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.parkingavailability.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
+            this.parkingavailability.Location = new System.Drawing.Point(12, 190);
+            this.parkingavailability.Name = "parkingavailability";
+            this.parkingavailability.Size = new System.Drawing.Size(0, 27);
+            this.parkingavailability.TabIndex = 22;
+            // 
             // FormParkingLot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(125)))), ((int)(((byte)(29)))));
             this.ClientSize = new System.Drawing.Size(1222, 788);
+            this.Controls.Add(this.parkingavailability);
             this.Controls.Add(this.txtBoxTotalCharge);
             this.Controls.Add(this.txtBoxDuration);
             this.Controls.Add(this.lblTotalCharge);
@@ -388,5 +401,6 @@
         private Label lblTotalCharge;
         private TextBox txtBoxDuration;
         private TextBox txtBoxTotalCharge;
+        private Label parkingavailability;
     }
 }
