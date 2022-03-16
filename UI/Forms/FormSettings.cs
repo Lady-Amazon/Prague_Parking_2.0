@@ -9,6 +9,7 @@ namespace UI.Forms;
 public partial class FormSettings : Form
 {
     ConfigurationBuilder _config = new ConfigurationBuilder();
+    //public string appSettingsPath { get; }
     public FormSettings()
     {
         InitializeComponent();
@@ -22,7 +23,9 @@ public partial class FormSettings : Form
           .Build()
           .Get<Config>();
 
-        config.DebugEnabled = bool.Parse(textBox1.Text);
+        //config.DebugEnabled = bool.Parse(textBox1.Text);
+
+        config.ParkingGarageClientConfig.CarFeePerHour = Convert.ToInt32(config.ParkingGarageClientConfig.CarFeePerHour);
 
         var jsonWriteOptions = new JsonSerializerOptions()
         {
@@ -33,6 +36,20 @@ public partial class FormSettings : Form
 
         var appsettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newJson);
         File.WriteAllText(appsettingsPath, newJson);
+        
     }
+    //public void ReadFromJson()
+    //{
+    //    var config = new ConfigurationBuilder()
+    //        .AddJsonFile(appSettingsPath).Build();
+    //    var section = config.GetSection(nameof(Config));
+    //    var values = section.Get<Config>();
+
+    //    CarFeePerHour = values.CarFeePerHour;
+    //    McFePerHour = values.McFePerHour;
+    //    ParkingSpotSize = values.ParkingSpotSize;
+    //    ParkingLotSize = values.ParkingLotSize;
+
+    //}
 }
 

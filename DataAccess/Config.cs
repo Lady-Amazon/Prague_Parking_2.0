@@ -1,10 +1,12 @@
-﻿namespace DataAccess
+﻿using ParkingGarageLibrary;
+
+namespace DataAccess
 {
     public class Config
     {
+        public ParkingGarageClientConfig ParkingGarageClientConfig;
         public string ConnectionString { get; protected set; }
-        public int TimeOutSeconds { get; protected set; }
-        public ParkingGarageClientConfig ParkingGarageClientConfig { get; set; }
         public bool DebugEnabled { get; set; }
+        
     }
 }
