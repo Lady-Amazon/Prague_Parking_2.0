@@ -87,6 +87,7 @@
             this.btnCheckOut.TabIndex = 1;
             this.btnCheckOut.Text = "OUT";
             this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.btnCheckOut_Click_1);
             // 
             // pickTimeIn
             // 
@@ -156,7 +157,7 @@
             // 
             // viewParkingLot
             // 
-            this.viewParkingLot.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.viewParkingLot.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.viewParkingLot.ColumnCount = 2;
             this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.viewParkingLot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -201,7 +202,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -214,11 +216,11 @@
             this.dataGridView1.DataSource = this.parkingGarageBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(310, 495);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(698, 189);
             this.dataGridView1.TabIndex = 16;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // parkingSpotDataGridViewTextBoxColumn
             // 
@@ -226,7 +228,6 @@
             this.parkingSpotDataGridViewTextBoxColumn.HeaderText = "ParkingSpot";
             this.parkingSpotDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.parkingSpotDataGridViewTextBoxColumn.Name = "parkingSpotDataGridViewTextBoxColumn";
-            this.parkingSpotDataGridViewTextBoxColumn.ReadOnly = true;
             this.parkingSpotDataGridViewTextBoxColumn.Width = 125;
             // 
             // licenseNumDataGridViewTextBoxColumn
@@ -235,7 +236,6 @@
             this.licenseNumDataGridViewTextBoxColumn.HeaderText = "LicenseNum";
             this.licenseNumDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.licenseNumDataGridViewTextBoxColumn.Name = "licenseNumDataGridViewTextBoxColumn";
-            this.licenseNumDataGridViewTextBoxColumn.ReadOnly = true;
             this.licenseNumDataGridViewTextBoxColumn.Width = 125;
             // 
             // vehicleTypeDataGridViewTextBoxColumn
@@ -244,7 +244,6 @@
             this.vehicleTypeDataGridViewTextBoxColumn.HeaderText = "VehicleType";
             this.vehicleTypeDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.vehicleTypeDataGridViewTextBoxColumn.Name = "vehicleTypeDataGridViewTextBoxColumn";
-            this.vehicleTypeDataGridViewTextBoxColumn.ReadOnly = true;
             this.vehicleTypeDataGridViewTextBoxColumn.Width = 125;
             // 
             // checkedInDataGridViewTextBoxColumn
@@ -253,7 +252,6 @@
             this.checkedInDataGridViewTextBoxColumn.HeaderText = "CheckedIn";
             this.checkedInDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.checkedInDataGridViewTextBoxColumn.Name = "checkedInDataGridViewTextBoxColumn";
-            this.checkedInDataGridViewTextBoxColumn.ReadOnly = true;
             this.checkedInDataGridViewTextBoxColumn.Width = 125;
             // 
             // checkedOutDataGridViewTextBoxColumn
@@ -262,7 +260,6 @@
             this.checkedOutDataGridViewTextBoxColumn.HeaderText = "CheckedOut";
             this.checkedOutDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.checkedOutDataGridViewTextBoxColumn.Name = "checkedOutDataGridViewTextBoxColumn";
-            this.checkedOutDataGridViewTextBoxColumn.ReadOnly = true;
             this.checkedOutDataGridViewTextBoxColumn.Width = 125;
             // 
             // parkingGarageBindingSource

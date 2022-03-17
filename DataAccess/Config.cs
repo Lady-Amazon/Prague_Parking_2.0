@@ -1,12 +1,16 @@
-﻿using ParkingGarageLibrary;
-
-namespace DataAccess
+﻿namespace DataAccess
 {
     public class Config
     {
-        public ParkingGarageClientConfig ParkingGarageClientConfig;
-        public string ConnectionString { get; protected set; }
+        public string ConnectionStrings { get; protected set; }
         public bool DebugEnabled { get; set; }
-        
+        public bool IsEnabled { get; set; }
+        public int ParkingSpotSize { get; set; }
+        public int ParkingLotSize { get; set; }
+        public int CarSize { get; set; }
+        public int McSize { get; set; }
+        public int CarFeePerHour { get; set; }
+        public int McFeePerHour { get; set; }
+
     }
 }

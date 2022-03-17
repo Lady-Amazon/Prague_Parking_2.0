@@ -16,7 +16,7 @@ public class ParkingContext : DbContext
                .AddJsonFile("appsettings.json")
                .Build();
         optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-       // optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True");
+        //optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True");
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

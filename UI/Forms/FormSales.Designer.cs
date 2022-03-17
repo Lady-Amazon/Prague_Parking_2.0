@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class FormStoreData
+    partial class FormSales
     {
         /// <summary>
         /// Required designer variable.

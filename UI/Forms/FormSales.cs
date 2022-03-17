@@ -1,8 +1,8 @@
 ﻿namespace UI;
 
-public partial class FormStoreData : Form
+public partial class FormSales : Form
 {
-    public FormStoreData()
+    public FormSales()
     {
         InitializeComponent();
     }

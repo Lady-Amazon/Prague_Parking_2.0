@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Microsoft.Data.SqlClient;
 using ParkingGarageLibrary;
 
 namespace UI.Forms;
@@ -13,7 +14,6 @@ public partial class FormParkingLot : Form
     {
         InitializeComponent();
         populateParking();
-
     }
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
@@ -33,7 +33,7 @@ public partial class FormParkingLot : Form
                         VehicleType = vehicleTypeCar,
                         VehicleSize = 4,
                         CheckedIn = DateTime.Now,
-                        CheckedOut = null
+                        //CheckedOut = null
 
                     };
                     parkingContext.ParkingGarage.Add(car);
@@ -56,7 +56,7 @@ public partial class FormParkingLot : Form
                         VehicleType = vehicleTypeMc,
                         VehicleSize = 2,
                         CheckedIn = DateTime.Now,
-                        CheckedOut = null
+                        //CheckedOut = null
                     };
                     parkingContext.ParkingGarage.Add(mc);
                     parkingContext.SaveChanges();
@@ -87,10 +87,11 @@ public partial class FormParkingLot : Form
         }
         dataGridView1.DataSource = parkingGarages;
     }
-    private void btnCheckOut_Click(object sender, EventArgs e)//Work in progress för att checka ut fordon
+    private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
         DateTime timeIn = DateTime.Parse(pickTimeIn.Text);
-        DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
+        //DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
+        DateTime timeout = DateTime.Now;
 
         float duration = float.Parse((timeOut - timeIn).TotalMinutes.ToString());
         var span = TimeSpan.FromMinutes(duration);
@@ -101,6 +102,7 @@ public partial class FormParkingLot : Form
 
         float numHours = duration / 60;
         int price;
+
 
         if (numHours > 0)
         {
@@ -118,37 +120,36 @@ public partial class FormParkingLot : Form
                 txtBoxTotalCharge.Text = "CZK" + price;
             }
         }
+
+
         //numVehicles = numVehicles + 1;
 
-        //if (!(txtBoxLicenseNum.Text == string.Empty))
+        //string str = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
+        //SqlConnection con = new SqlConnection(str);
+        //string query = "DELETE FROM ParkingGarage WHERE LicenseNum = '" + txtBoxLicenseNum + "'";
+        //SqlCommand cmd = new SqlCommand(query, con);
+        //SqlDataReader myreader;
+        //try
         //{
-        //    string str = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
-        //    SqlConnection con = new SqlConnection(str);
-        //    string query = "DELETE FROM ParkingGarage WHERE LicenseNum = '" + txtBoxLicenseNum + "'";
-        //    SqlCommand cmd = new SqlCommand(query, con);
-        //    SqlDataReader myreader;
-        //    try
+        //    con.Open();
+        //    myreader = cmd.ExecuteReader();
+        //    MessageBox.Show("Successfully data Deleted");
+        //    while (myreader.Read())
         //    {
-        //        con.Open();
-        //        myreader = cmd.ExecuteReader();
-        //        MessageBox.Show("successfully data Deleted");
-        //        while (myreader.Read())
-        //        {
-        //        }
-        //        con.Close();
         //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
+        //    con.Close();
+        //}
+        //catch (Exception ex)
+        //{
+        //    MessageBox.Show(ex.Message);
+        //}
         //}
         //else
         //{
         //    MessageBox.Show("Choose a Vehicle!");
         //}
-
     }
-
+    
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -190,7 +191,7 @@ public partial class FormParkingLot : Form
         int maxCarSize = 4;
         int maxMcSize = 2;
         int minSize = 0;
-    
+
         if (boxCheckCar.Checked)//Nu fungerar denna som det ska.
         {
             if (GetSumVehicleSize() <= minSize)
@@ -208,7 +209,7 @@ public partial class FormParkingLot : Form
         }
         else if (boxCheckMc.Checked)
         {
-            
+
             if (GetSumVehicleSize() <= maxMcSize)
             {
                 ChangeColor(labelParkingSpot, Color.Green, maxMcSize);
@@ -267,4 +268,14 @@ public partial class FormParkingLot : Form
         }
         dataGridView1.DataSource = parkingGarages;
     }
+
+    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+        {
+            txtBoxLicenseNum.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+        }
+    }
+
+    
 }
