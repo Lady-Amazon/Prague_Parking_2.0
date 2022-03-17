@@ -89,38 +89,64 @@ public partial class FormParkingLot : Form
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
-        DateTime timeIn = DateTime.Parse(pickTimeIn.Text);
-        DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
-        //DateTime timeOut = DateTime.Now;
-
-        float duration = float.Parse((timeOut - timeIn).TotalMinutes.ToString());
-        var span = TimeSpan.FromMinutes(duration);
-        var hour = ((int)span.TotalHours).ToString();
-        var Minute = span.Minutes.ToString();
-
-        txtBoxDuration.Text = hour + "hr " + Minute + "min";
-
-        float numHours = duration / 60;
-        int price;
-
-
-        if (numHours > 0)
+        using (ParkingContext context = new ParkingContext())
         {
-            if (duration / 60 <= 0.25)
-            {
-                txtBoxTotalCharge.Text = "CZK" + 0;
-            }
-            else if (numHours <= 3 && numHours > 0.25)
-            {
-                txtBoxTotalCharge.Text = "CZK" + 20;
-            }
-            else if (numHours > 3)
-            {
-                price = 20 + ((int)Math.Ceiling(numHours) - 3) * 20;
-                txtBoxTotalCharge.Text = "CZK" + price;
-            }
-        }
+            var licenseNum = txtBoxLicenseNum.Text;
+            var checkIn = context.ParkingGarage
+                .Where(l => l.LicenseNum == licenseNum)
+                .Select(t => t.CheckedIn)
+                .FirstOrDefault();
+            //DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
+            //DateTime timeOut = DateTime.
 
+            var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
+
+            var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
+            var span = TimeSpan.FromMinutes(duration);
+            var hour = ((int)span.TotalHours).ToString();
+            var Minute = span.Minutes.ToString();
+
+            txtBoxDuration.Text = hour + "hr " + Minute + "min";
+
+            Cost(span);
+
+            //float numHours = duration / 60;
+            //double price;
+
+            //if (numHours > 0)
+            //{
+            //    if (duration / 60 <= 0.25)
+            //    {
+            //        txtBoxTotalCharge.Text = "CZK" + 0;
+            //    }
+            //    else if (numHours <= 3 && numHours > 0.25)
+            //    {
+            //        txtBoxTotalCharge.Text = "CZK" + 20;
+            //    }
+            //    else if (numHours > 3)
+            //    {
+            //        price = 20 + ((int)Math.Ceiling(numHours) - 3) * 20;
+            //        txtBoxTotalCharge.Text = "CZK" + price;
+            //    }
+            //}
+        }
+        
+        double Cost(TimeSpan time)
+        {
+            double price = 0;
+            if (boxCheckCar.Checked)
+            {
+                price = Math.Round(((double)time.TotalHours * 20),2);
+            }
+            else if (boxCheckMc.Checked)
+            {
+                price = Math.Round(((double)time.TotalHours * 10),2);
+            }
+
+            txtBoxTotalCharge.Text = "CZK" + price;
+
+            return price;
+        }
 
         //numVehicles = numVehicles + 1;
 
