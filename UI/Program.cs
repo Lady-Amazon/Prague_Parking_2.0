@@ -13,5 +13,6 @@ namespace UI
             ApplicationConfiguration.Initialize();
             Application.Run(new FormMainMenu());
         }
+
     }
 }

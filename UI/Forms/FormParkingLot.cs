@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using Microsoft.Data.SqlClient;
 using ParkingGarageLibrary;
+using System.Data;
 
 namespace UI.Forms;
 
@@ -8,7 +9,10 @@ public partial class FormParkingLot : Form
 {
 
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
+    public List<ParkingFee> parkingFees = new List<ParkingFee>();
     ParkingContext parkingContext = new ParkingContext();
+    //public static string AvailableValue = "";
+    //public static string OccupiedValue = "";
 
     public FormParkingLot()
     {
@@ -24,7 +28,7 @@ public partial class FormParkingLot : Form
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null)
             {
-                using (ParkingContext context = new ParkingContext())
+                using (parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
                     {
@@ -47,7 +51,7 @@ public partial class FormParkingLot : Form
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
             {
-                using (ParkingContext context = new ParkingContext())
+                using (parkingContext = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
                     {
@@ -89,6 +93,18 @@ public partial class FormParkingLot : Form
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
+<<<<<<< HEAD
+        
+        using (parkingContext = new ParkingContext())
+        {
+            var licenseNum = txtBoxLicenseNum.Text;
+            var checkIn = parkingContext.ParkingGarage
+                .Where(l => l.LicenseNum == licenseNum)
+                .Select(t => t.CheckedIn)
+                .FirstOrDefault();
+
+            var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
+=======
         using (ParkingContext context = new ParkingContext())
         {
             var licenseNum = txtBoxLicenseNum.Text;
@@ -147,35 +163,49 @@ public partial class FormParkingLot : Form
 
             return price;
         }
+>>>>>>> 43379b8a0544f8ccb5a0050c07cde2a165234afc
 
-        //numVehicles = numVehicles + 1;
+            var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
+            var span = TimeSpan.FromMinutes(duration);
+            var hour = ((int)span.TotalHours).ToString();
+            var Minute = span.Minutes.ToString();
 
-        //string str = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True";
-        //SqlConnection con = new SqlConnection(str);
-        //string query = "DELETE FROM ParkingGarage WHERE LicenseNum = '" + txtBoxLicenseNum + "'";
-        //SqlCommand cmd = new SqlCommand(query, con);
-        //SqlDataReader myreader;
-        //try
-        //{
-        //    con.Open();
-        //    myreader = cmd.ExecuteReader();
-        //    MessageBox.Show("Successfully data Deleted");
-        //    while (myreader.Read())
-        //    {
-        //    }
-        //    con.Close();
-        //}
-        //catch (Exception ex)
-        //{
-        //    MessageBox.Show(ex.Message);
-        //}
-        //}
-        //else
-        //{
-        //    MessageBox.Show("Choose a Vehicle!");
-        //}
-    }
+            txtBoxDuration.Text = hour + "hr " + Minute + "min";
+            
+            Cost(span);
     
+        }
+        double Cost(TimeSpan time)
+        {
+            double price = 0;
+            if (boxCheckCar.Checked)
+            {
+                price = Math.Round(((double)time.TotalHours * 20), 2);
+                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Red;//Ändrar till rött men så fort man trycker på en annan rad försvinner det
+                txtBoxLicenseNum.Clear();
+                boxCheckCar.Checked = false;
+            }
+            else if (boxCheckMc.Checked)
+            {
+                price = Math.Round(((double)time.TotalHours * 10), 2);
+                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Red;
+                txtBoxLicenseNum.Clear();
+                boxCheckMc.Checked = false;
+                
+            }
+
+            txtBoxTotalCharge.Text = "CZK" + price;
+
+            return price;
+        }
+        using (parkingContext = new ParkingContext())//Försöker få till att att price ska spara i denna lista
+        {
+            parkingFees = parkingContext.Fees.ToList();
+        }
+        dataGridView2.DataSource = parkingFees;
+
+    }
+
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -303,5 +333,5 @@ public partial class FormParkingLot : Form
         }
     }
 
-    
+
 }

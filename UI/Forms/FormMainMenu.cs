@@ -1,4 +1,5 @@
 using DataAccess;
+
 using System.Runtime.InteropServices;
 
 
@@ -9,9 +10,11 @@ public partial class FormMainMenu : Form
     private Form activeForm;
     ParkingContext parkingContext = new ParkingContext();
 
+
     public FormMainMenu()
     {
         parkingContext.Database.EnsureCreated();
+        //Occupation();
         InitializeComponent();
 
     }
@@ -80,6 +83,38 @@ public partial class FormMainMenu : Form
         ReleaseCapture();
         SendMessage(this.Handle, 0x112, 0xf012, 0);
     }
+    public void Occupation()//Försök till att få till en counter från db
+    {
+
+
+        //var query = "SELECT Count(*) FROM ParkingGarage "; /*'" + labelOccupied.Text + "'*/
+
+        //var connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True");
+        //connection.Open();
+
+        //SqlDataAdapter da = new SqlDataAdapter("Select COUNT(*) From ParkingGarage", connection);
+        //var dbData = new DataSet();
+        //da.Fill(dbData);
+
+        //labelOccupied.Text = dbData.ToString();
+        //SqlCommand data = new SqlCommand(query, connection);
+        //SqlDataReader reader;
+        //reader = data.ExecuteReader();
+        //while (reader.Read())
+        //{
+        //    labelOccupied.Text = reader.GetType().Name;
+        //}
+
+
+        //var commandBuilder = new SqlCommandBuilder(data);
+
+        //var dbData = new DataSet();
+        //data.Fill(dbData);
+        //labelOccupied.Text = dbData.ToString();
+
+
+
+    }
 
     //private void FormMainMenu_Load_1(object sender, EventArgs e)//Ingen bra idé att ha igång när en ett fel uppstår, kommenterar ut så länge
     //{
@@ -87,6 +122,7 @@ public partial class FormMainMenu : Form
     //    FormBorderStyle = FormBorderStyle.None;
     //    WindowState = FormWindowState.Maximized;
     //}
+
 
     [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
     private extern static void ReleaseCapture();
