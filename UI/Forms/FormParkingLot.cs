@@ -93,7 +93,7 @@ public partial class FormParkingLot : Form
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
-<<<<<<< HEAD
+
         
         using (parkingContext = new ParkingContext())
         {
@@ -104,7 +104,7 @@ public partial class FormParkingLot : Form
                 .FirstOrDefault();
 
             var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
-=======
+
         using (ParkingContext context = new ParkingContext())
         {
             var licenseNum = txtBoxLicenseNum.Text;
@@ -163,7 +163,7 @@ public partial class FormParkingLot : Form
 
             return price;
         }
->>>>>>> 43379b8a0544f8ccb5a0050c07cde2a165234afc
+
 
             var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
             var span = TimeSpan.FromMinutes(duration);
