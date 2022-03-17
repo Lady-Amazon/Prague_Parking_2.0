@@ -33,7 +33,7 @@ public partial class FormParkingLot : Form
                         VehicleType = vehicleTypeCar,
                         VehicleSize = 4,
                         CheckedIn = DateTime.Now,
-                        //CheckedOut = null
+                        CheckedOut = null
 
                     };
                     parkingContext.ParkingGarage.Add(car);
@@ -56,7 +56,7 @@ public partial class FormParkingLot : Form
                         VehicleType = vehicleTypeMc,
                         VehicleSize = 2,
                         CheckedIn = DateTime.Now,
-                        //CheckedOut = null
+                        CheckedOut = null
                     };
                     parkingContext.ParkingGarage.Add(mc);
                     parkingContext.SaveChanges();
@@ -90,8 +90,8 @@ public partial class FormParkingLot : Form
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
         DateTime timeIn = DateTime.Parse(pickTimeIn.Text);
-        //DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
-        DateTime timeout = DateTime.Now;
+        DateTime timeOut = DateTime.Parse(pickTimeOut.Text);
+        //DateTime timeOut = DateTime.Now;
 
         float duration = float.Parse((timeOut - timeIn).TotalMinutes.ToString());
         var span = TimeSpan.FromMinutes(duration);
