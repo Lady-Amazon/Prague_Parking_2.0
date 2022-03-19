@@ -6,17 +6,15 @@ namespace UI.Forms;
 
 public partial class FormParkingLot : Form
 {
-
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
-    public List<ParkingFee> parkingFees = new List<ParkingFee>();
+    //public List<ParkingFee> parkingFees = new List<ParkingFee>();
     ParkingContext parkingContext = new ParkingContext();
-    //public static string AvailableValue = "";
-    //public static string OccupiedValue = "";
 
     public FormParkingLot()
     {
         InitializeComponent();
         populateParking();
+       
     }
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
@@ -25,8 +23,9 @@ public partial class FormParkingLot : Form
         string vehicleTypeMc = boxCheckMc.Text;
         try
         {
-            if (boxCheckCar.Checked && PickParkingSpot_Click != null)
+            if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
+                
                 using (parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
@@ -37,7 +36,7 @@ public partial class FormParkingLot : Form
                         VehicleSize = 4,
                         CheckedIn = DateTime.Now,
                         CheckedOut = null
-
+                        
                     };
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
@@ -48,7 +47,7 @@ public partial class FormParkingLot : Form
                 labelParkingSpot.ResetText();
                 parkingavailability.ResetText();
             }
-            else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
+            else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
                 using (parkingContext = new ParkingContext())
                 {
@@ -84,11 +83,12 @@ public partial class FormParkingLot : Form
             }
         }
 
-        using (ParkingContext context = new ParkingContext())
+        using (parkingContext = new ParkingContext())
         {
-            parkingGarages = context.ParkingGarage.ToList();
+            parkingGarages = parkingContext.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
+        
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
@@ -100,6 +100,7 @@ public partial class FormParkingLot : Form
                 .Select(t => t.CheckedIn)
                 .FirstOrDefault();
 
+            // var checkOut = DateTime.Parse(pickTimeOut.Text);
             var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
 
             var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
@@ -109,36 +110,41 @@ public partial class FormParkingLot : Form
 
             txtBoxDuration.Text = hour + "hr " + Minute + "min";
 
-            Cost(span);
+            Cost(duration);
+           
+            var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum ==licenseNum);
+            parkingContext.ParkingGarage.Remove(vehicle);
+            
+            parkingContext.SaveChanges();
         }
-        double Cost(TimeSpan time)
+        double Cost(double tid)
         {
             double price = 0;
+            TimeSpan time = TimeSpan.FromMinutes(tid);
+
             if (boxCheckCar.Checked)
             {
                 price = Math.Round(((double)time.TotalHours * 20), 2);
-                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Red;//Ändrar till rött men så fort man trycker på en annan rad försvinner det
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
+                
             }
             else if (boxCheckMc.Checked)
             {
                 price = Math.Round(((double)time.TotalHours * 10), 2);
-                dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Red;
                 txtBoxLicenseNum.Clear();
                 boxCheckMc.Checked = false;
-
             }
 
             txtBoxTotalCharge.Text = "CZK" + price;
-
+            
             return price;
         }
-        using (parkingContext = new ParkingContext())//Försöker få till att att price ska spara i denna lista
-        {
-            parkingFees = parkingContext.Fees.ToList();
-        }
-        dataGridView2.DataSource = parkingFees;
+        //using (parkingContext = new ParkingContext())//Försöker få till att att price ska spara i denna lista
+        //{
+        //    parkingFees = parkingContext.Fees.ToList();
+        //}
+        //dataGridView2.DataSource = parkingFees;
     }
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
@@ -257,6 +263,7 @@ public partial class FormParkingLot : Form
             parkingGarages = context.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
+        
     }
 
     private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -267,5 +274,5 @@ public partial class FormParkingLot : Form
         }
     }
 
-
+    
 }

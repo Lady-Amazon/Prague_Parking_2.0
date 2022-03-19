@@ -54,14 +54,10 @@
             this.txtBoxDuration = new System.Windows.Forms.TextBox();
             this.txtBoxTotalCharge = new System.Windows.Forms.TextBox();
             this.parkingavailability = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.carFeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mcFeeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.parkingFeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingFeeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -224,7 +220,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(692, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(692, 257);
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -335,50 +331,12 @@
             // 
             this.parkingavailability.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.parkingavailability.AutoSize = true;
-            this.parkingavailability.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.parkingavailability.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.parkingavailability.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.parkingavailability.Location = new System.Drawing.Point(12, 175);
+            this.parkingavailability.Location = new System.Drawing.Point(12, 184);
             this.parkingavailability.Name = "parkingavailability";
-            this.parkingavailability.Size = new System.Drawing.Size(0, 27);
+            this.parkingavailability.Size = new System.Drawing.Size(0, 23);
             this.parkingavailability.TabIndex = 22;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.Gainsboro;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.carFeeDataGridViewTextBoxColumn,
-            this.mcFeeDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.parkingFeeBindingSource;
-            this.dataGridView2.Location = new System.Drawing.Point(1123, 38);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 29;
-            this.dataGridView2.Size = new System.Drawing.Size(304, 270);
-            this.dataGridView2.TabIndex = 23;
-            // 
-            // carFeeDataGridViewTextBoxColumn
-            // 
-            this.carFeeDataGridViewTextBoxColumn.DataPropertyName = "CarFee";
-            this.carFeeDataGridViewTextBoxColumn.HeaderText = "CarFee";
-            this.carFeeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.carFeeDataGridViewTextBoxColumn.Name = "carFeeDataGridViewTextBoxColumn";
-            this.carFeeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.carFeeDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // mcFeeDataGridViewTextBoxColumn
-            // 
-            this.mcFeeDataGridViewTextBoxColumn.DataPropertyName = "McFee";
-            this.mcFeeDataGridViewTextBoxColumn.HeaderText = "McFee";
-            this.mcFeeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.mcFeeDataGridViewTextBoxColumn.Name = "mcFeeDataGridViewTextBoxColumn";
-            this.mcFeeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.mcFeeDataGridViewTextBoxColumn.Width = 125;
             // 
             // parkingFeeBindingSource
             // 
@@ -388,9 +346,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(125)))), ((int)(((byte)(29)))));
-            this.ClientSize = new System.Drawing.Size(1481, 759);
-            this.Controls.Add(this.dataGridView2);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(153)))), ((int)(((byte)(0)))));
+            this.ClientSize = new System.Drawing.Size(1218, 759);
             this.Controls.Add(this.parkingavailability);
             this.Controls.Add(this.txtBoxTotalCharge);
             this.Controls.Add(this.txtBoxDuration);
@@ -411,12 +368,11 @@
             this.Controls.Add(this.lblCheckIn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormParkingLot";
-            this.Text = "Parking Lot";
+            this.Text = "PARKING LOT";
             this.Load += new System.EventHandler(this.FormParkingLot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingGarageBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingContextBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parkingFeeBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -450,9 +406,6 @@
         private TextBox txtBoxDuration;
         private TextBox txtBoxTotalCharge;
         private Label parkingavailability;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn carFeeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn mcFeeDataGridViewTextBoxColumn;
         private BindingSource parkingFeeBindingSource;
     }
 }

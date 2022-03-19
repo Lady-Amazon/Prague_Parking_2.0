@@ -34,9 +34,7 @@
             this.labelExit = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.btnStoreData = new System.Windows.Forms.Button();
+            this.btnSales = new System.Windows.Forms.Button();
             this.btnParkingLotView = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,9 +61,7 @@
             this.panelMenu.Controls.Add(this.labelExit);
             this.panelMenu.Controls.Add(this.labelTitle);
             this.panelMenu.Controls.Add(this.btnSettings);
-            this.panelMenu.Controls.Add(this.button3);
-            this.panelMenu.Controls.Add(this.button4);
-            this.panelMenu.Controls.Add(this.btnStoreData);
+            this.panelMenu.Controls.Add(this.btnSales);
             this.panelMenu.Controls.Add(this.btnParkingLotView);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
@@ -120,12 +116,13 @@
             // 
             // labelTitle
             // 
+            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelTitle.Location = new System.Drawing.Point(775, 38);
+            this.labelTitle.Location = new System.Drawing.Point(835, 38);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(143, 50);
+            this.labelTitle.Size = new System.Drawing.Size(154, 55);
             this.labelTitle.TabIndex = 6;
             this.labelTitle.Text = "HOME";
             // 
@@ -134,76 +131,46 @@
             this.btnSettings.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSettings.FlatAppearance.BorderSize = 0;
             this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSettings.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSettings.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSettings.Location = new System.Drawing.Point(636, 0);
+            this.btnSettings.Location = new System.Drawing.Point(467, 0);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(94, 137);
+            this.btnSettings.Size = new System.Drawing.Size(118, 137);
             this.btnSettings.TabIndex = 5;
-            this.btnSettings.Text = "Settings";
+            this.btnSettings.Text = "SETTINGS";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.button5_Click);
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
-            // button3
+            // btnSales
             // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(542, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 137);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(448, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 137);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // btnStoreData
-            // 
-            this.btnStoreData.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnStoreData.FlatAppearance.BorderSize = 0;
-            this.btnStoreData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStoreData.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStoreData.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnStoreData.Location = new System.Drawing.Point(331, 0);
-            this.btnStoreData.Name = "btnStoreData";
-            this.btnStoreData.Size = new System.Drawing.Size(117, 137);
-            this.btnStoreData.TabIndex = 7;
-            this.btnStoreData.Text = "Sales";
-            this.btnStoreData.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnStoreData.Click += new System.EventHandler(this.btnStoreData_Click);
+            this.btnSales.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSales.FlatAppearance.BorderSize = 0;
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnSales.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSales.Location = new System.Drawing.Point(350, 0);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(117, 137);
+            this.btnSales.TabIndex = 7;
+            this.btnSales.Text = "PRICES";
+            this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnSales.Click += new System.EventHandler(this.btnPrices_Click);
             // 
             // btnParkingLotView
             // 
             this.btnParkingLotView.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnParkingLotView.FlatAppearance.BorderSize = 0;
             this.btnParkingLotView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnParkingLotView.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnParkingLotView.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnParkingLotView.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnParkingLotView.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnParkingLotView.Location = new System.Drawing.Point(210, 0);
             this.btnParkingLotView.Name = "btnParkingLotView";
-            this.btnParkingLotView.Size = new System.Drawing.Size(121, 137);
+            this.btnParkingLotView.Size = new System.Drawing.Size(140, 137);
             this.btnParkingLotView.TabIndex = 1;
-            this.btnParkingLotView.Text = "ParkingLot";
+            this.btnParkingLotView.Text = "PARKING LOT";
             this.btnParkingLotView.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnParkingLotView.UseVisualStyleBackColor = true;
             this.btnParkingLotView.Click += new System.EventHandler(this.btnParkingLotView_Click);
@@ -228,7 +195,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(155, 31);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Prauge Parking";
+            this.label2.Text = "Prague Parking";
             // 
             // label1
             // 
@@ -267,7 +234,7 @@
             this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnExit.Size = new System.Drawing.Size(210, 49);
             this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "Exit";
+            this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -349,6 +316,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            //this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
@@ -365,9 +333,7 @@
 
         private Panel panelMenu;
         private Button btnSettings;
-        private Button button4;
-        private Button button3;
-        private Button btnStoreData;
+        private Button btnSales;
         private Button btnParkingLotView;
         private Panel panelLogo;
         private Label label2;

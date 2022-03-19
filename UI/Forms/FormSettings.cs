@@ -8,7 +8,7 @@ namespace UI;
 
 public partial class FormSettings : Form
 {
-    //ConfigurationBuilder _config = new ConfigurationBuilder();
+   // ConfigurationBuilder config = new ConfigurationBuilder();
     public FormSettings()
     {
         InitializeComponent();
@@ -25,8 +25,12 @@ public partial class FormSettings : Form
 
         //Ändrar på värden
 
-        config.ParkingGarageClientConfig.CarFeePerHour = int.Parse(txtChangeFeeCar.Text);
-        config.ParkingGarageClientConfig.McFeePerHour = int.Parse(txtChangeFeeMc.Text);
+        config.CarFeePerHour = int.Parse(txtChangeFeeCar.Text);
+        config.McFeePerHour = int.Parse(txtChangeFeeMc.Text);
+
+        
+        //config.ParkingLotSize = int.Parse(txtChangeLotSize.Text);
+        //config.ParkingSpotSize = int.Parse(txtChangeSpotSize.Text);
 
         //Serialiserar konfigurationsobjektet och skriver över filen
         var jsonWriteOptions = new JsonSerializerOptions()
@@ -43,4 +47,5 @@ public partial class FormSettings : Form
 
     }
 
+    
 }

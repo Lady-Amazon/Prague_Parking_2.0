@@ -136,9 +136,9 @@
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
             this.label4.Location = new System.Drawing.Point(76, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(277, 49);
+            this.label4.Size = new System.Drawing.Size(278, 49);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Paruge Parking";
+            this.label4.Text = "Prague Parking";
             // 
             // label5
             // 

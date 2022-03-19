@@ -1,5 +1,5 @@
 using DataAccess;
-
+using Microsoft.Data.SqlClient;
 using System.Runtime.InteropServices;
 
 
@@ -9,7 +9,9 @@ public partial class FormMainMenu : Form
 {
     private Form activeForm;
     ParkingContext parkingContext = new ParkingContext();
-
+    int occupied = 0;
+    int available = 100;
+    
 
     public FormMainMenu()
     {
@@ -23,12 +25,12 @@ public partial class FormMainMenu : Form
         OpenChildForm(new Forms.FormParkingLot());
 
     }
-    private void btnStoreData_Click(object sender, EventArgs e)
+    private void btnPrices_Click(object sender, EventArgs e)
     {
-        OpenChildForm(new FormSales());
+        OpenChildForm(new FormPrices());
         labelTitle.Text = activeForm.Text;
     }
-    private void button5_Click(object sender, EventArgs e)
+    private void btnSettings_Click(object sender, EventArgs e)
     {
         OpenChildForm(new FormSettings());
         labelTitle.Text = activeForm.Text;
@@ -83,45 +85,18 @@ public partial class FormMainMenu : Form
         ReleaseCapture();
         SendMessage(this.Handle, 0x112, 0xf012, 0);
     }
-    public void Occupation()//Försök till att få till en counter från db
+    public void Occupation()//Fungerar inte
     {
 
+        /// Increment number of occupied slots while decrementing the numerber of available slots
+        available = available - 1;
+        occupied = occupied + 1;
 
-        //var query = "SELECT Count(*) FROM ParkingGarage "; /*'" + labelOccupied.Text + "'*/
-
-        //var connection = new SqlConnection("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PraugeParking;Integrated Security=True");
-        //connection.Open();
-
-        //SqlDataAdapter da = new SqlDataAdapter("Select COUNT(*) From ParkingGarage", connection);
-        //var dbData = new DataSet();
-        //da.Fill(dbData);
-
-        //labelOccupied.Text = dbData.ToString();
-        //SqlCommand data = new SqlCommand(query, connection);
-        //SqlDataReader reader;
-        //reader = data.ExecuteReader();
-        //while (reader.Read())
-        //{
-        //    labelOccupied.Text = reader.GetType().Name;
-        //}
-
-
-        //var commandBuilder = new SqlCommandBuilder(data);
-
-        //var dbData = new DataSet();
-        //data.Fill(dbData);
-        //labelOccupied.Text = dbData.ToString();
-
-
+        /// Write data to the label with the format "000"
+        labelAvailable.Text = available.ToString("D3");
+        labelOccupied.Text = occupied.ToString("D3");
 
     }
-
-    //private void FormMainMenu_Load_1(object sender, EventArgs e)//Ingen bra idé att ha igång när en ett fel uppstår, kommenterar ut så länge
-    //{
-    //    TopMost = true;
-    //    FormBorderStyle = FormBorderStyle.None;
-    //    WindowState = FormWindowState.Maximized;
-    //}
 
 
     [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -129,5 +104,11 @@ public partial class FormMainMenu : Form
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+    //private void FormMainMenu_Load(object sender, EventArgs e)
+    //{
+    //    TopMost = true;
+    //    FormBorderStyle = FormBorderStyle.None;
+    //    WindowState = FormWindowState.Maximized;
+    //}
 }
 
