@@ -1,5 +1,4 @@
 using DataAccess;
-using Microsoft.Data.SqlClient;
 using System.Runtime.InteropServices;
 
 
@@ -9,9 +8,6 @@ public partial class FormMainMenu : Form
 {
     private Form activeForm;
     ParkingContext parkingContext = new ParkingContext();
-    int occupied = 0;
-    int available = 100;
-    
 
     public FormMainMenu()
     {
@@ -84,18 +80,6 @@ public partial class FormMainMenu : Form
     {
         ReleaseCapture();
         SendMessage(this.Handle, 0x112, 0xf012, 0);
-    }
-    public void Occupation()//Fungerar inte
-    {
-
-        /// Increment number of occupied slots while decrementing the numerber of available slots
-        available = available - 1;
-        occupied = occupied + 1;
-
-        /// Write data to the label with the format "000"
-        labelAvailable.Text = available.ToString("D3");
-        labelOccupied.Text = occupied.ToString("D3");
-
     }
 
 

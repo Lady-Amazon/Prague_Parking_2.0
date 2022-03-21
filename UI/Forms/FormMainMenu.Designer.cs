@@ -37,19 +37,12 @@
             this.btnSales = new System.Windows.Forms.Button();
             this.btnParkingLotView = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.labelAvailable = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelOccupied = new System.Windows.Forms.Label();
+            this.lblTitleParking = new System.Windows.Forms.Label();
+            this.lblTitlePP = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelWelcome = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panelDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +61,7 @@
             this.panelMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1188, 137);
+            this.panelMenu.Size = new System.Drawing.Size(1188, 154);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
@@ -120,7 +113,7 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelTitle.Location = new System.Drawing.Point(835, 38);
+            this.labelTitle.Location = new System.Drawing.Point(835, 47);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(154, 55);
             this.labelTitle.TabIndex = 6;
@@ -136,7 +129,7 @@
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSettings.Location = new System.Drawing.Point(467, 0);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(118, 137);
+            this.btnSettings.Size = new System.Drawing.Size(118, 154);
             this.btnSettings.TabIndex = 5;
             this.btnSettings.Text = "SETTINGS";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -152,7 +145,7 @@
             this.btnSales.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSales.Location = new System.Drawing.Point(350, 0);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(117, 137);
+            this.btnSales.Size = new System.Drawing.Size(117, 154);
             this.btnSales.TabIndex = 7;
             this.btnSales.Text = "PRICES";
             this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -168,7 +161,7 @@
             this.btnParkingLotView.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnParkingLotView.Location = new System.Drawing.Point(210, 0);
             this.btnParkingLotView.Name = "btnParkingLotView";
-            this.btnParkingLotView.Size = new System.Drawing.Size(140, 137);
+            this.btnParkingLotView.Size = new System.Drawing.Size(140, 154);
             this.btnParkingLotView.TabIndex = 1;
             this.btnParkingLotView.Text = "PARKING LOT";
             this.btnParkingLotView.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -178,131 +171,57 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(135)))), ((int)(((byte)(137)))));
-            this.panelLogo.Controls.Add(this.label2);
-            this.panelLogo.Controls.Add(this.label1);
+            this.panelLogo.Controls.Add(this.lblTitleParking);
+            this.panelLogo.Controls.Add(this.lblTitlePP);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(210, 137);
+            this.panelLogo.Size = new System.Drawing.Size(210, 154);
             this.panelLogo.TabIndex = 0;
             // 
-            // label2
+            // lblTitleParking
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe Print", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(27, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(155, 31);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Prague Parking";
+            this.lblTitleParking.AutoSize = true;
+            this.lblTitleParking.Font = new System.Drawing.Font("Segoe Print", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblTitleParking.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblTitleParking.Location = new System.Drawing.Point(22, 87);
+            this.lblTitleParking.Name = "lblTitleParking";
+            this.lblTitleParking.Size = new System.Drawing.Size(155, 31);
+            this.lblTitleParking.TabIndex = 1;
+            this.lblTitleParking.Text = "Prague Parking";
             // 
-            // label1
+            // lblTitlePP
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe Print", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(62, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 65);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "PP";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(0)))), ((int)(((byte)(84)))));
-            this.panel1.Controls.Add(this.btnExit);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.labelAvailable);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.labelOccupied);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 137);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(210, 653);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Location = new System.Drawing.Point(0, 604);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnExit.Size = new System.Drawing.Size(210, 49);
-            this.btnExit.TabIndex = 4;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label6.Location = new System.Drawing.Point(62, 246);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 38);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "100";
-            // 
-            // labelAvailable
-            // 
-            this.labelAvailable.AutoSize = true;
-            this.labelAvailable.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAvailable.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelAvailable.Location = new System.Drawing.Point(27, 176);
-            this.labelAvailable.Name = "labelAvailable";
-            this.labelAvailable.Size = new System.Drawing.Size(138, 38);
-            this.labelAvailable.TabIndex = 2;
-            this.labelAvailable.Text = "Available";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label4.Location = new System.Drawing.Point(62, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 38);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "000";
-            // 
-            // labelOccupied
-            // 
-            this.labelOccupied.AutoSize = true;
-            this.labelOccupied.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelOccupied.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelOccupied.Location = new System.Drawing.Point(27, 51);
-            this.labelOccupied.Name = "labelOccupied";
-            this.labelOccupied.Size = new System.Drawing.Size(138, 38);
-            this.labelOccupied.TabIndex = 0;
-            this.labelOccupied.Text = "Occupied";
+            this.lblTitlePP.AutoSize = true;
+            this.lblTitlePP.Font = new System.Drawing.Font("Segoe Print", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblTitlePP.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblTitlePP.Location = new System.Drawing.Point(57, 22);
+            this.lblTitlePP.Name = "lblTitlePP";
+            this.lblTitlePP.Size = new System.Drawing.Size(80, 65);
+            this.lblTitlePP.TabIndex = 0;
+            this.lblTitlePP.Text = "PP";
             // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelDesktop.Controls.Add(this.label7);
+            this.panelDesktop.Controls.Add(this.labelWelcome);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(210, 137);
+            this.panelDesktop.Location = new System.Drawing.Point(0, 154);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(978, 653);
+            this.panelDesktop.Size = new System.Drawing.Size(1188, 636);
             this.panelDesktop.TabIndex = 2;
             // 
-            // label7
+            // labelWelcome
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Palatino Linotype", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(106)))), ((int)(((byte)(138)))));
-            this.label7.Location = new System.Drawing.Point(343, 248);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(284, 81);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "Welcome";
+            this.labelWelcome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelWelcome.AutoSize = true;
+            this.labelWelcome.Font = new System.Drawing.Font("Palatino Linotype", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(106)))), ((int)(((byte)(138)))));
+            this.labelWelcome.Location = new System.Drawing.Point(448, 240);
+            this.labelWelcome.Name = "labelWelcome";
+            this.labelWelcome.Size = new System.Drawing.Size(284, 81);
+            this.labelWelcome.TabIndex = 0;
+            this.labelWelcome.Text = "Welcome";
             // 
             // FormMainMenu
             // 
@@ -311,18 +230,14 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1188, 790);
             this.Controls.Add(this.panelDesktop);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            //this.Load += new System.EventHandler(this.FormMainMenu_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panelDesktop.ResumeLayout(false);
             this.panelDesktop.PerformLayout();
             this.ResumeLayout(false);
@@ -336,16 +251,11 @@
         private Button btnSales;
         private Button btnParkingLotView;
         private Panel panelLogo;
-        private Label label2;
-        private Label label1;
-        private Panel panel1;
-        private Label label6;
-        private Label labelAvailable;
-        private Label label4;
-        private Label labelOccupied;
+        private Label lblTitleParking;
+        private Label lblTitlePP;
+        
         private Panel panelDesktop;
-        private Label label7;
-        private Button btnExit;
+        private Label labelWelcome;
         private Label labelTitle;
         private Label labelMinimize;
         private Label labelExit;

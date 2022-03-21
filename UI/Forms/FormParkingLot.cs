@@ -9,12 +9,13 @@ public partial class FormParkingLot : Form
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     //public List<ParkingFee> parkingFees = new List<ParkingFee>();
     ParkingContext parkingContext = new ParkingContext();
-
+    int occupied = 0;
+    int available = 100;
     public FormParkingLot()
     {
         InitializeComponent();
         populateParking();
-       
+
     }
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
@@ -23,9 +24,9 @@ public partial class FormParkingLot : Form
         string vehicleTypeMc = boxCheckMc.Text;
         try
         {
-            if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
+            if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
             {
-                
+
                 using (parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
@@ -36,18 +37,16 @@ public partial class FormParkingLot : Form
                         VehicleSize = 4,
                         CheckedIn = DateTime.Now,
                         CheckedOut = null
-                        
+
                     };
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Car Parked");
                 }
-                txtBoxLicenseNum.Clear();
-                boxCheckCar.Checked = false;
-                labelParkingSpot.ResetText();
-                parkingavailability.ResetText();
+                ClearFields();
+                AvailabilityCount();
             }
-            else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
+            else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
             {
                 using (parkingContext = new ParkingContext())
                 {
@@ -64,10 +63,8 @@ public partial class FormParkingLot : Form
                     parkingContext.SaveChanges();
                     MessageBox.Show("Mc Parked");
                 }
-                txtBoxLicenseNum.Clear();
-                boxCheckMc.Checked = false;
-                labelParkingSpot.ResetText();
-                parkingavailability.ResetText();
+                ClearFields();
+                AvailabilityCount();
             }
             else
             {
@@ -77,7 +74,7 @@ public partial class FormParkingLot : Form
         }
         catch (Exception ex)
         {
-            
+
         }
 
         using (parkingContext = new ParkingContext())
@@ -85,7 +82,7 @@ public partial class FormParkingLot : Form
             parkingGarages = parkingContext.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
-        
+
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
@@ -98,7 +95,7 @@ public partial class FormParkingLot : Form
                 .FirstOrDefault();
 
             // var checkOut = DateTime.Parse(pickTimeOut.Text);
-            var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
+            var checkOut = DateTime.Parse(pickTimeOut.Text)/*.AddMinutes(-10)*/;
 
             var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
             var span = TimeSpan.FromMinutes(duration);
@@ -108,25 +105,29 @@ public partial class FormParkingLot : Form
             txtBoxDuration.Text = hour + "hr " + Minute + "min";
 
             Cost(duration);
-           
-            var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum ==licenseNum);
+
+            var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
             parkingContext.ParkingGarage.Remove(vehicle);
-            
+
             parkingContext.SaveChanges();
+            MessageBox.Show("Vehicle has been picke up");
+
+            AvailabilityCount();
         }
+
+
         double Cost(double tid)
         {
             double price = 0;
             TimeSpan time = TimeSpan.FromMinutes(tid);
 
-            if (boxCheckCar.Checked)
+            if (boxCheckCar.Checked && occupied > 0)
             {
                 price = Math.Round(((double)time.TotalHours * 20), 2);
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
-                
             }
-            else if (boxCheckMc.Checked)
+            else if (boxCheckMc.Checked && occupied >0)
             {
                 price = Math.Round(((double)time.TotalHours * 10), 2);
                 txtBoxLicenseNum.Clear();
@@ -134,14 +135,8 @@ public partial class FormParkingLot : Form
             }
 
             txtBoxTotalCharge.Text = "CZK" + price;
-            
             return price;
         }
-        //using (parkingContext = new ParkingContext())//Försöker få till att att price ska spara i denna lista
-        //{
-        //    parkingFees = parkingContext.Fees.ToList();
-        //}
-        //dataGridView2.DataSource = parkingFees;
     }
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
@@ -248,6 +243,7 @@ public partial class FormParkingLot : Form
                 viewParkingLot.Controls.Add(button, j, i);
                 button.Click += PickParkingSpot_Click;
                 button.Tag = button;
+                button.BackColor = Color.Green;
 
             }
         }
@@ -255,14 +251,77 @@ public partial class FormParkingLot : Form
 
     private void FormParkingLot_Load(object sender, EventArgs e)
     {
-        using (ParkingContext context = new ParkingContext())
+        using (parkingContext = new ParkingContext())
         {
-            parkingGarages = context.ParkingGarage.ToList();
+            parkingGarages = parkingContext.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
-        
-    }
 
+        using (parkingContext = new ParkingContext())
+        {
+            var parkingLotStatus = (from p in parkingContext.ParkingGarage
+                                    select p.ParkingSpot).ToList();
+
+            foreach (var parkingSpot in parkingLotStatus)
+            {
+                for (int i = 0; i < parkingLotStatus.Count; i++)
+                {
+                    string spot = parkingSpot.ToString();
+                    Button myButton = Controls.Find(spot, true).FirstOrDefault() as Button;
+                    SpotsStatus(parkingSpot, myButton);
+
+                }
+            }
+        }
+    }
+    public void SpotsStatus(int parkingSpot, Button buttonStatus)
+    {
+        using (var db = new ParkingContext())
+        {
+            var checkIfFull = (from p in db.ParkingGarage
+                               where p.ParkingSpot == parkingSpot
+                               select p.VehicleSize).ToArray();
+
+            int total = 0;
+
+            for (int i = 0; i < checkIfFull.Length; i++)
+            {
+                int value = checkIfFull[i];
+                total += value;
+            }
+            if (buttonStatus != null)
+            {
+                if (total == 4)
+                {
+                    buttonStatus.BackColor = Color.Red;
+                }
+                else if (total == 2)
+                {
+                    buttonStatus.BackColor = Color.Orange;
+                }
+            }
+            else if (total == 0)
+            {
+                buttonStatus.BackColor = Color.FromArgb(89, 165, 216);
+            }
+
+        }
+    }
+    public void AvailabilityCount()
+    {
+        available = available - 1;
+        occupied = occupied + 1;
+        label100.Text = available.ToString("D3");
+        label000.Text = occupied.ToString("D3");
+    }
+    public void ClearFields()
+    {
+        txtBoxLicenseNum.Clear();
+        boxCheckCar.Checked = false;
+        boxCheckMc.Checked = false;
+        labelParkingSpot.ResetText();
+        parkingavailability.ResetText();
+    }
     private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
         if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -271,5 +330,8 @@ public partial class FormParkingLot : Form
         }
     }
 
-    
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
 }

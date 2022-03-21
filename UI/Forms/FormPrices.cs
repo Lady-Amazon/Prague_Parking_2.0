@@ -12,4 +12,9 @@ public partial class FormPrices : Form
         labelChargeCar.Text = "appsettings.json";
         labelChargeMc.Text = "appsettings.json";
     }
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
 }

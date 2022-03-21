@@ -8,7 +8,7 @@ namespace UI;
 
 public partial class FormSettings : Form
 {
-   // ConfigurationBuilder config = new ConfigurationBuilder();
+    // ConfigurationBuilder config = new ConfigurationBuilder();
     public FormSettings()
     {
         InitializeComponent();
@@ -28,7 +28,7 @@ public partial class FormSettings : Form
         config.CarFeePerHour = int.Parse(txtChangeFeeCar.Text);
         config.McFeePerHour = int.Parse(txtChangeFeeMc.Text);
 
-        
+
         //config.ParkingLotSize = int.Parse(txtChangeLotSize.Text);
         //config.ParkingSpotSize = int.Parse(txtChangeSpotSize.Text);
 
@@ -47,5 +47,8 @@ public partial class FormSettings : Form
 
     }
 
-    
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
 }
