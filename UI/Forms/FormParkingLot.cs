@@ -77,10 +77,7 @@ public partial class FormParkingLot : Form
         }
         catch (Exception ex)
         {
-            if (PickParkingSpot_Click != null)
-            {
-                MessageBox.Show("Parking spot already taken!", ex.Message);
-            }
+            
         }
 
         using (parkingContext = new ParkingContext())
