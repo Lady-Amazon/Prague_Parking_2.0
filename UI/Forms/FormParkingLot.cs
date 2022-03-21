@@ -298,7 +298,7 @@ public partial class FormParkingLot : Form
             }
             else if (total == 0)
             {
-                buttonStatus.BackColor = Color.FromArgb(89, 165, 216);
+                buttonStatus.BackColor = Color.FromArgb(253, 153, 0);
             }
         }
     }
