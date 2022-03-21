@@ -26,7 +26,8 @@ public partial class FormParkingLot : Form
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
             {
-
+                available = available - 1;
+                occupied = occupied + 1;
                 using (parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
@@ -48,6 +49,8 @@ public partial class FormParkingLot : Form
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
             {
+                available = available - 1;
+                occupied = occupied + 1;
                 using (parkingContext = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
@@ -93,26 +96,31 @@ public partial class FormParkingLot : Form
                 .Where(l => l.LicenseNum == licenseNum)
                 .Select(t => t.CheckedIn)
                 .FirstOrDefault();
+            if (occupied > 0)
+            {
+                available = available + 1;
+                occupied = occupied - 1;
+                // var checkOut = DateTime.Parse(pickTimeOut.Text);
+                var checkOut = DateTime.Parse(pickTimeOut.Text)/*.AddMinutes(-10)*/;
 
-            // var checkOut = DateTime.Parse(pickTimeOut.Text);
-            var checkOut = DateTime.Parse(pickTimeOut.Text)/*.AddMinutes(-10)*/;
+                var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
+                var span = TimeSpan.FromMinutes(duration);
+                var hour = ((int)span.TotalHours).ToString();
+                var Minute = span.Minutes.ToString();
 
-            var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
-            var span = TimeSpan.FromMinutes(duration);
-            var hour = ((int)span.TotalHours).ToString();
-            var Minute = span.Minutes.ToString();
+                txtBoxDuration.Text = hour + "hr " + Minute + "min";
 
-            txtBoxDuration.Text = hour + "hr " + Minute + "min";
+                Cost(duration);
 
-            Cost(duration);
+                var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
+                parkingContext.ParkingGarage.Remove(vehicle);
 
-            var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
-            parkingContext.ParkingGarage.Remove(vehicle);
+                parkingContext.SaveChanges();
+                MessageBox.Show("Vehicle has been picke up");
 
-            parkingContext.SaveChanges();
-            MessageBox.Show("Vehicle has been picke up");
+                AvailabilityCount();
+            }
 
-            AvailabilityCount();
         }
 
 
@@ -127,7 +135,7 @@ public partial class FormParkingLot : Form
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
             }
-            else if (boxCheckMc.Checked && occupied >0)
+            else if (boxCheckMc.Checked && occupied > 0)
             {
                 price = Math.Round(((double)time.TotalHours * 10), 2);
                 txtBoxLicenseNum.Clear();
@@ -159,10 +167,6 @@ public partial class FormParkingLot : Form
 
         GetSumVehicleSize();
         Calculation();
-    }
-    static void ChangeColor(Label label, Color color, int size)
-    {
-        label.BackColor = color;
     }
     public int GetSumVehicleSize()
     {
@@ -232,19 +236,23 @@ public partial class FormParkingLot : Form
             viewParkingLot.RowStyles.Add(new RowStyle(SizeType.Percent, 100 / rowCount));
         }
 
+        int counter = 0;
         for (int i = 0; i < rowCount; i++)
         {
             for (int j = 0; j < columnCount; j++)
             {
-                var button = new Button();
-                button.Text = string.Format("{0}{1}", i, j);
-                button.Name = string.Format("{0}{1}", i, j);
-                button.Dock = DockStyle.Fill;
-                viewParkingLot.Controls.Add(button, j, i);
-                button.Click += PickParkingSpot_Click;
-                button.Tag = button;
-                button.BackColor = Color.Green;
+                for (int k = 0; k < 1; k++)
+                {
+                    var button = new Button();
+                    button.Text = string.Format("{0}{1}", i, j);
+                    button.Name = string.Format("{0}", counter++);
+                    button.Dock = DockStyle.Fill;
+                    button.Click += PickParkingSpot_Click;
+                    button.Tag = button;
+                    button.BackColor = Color.Green;
 
+                    viewParkingLot.Controls.Add(button, j, i);
+                }
             }
         }
     }
@@ -254,6 +262,7 @@ public partial class FormParkingLot : Form
         using (parkingContext = new ParkingContext())
         {
             parkingGarages = parkingContext.ParkingGarage.ToList();
+
         }
         dataGridView1.DataSource = parkingGarages;
 
@@ -269,9 +278,9 @@ public partial class FormParkingLot : Form
                     string spot = parkingSpot.ToString();
                     Button myButton = Controls.Find(spot, true).FirstOrDefault() as Button;
                     SpotsStatus(parkingSpot, myButton);
-
                 }
             }
+
         }
     }
     public void SpotsStatus(int parkingSpot, Button buttonStatus)
@@ -297,14 +306,13 @@ public partial class FormParkingLot : Form
                 }
                 else if (total == 2)
                 {
-                    buttonStatus.BackColor = Color.Orange;
+                    buttonStatus.BackColor = Color.DarkOrange;
                 }
             }
             else if (total == 0)
             {
                 buttonStatus.BackColor = Color.FromArgb(89, 165, 216);
             }
-
         }
     }
     public void AvailabilityCount()
@@ -329,7 +337,10 @@ public partial class FormParkingLot : Form
             txtBoxLicenseNum.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
         }
     }
-
+    static void ChangeColor(Label label, Color color, int size)
+    {
+        label.BackColor = color;
+    }
     private void btnExit_Click(object sender, EventArgs e)
     {
         Application.Exit();
