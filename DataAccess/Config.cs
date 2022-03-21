@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Dynamic;
 
 namespace DataAccess;
 
@@ -27,6 +30,25 @@ public class Config
         McFeePerHour = values.McFeePerHour;
         ParkingSpotSize = values.ParkingSpotSize;
         ParkingLotSize = values.ParkingLotSize;
+    }
+
+    public void UpdateJson(string carPrice, string mcPrice, string parkingSize)
+    {
+        var json = File.ReadAllText(appSettingsPath);
+
+        var jsonSettings = new JsonSerializerSettings();
+        jsonSettings.Converters.Add(new ExpandoObjectConverter());
+        jsonSettings.Converters.Add(new StringEnumConverter());
+
+        dynamic config = JsonConvert.DeserializeObject<ExpandoObject>(json, jsonSettings);
+
+        config.DebugEnabled = true;
+        config.Config.CarFeePerHour = carPrice;
+        config.Config.McFeePerHour = mcPrice;
+        config.Config.ParkingLotSize = parkingSize;
+
+        var newJson = JsonConvert.SerializeObject(config, Formatting.Indented, jsonSettings);
+        File.WriteAllText(appSettingsPath, newJson);
     }
 
 
