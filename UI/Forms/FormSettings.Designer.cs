@@ -40,9 +40,6 @@
             this.lblChangeSpotSize = new System.Windows.Forms.Label();
             this.txtChangeLotSize = new System.Windows.Forms.TextBox();
             this.txtChangeSpotSize = new System.Windows.Forms.TextBox();
-            this.panelCount = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.panelCount.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSaveSettings
@@ -51,7 +48,7 @@
             this.btnSaveSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveSettings.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSaveSettings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.btnSaveSettings.Location = new System.Drawing.Point(916, 596);
+            this.btnSaveSettings.Location = new System.Drawing.Point(731, 594);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(178, 66);
             this.btnSaveSettings.TabIndex = 0;
@@ -64,7 +61,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.label1.Location = new System.Drawing.Point(272, 244);
+            this.label1.Location = new System.Drawing.Point(66, 307);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(347, 31);
             this.label1.TabIndex = 1;
@@ -76,7 +73,7 @@
             this.txtChangeFeeCar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChangeFeeCar.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtChangeFeeCar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.txtChangeFeeCar.Location = new System.Drawing.Point(635, 244);
+            this.txtChangeFeeCar.Location = new System.Drawing.Point(429, 307);
             this.txtChangeFeeCar.Name = "txtChangeFeeCar";
             this.txtChangeFeeCar.Size = new System.Drawing.Size(57, 32);
             this.txtChangeFeeCar.TabIndex = 2;
@@ -87,7 +84,7 @@
             this.txtChangeFeeMc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChangeFeeMc.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtChangeFeeMc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.txtChangeFeeMc.Location = new System.Drawing.Point(635, 307);
+            this.txtChangeFeeMc.Location = new System.Drawing.Point(429, 358);
             this.txtChangeFeeMc.Name = "txtChangeFeeMc";
             this.txtChangeFeeMc.Size = new System.Drawing.Size(57, 32);
             this.txtChangeFeeMc.TabIndex = 3;
@@ -97,7 +94,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.label2.Location = new System.Drawing.Point(272, 310);
+            this.label2.Location = new System.Drawing.Point(66, 358);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(332, 31);
             this.label2.TabIndex = 4;
@@ -108,7 +105,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.label3.Location = new System.Drawing.Point(516, 35);
+            this.label3.Location = new System.Drawing.Point(429, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(216, 50);
             this.label3.TabIndex = 5;
@@ -120,7 +117,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.textBox1.Location = new System.Drawing.Point(272, 112);
+            this.textBox1.Location = new System.Drawing.Point(66, 124);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(375, 75);
@@ -139,7 +136,7 @@
             this.lblChangeSizeLot.AutoSize = true;
             this.lblChangeSizeLot.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblChangeSizeLot.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.lblChangeSizeLot.Location = new System.Drawing.Point(272, 430);
+            this.lblChangeSizeLot.Location = new System.Drawing.Point(66, 458);
             this.lblChangeSizeLot.Name = "lblChangeSizeLot";
             this.lblChangeSizeLot.Size = new System.Drawing.Size(386, 31);
             this.lblChangeSizeLot.TabIndex = 7;
@@ -150,7 +147,7 @@
             this.lblChangeSpotSize.AutoSize = true;
             this.lblChangeSpotSize.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblChangeSpotSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.lblChangeSpotSize.Location = new System.Drawing.Point(272, 512);
+            this.lblChangeSpotSize.Location = new System.Drawing.Point(66, 524);
             this.lblChangeSpotSize.Name = "lblChangeSpotSize";
             this.lblChangeSpotSize.Size = new System.Drawing.Size(397, 31);
             this.lblChangeSpotSize.TabIndex = 8;
@@ -162,10 +159,9 @@
             this.txtChangeLotSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChangeLotSize.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtChangeLotSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.txtChangeLotSize.Location = new System.Drawing.Point(664, 430);
-            this.txtChangeLotSize.Multiline = true;
+            this.txtChangeLotSize.Location = new System.Drawing.Point(469, 457);
             this.txtChangeLotSize.Name = "txtChangeLotSize";
-            this.txtChangeLotSize.Size = new System.Drawing.Size(96, 31);
+            this.txtChangeLotSize.Size = new System.Drawing.Size(96, 32);
             this.txtChangeLotSize.TabIndex = 11;
             // 
             // txtChangeSpotSize
@@ -174,45 +170,17 @@
             this.txtChangeSpotSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtChangeSpotSize.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.txtChangeSpotSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(0)))), ((int)(((byte)(129)))));
-            this.txtChangeSpotSize.Location = new System.Drawing.Point(675, 509);
-            this.txtChangeSpotSize.Multiline = true;
+            this.txtChangeSpotSize.Location = new System.Drawing.Point(469, 524);
             this.txtChangeSpotSize.Name = "txtChangeSpotSize";
-            this.txtChangeSpotSize.Size = new System.Drawing.Size(96, 34);
+            this.txtChangeSpotSize.Size = new System.Drawing.Size(96, 32);
             this.txtChangeSpotSize.TabIndex = 10;
-            // 
-            // panelCount
-            // 
-            this.panelCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.panelCount.Controls.Add(this.btnExit);
-            this.panelCount.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelCount.Location = new System.Drawing.Point(0, 0);
-            this.panelCount.Name = "panelCount";
-            this.panelCount.Size = new System.Drawing.Size(210, 711);
-            this.panelCount.TabIndex = 25;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Location = new System.Drawing.Point(0, 662);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnExit.Size = new System.Drawing.Size(210, 49);
-            this.btnExit.TabIndex = 11;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // FormSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(1154, 711);
-            this.Controls.Add(this.panelCount);
+            this.ClientSize = new System.Drawing.Size(985, 711);
             this.Controls.Add(this.txtChangeSpotSize);
             this.Controls.Add(this.txtChangeLotSize);
             this.Controls.Add(this.lblChangeSpotSize);
@@ -228,7 +196,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormSettings";
             this.Text = "SETTINGS";
-            this.panelCount.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,7 +215,5 @@
         private Label lblChangeSpotSize;
         private TextBox txtChangeLotSize;
         private TextBox txtChangeSpotSize;
-        private Panel panelCount;
-        private Button btnExit;
     }
 }

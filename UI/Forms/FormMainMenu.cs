@@ -1,6 +1,6 @@
 using DataAccess;
 using System.Runtime.InteropServices;
-
+using UI.Methods;
 
 namespace UI;
 
@@ -8,18 +8,17 @@ public partial class FormMainMenu : Form
 {
     private Form activeForm;
     ParkingContext parkingContext = new ParkingContext();
-
+    SpotCalculation calc = new SpotCalculation();
     public FormMainMenu()
     {
         parkingContext.Database.EnsureCreated();
-        //Occupation();
         InitializeComponent();
-
+        calc.OccupationCalc(label000,label100);
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormParkingLot());
-
+        calc.OccupationCalc(label000,label100);
     }
     private void btnPrices_Click(object sender, EventArgs e)
     {
@@ -88,6 +87,25 @@ public partial class FormMainMenu : Form
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
 
+    //private void OccupationCalc(Label label, Label parkingLot)
+    //{
+    //    using (var parkingContext = new ParkingContext())
+    //    {
+    //        // string parkingSpaces = "100"; //Change to config value to string 
+    //        var takenSpaces = (from p in parkingContext.ParkingGarage
+    //                           select p.ParkingSpot).Count();
+
+    //        //Label for taken spaces
+    //        label000.Text = takenSpaces.ToString("D3");
+    //        label100.Text = parkingLot.Text;
+    //        //parkingLot.Text = parkingSpaces;
+    //    }
+    //}
+
+    private void btnExit_Click_1(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
     //private void FormMainMenu_Load(object sender, EventArgs e)
     //{
     //    TopMost = true;
