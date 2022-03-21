@@ -1,6 +1,7 @@
 using DataAccess;
 using System.Runtime.InteropServices;
 using UI.Forms;
+using UI.Methods;
 
 namespace UI;
 
@@ -8,6 +9,7 @@ public partial class FormMainMenu : Form
 {
     private Form activeForm;
     ParkingContext parkingContext = new ParkingContext();
+    SpotCalculator calc = new SpotCalculator();
 
     public FormMainMenu()
     {
@@ -15,8 +17,7 @@ public partial class FormMainMenu : Form
         //Occupation();
         InitializeComponent();
         OpenChildForm(new FormParkingLot());
-        OccupationCalc(label000,label100);
-
+       
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
@@ -95,20 +96,7 @@ public partial class FormMainMenu : Form
         Application.Exit();
     }
 
-    private void OccupationCalc(Label label, Label parkingLot)
-    {
-        using(var context = new ParkingContext())
-        {
-            string parkingSpaces = "100"; //Change to config value to string 
-            var takenSpaces = (from p in context.ParkingGarage
-                               select p.ParkingSpot).Count();
-            
-            //Label for taken spaces
-            label.Text = takenSpaces.ToString("000");
-
-            parkingLot.Text = parkingSpaces; 
-        }
-    }
+   
 
     //private void FormMainMenu_Load(object sender, EventArgs e)
     //{

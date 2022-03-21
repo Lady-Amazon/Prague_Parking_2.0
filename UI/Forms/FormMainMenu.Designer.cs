@@ -40,17 +40,10 @@
             this.lblTitleParking = new System.Windows.Forms.Label();
             this.lblTitlePP = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.panelCount = new System.Windows.Forms.Panel();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.labelOccupied = new System.Windows.Forms.Label();
-            this.label100 = new System.Windows.Forms.Label();
-            this.labelAvailable = new System.Windows.Forms.Label();
-            this.label000 = new System.Windows.Forms.Label();
             this.labelWelcome = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelDesktop.SuspendLayout();
-            this.panelCount.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -216,7 +209,6 @@
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelDesktop.Controls.Add(this.panelCount);
             this.panelDesktop.Controls.Add(this.labelWelcome);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(0, 116);
@@ -224,82 +216,6 @@
             this.panelDesktop.Name = "panelDesktop";
             this.panelDesktop.Size = new System.Drawing.Size(1040, 476);
             this.panelDesktop.TabIndex = 2;
-            // 
-            // panelCount
-            // 
-            this.panelCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(0)))), ((int)(((byte)(87)))));
-            this.panelCount.Controls.Add(this.btnExit);
-            this.panelCount.Controls.Add(this.labelOccupied);
-            this.panelCount.Controls.Add(this.label100);
-            this.panelCount.Controls.Add(this.labelAvailable);
-            this.panelCount.Controls.Add(this.label000);
-            this.panelCount.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelCount.Location = new System.Drawing.Point(0, 0);
-            this.panelCount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelCount.Name = "panelCount";
-            this.panelCount.Size = new System.Drawing.Size(184, 476);
-            this.panelCount.TabIndex = 24;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Location = new System.Drawing.Point(0, 411);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnExit.Size = new System.Drawing.Size(184, 65);
-            this.btnExit.TabIndex = 11;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click_1);
-            // 
-            // labelOccupied
-            // 
-            this.labelOccupied.AutoSize = true;
-            this.labelOccupied.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelOccupied.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelOccupied.Location = new System.Drawing.Point(28, 30);
-            this.labelOccupied.Name = "labelOccupied";
-            this.labelOccupied.Size = new System.Drawing.Size(109, 29);
-            this.labelOccupied.TabIndex = 10;
-            this.labelOccupied.Text = "Occupied";
-            // 
-            // label100
-            // 
-            this.label100.AutoSize = true;
-            this.label100.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label100.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label100.Location = new System.Drawing.Point(59, 169);
-            this.label100.Name = "label100";
-            this.label100.Size = new System.Drawing.Size(46, 29);
-            this.label100.TabIndex = 9;
-            this.label100.Text = "100";
-            // 
-            // labelAvailable
-            // 
-            this.labelAvailable.AutoSize = true;
-            this.labelAvailable.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelAvailable.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelAvailable.Location = new System.Drawing.Point(28, 132);
-            this.labelAvailable.Name = "labelAvailable";
-            this.labelAvailable.Size = new System.Drawing.Size(107, 29);
-            this.labelAvailable.TabIndex = 8;
-            this.labelAvailable.Text = "Available";
-            // 
-            // label000
-            // 
-            this.label000.AutoSize = true;
-            this.label000.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label000.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label000.Location = new System.Drawing.Point(59, 66);
-            this.label000.Name = "label000";
-            this.label000.Size = new System.Drawing.Size(46, 29);
-            this.label000.TabIndex = 7;
-            this.label000.Text = "000";
             // 
             // labelWelcome
             // 
@@ -331,8 +247,6 @@
             this.panelLogo.PerformLayout();
             this.panelDesktop.ResumeLayout(false);
             this.panelDesktop.PerformLayout();
-            this.panelCount.ResumeLayout(false);
-            this.panelCount.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,11 +267,5 @@
         private Label labelMinimize;
         private Label labelExit;
         private Label labelMaximize;
-        private Panel panelCount;
-        private Button btnExit;
-        private Label labelOccupied;
-        private Label label100;
-        private Label labelAvailable;
-        private Label label000;
     }
 }

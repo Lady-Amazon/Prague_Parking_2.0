@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using ParkingGarageLibrary;
 using System.Data;
+using UI.Methods;
 
 namespace UI.Forms;
 
@@ -9,6 +10,8 @@ public partial class FormParkingLot : Form
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     //public List<ParkingFee> parkingFees = new List<ParkingFee>();
     ParkingContext parkingContext = new ParkingContext();
+    SpotCalculator calc = new SpotCalculator();
+
     int occupied = 0;
     int available = 100;
     public FormParkingLot()
@@ -43,13 +46,17 @@ public partial class FormParkingLot : Form
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Car Parked");
+                  
 
                     
                 }
                 ClearFields();
-                
+                calc.OccupationCalc(label000, label100);
 
-                using(parkingContext = new ParkingContext())
+
+
+
+                using (parkingContext = new ParkingContext())
                     {
                     var parkingLotStatus = (from p in parkingContext.ParkingGarage
                                             select p.ParkingSpot).ToList();
@@ -84,11 +91,13 @@ public partial class FormParkingLot : Form
                     parkingContext.ParkingGarage.Add(mc);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Mc Parked");
+                  
 
-                    
+
                 }
                 ClearFields();
-                
+                calc.OccupationCalc(label000, label100);
+
 
                 using (parkingContext = new ParkingContext())
                 {
@@ -316,6 +325,7 @@ public partial class FormParkingLot : Form
         using (parkingContext = new ParkingContext())
         {
             parkingGarages = parkingContext.ParkingGarage.ToList();
+            calc.OccupationCalc(label000, label100);
 
         }
         dataGridView1.DataSource = parkingGarages;
@@ -390,6 +400,11 @@ public partial class FormParkingLot : Form
         label.BackColor = color;
     }
     private void btnExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
+
+    private void btnExit_Click_1(object sender, EventArgs e)
     {
         Application.Exit();
     }
