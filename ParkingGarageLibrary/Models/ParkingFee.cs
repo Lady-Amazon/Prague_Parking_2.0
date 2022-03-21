@@ -1,6 +1,6 @@
 ﻿namespace ParkingGarageLibrary
 {
-    public class ParkingFee : ParkingGarage
+    public class ParkingFee : ParkingSpot
     {
         public ParkingFee()
         {

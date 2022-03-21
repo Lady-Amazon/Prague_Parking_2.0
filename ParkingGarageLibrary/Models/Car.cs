@@ -1,21 +1,13 @@
-﻿using ParkingGarageLibrary.Models;
+﻿using DataAccess;
 
-namespace ParkingGarageLibrary;
+namespace ParkingGarageLibrary.Models;
 
-public class Car : IVehicle
+
+public class Car : Vehicle
 {
-    public string LicenseNum { get; set; }
-    public string VehicleType { get; set; }
-    public int Size { get; set; }
-
-    public Car(string licenseNum, string vehicleType, int size)
+    public Car(string licenseNum) : base(licenseNum)
     {
-        LicenseNum = licenseNum;
-        VehicleType = vehicleType;
-        Size = size;
-    }
-
-    public Car()
-    {
+        var config = new Config();
+        Size = config.CarSize;   // TODO: Hämtas från config
     }
 }

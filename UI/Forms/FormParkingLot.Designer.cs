@@ -270,7 +270,7 @@
             // 
             // parkingGarageBindingSource
             // 
-            this.parkingGarageBindingSource.DataSource = typeof(ParkingGarageLibrary.ParkingGarage);
+            this.parkingGarageBindingSource.DataSource = typeof(ParkingGarageLibrary.ParkingSpot);
             // 
             // parkingContextBindingSource
             // 

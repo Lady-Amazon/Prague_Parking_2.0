@@ -7,7 +7,7 @@ namespace UI.Forms;
 public partial class FormParkingLot : Form
 {
 
-    public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
+    public List<ParkingSpot> parkingGarages = new List<ParkingSpot>();
     public List<ParkingFee> parkingFees = new List<ParkingFee>();
     ParkingContext parkingContext = new ParkingContext();
     //public static string AvailableValue = "";
@@ -18,6 +18,8 @@ public partial class FormParkingLot : Form
         InitializeComponent();
         populateParking();
     }
+
+    
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
         txtBoxLicenseNum.Text = txtBoxLicenseNum.Text.Trim();
@@ -25,13 +27,13 @@ public partial class FormParkingLot : Form
         string vehicleTypeMc = boxCheckMc.Text;
         try
         {
-            if (boxCheckCar.Checked && PickParkingSpot_Click != null)
+            if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
                 using (parkingContext = new ParkingContext())
                 {
-                    var car = new ParkingGarage()
+                    var car = new ParkingSpot()
                     {
-                        ParkingSpot = int.Parse(labelParkingSpot.Text),
+                        SpotNumber = int.Parse(labelParkingSpot.Text),
                         LicenseNum = txtBoxLicenseNum.Text,
                         VehicleType = vehicleTypeCar,
                         VehicleSize = 4,
@@ -48,13 +50,13 @@ public partial class FormParkingLot : Form
                 labelParkingSpot.ResetText();
                 parkingavailability.ResetText();
             }
-            else if (boxCheckMc.Checked && PickParkingSpot_Click != null)
+            else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
                 using (parkingContext = new ParkingContext())
                 {
-                    var mc = new ParkingGarage()
+                    var mc = new ParkingSpot()
                     {
-                        ParkingSpot = int.Parse(labelParkingSpot.Text),
+                        SpotNumber = int.Parse(labelParkingSpot.Text),
                         LicenseNum = txtBoxLicenseNum.Text,
                         VehicleType = vehicleTypeMc,
                         VehicleSize = 2,
@@ -109,12 +111,26 @@ public partial class FormParkingLot : Form
 
             txtBoxDuration.Text = hour + "hr " + Minute + "min";
 
-            Cost(span);
+            var vehicle = parkingContext.ParkingGarage
+                .FirstOrDefault(x => x.LicenseNum == licenseNum);
+            parkingContext.ParkingGarage.Remove(vehicle);
+            Refresh();
+            parkingContext.SaveChanges();
+
+            Cost(duration);
+
+
         }
-        double Cost(TimeSpan time)
+
+        double Cost(double tid)
         {
+
             double price = 0;
-            if (boxCheckCar.Checked)
+
+            TimeSpan time = TimeSpan.FromMinutes(tid);
+            var vehicleType = parkingContext.ParkingGarage.Select(v => v.VehicleType).ToList();
+
+            if (vehicleType)
             {
                 price = Math.Round(((double)time.TotalHours * 20), 2);
                 dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Red;//Ändrar till rött men så fort man trycker på en annan rad försvinner det
@@ -130,7 +146,16 @@ public partial class FormParkingLot : Form
 
             }
 
-            txtBoxTotalCharge.Text = "CZK" + price;
+            if (price < 0)
+            {
+                price = 0;
+                txtBoxTotalCharge.Text = "CZK" + price;
+            }
+            else
+            {
+                txtBoxTotalCharge.Text = "CZK" + price;
+            }
+
 
             return price;
         }
@@ -140,6 +165,12 @@ public partial class FormParkingLot : Form
         }
         dataGridView2.DataSource = parkingFees;
     }
+
+    public void Refresh()
+    {
+        dataGridView1.Refresh();
+    }
+
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
 
@@ -171,7 +202,7 @@ public partial class FormParkingLot : Form
         using (ParkingContext context = new ParkingContext())
         {
             var result = context.ParkingGarage
-                 .Where(p => p.ParkingSpot.Equals(int.Parse(labelParkingSpot.Text)))
+                 .Where(p => p.SpotNumber.Equals(int.Parse(labelParkingSpot.Text)))
                  .Sum(p => p.VehicleSize);
             return result;
         }
@@ -245,6 +276,8 @@ public partial class FormParkingLot : Form
                 viewParkingLot.Controls.Add(button, j, i);
                 button.Click += PickParkingSpot_Click;
                 button.Tag = button;
+
+
 
             }
         }

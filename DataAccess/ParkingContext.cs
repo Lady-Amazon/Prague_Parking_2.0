@@ -5,7 +5,7 @@ namespace DataAccess;
 
 public class ParkingContext : DbContext
 {
-    public DbSet<ParkingGarage> ParkingGarage { get; set; }
+    public DbSet<ParkingSpot> ParkingGarage { get; set; }
     public DbSet<ParkingFee> Fees { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -20,7 +20,7 @@ public class ParkingContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<ParkingGarage>(entity =>
+        modelBuilder.Entity<ParkingSpot>(entity =>
         {
             entity.HasKey(e => e.Id);
         });

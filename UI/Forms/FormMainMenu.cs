@@ -1,7 +1,8 @@
 using DataAccess;
-
 using System.Runtime.InteropServices;
-
+using DataAccess;
+using ParkingGarageLibrary;
+using System.Data;
 
 namespace UI;
 
@@ -85,7 +86,6 @@ public partial class FormMainMenu : Form
     }
     public void Occupation()//Försök till att få till en counter från db
     {
-
 
         //var query = "SELECT Count(*) FROM ParkingGarage "; /*'" + labelOccupied.Text + "'*/
 
