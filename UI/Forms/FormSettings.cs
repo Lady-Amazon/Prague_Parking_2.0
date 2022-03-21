@@ -8,12 +8,10 @@ namespace UI;
 
 public partial class FormSettings : Form
 {
-    // ConfigurationBuilder config = new ConfigurationBuilder();
     public FormSettings()
     {
         InitializeComponent();
     }
-
     private void btnSavesetting_Click(object sender, EventArgs e)
     {
         //Läser in konfiguration från appsettings
@@ -27,9 +25,8 @@ public partial class FormSettings : Form
 
         config.CarFeePerHour = int.Parse(txtChangeFeeCar.Text);
         config.McFeePerHour = int.Parse(txtChangeFeeMc.Text);
-
-
         //config.ParkingLotSize = int.Parse(txtChangeLotSize.Text);
+
         //config.ParkingSpotSize = int.Parse(txtChangeSpotSize.Text);
 
         //Serialiserar konfigurationsobjektet och skriver över filen
@@ -45,10 +42,6 @@ public partial class FormSettings : Form
         var appsettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
         File.WriteAllText(appsettingsPath, newJson);
 
-    }
-
-    private void btnExit_Click(object sender, EventArgs e)
-    {
-        Application.Exit();
+        MessageBox.Show("Your changes have been saved");
     }
 }

@@ -1,4 +1,5 @@
 using DataAccess;
+using Microsoft.Extensions.Configuration;
 using System.Runtime.InteropServices;
 using UI.Methods;
 
@@ -13,12 +14,12 @@ public partial class FormMainMenu : Form
     {
         parkingContext.Database.EnsureCreated();
         InitializeComponent();
-        calc.OccupationCalc(label000,label100);
+        calc.OccupationCalc(label000, label100);
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormParkingLot());
-        calc.OccupationCalc(label000,label100);
+        calc.OccupationCalc(label000, label100);
     }
     private void btnPrices_Click(object sender, EventArgs e)
     {
@@ -29,6 +30,7 @@ public partial class FormMainMenu : Form
     {
         OpenChildForm(new FormSettings());
         labelTitle.Text = activeForm.Text;
+        MessageBox.Show("Be aware of making changes!!!!");
     }
     private void btnExit_Click(object sender, EventArgs e)
     {
@@ -86,31 +88,23 @@ public partial class FormMainMenu : Form
     private extern static void ReleaseCapture();
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-    //private void OccupationCalc(Label label, Label parkingLot)
-    //{
-    //    using (var parkingContext = new ParkingContext())
-    //    {
-    //        // string parkingSpaces = "100"; //Change to config value to string 
-    //        var takenSpaces = (from p in parkingContext.ParkingGarage
-    //                           select p.ParkingSpot).Count();
-
-    //        //Label for taken spaces
-    //        label000.Text = takenSpaces.ToString("D3");
-    //        label100.Text = parkingLot.Text;
-    //        //parkingLot.Text = parkingSpaces;
-    //    }
-    //}
-
     private void btnExit_Click_1(object sender, EventArgs e)
     {
         Application.Exit();
     }
-    //private void FormMainMenu_Load(object sender, EventArgs e)
-    //{
-    //    TopMost = true;
-    //    FormBorderStyle = FormBorderStyle.None;
-    //    WindowState = FormWindowState.Maximized;
-    //}
+
+    private void FormMainMenu_Load(object sender, EventArgs e)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build()
+            .Get<Config>();
+        label100.Text = config.ParkingLotSize.ToString();
+
+        //TopMost = true;
+        //FormBorderStyle = FormBorderStyle.None;
+        //WindowState = FormWindowState.Maximized;
+    }
 }
 
