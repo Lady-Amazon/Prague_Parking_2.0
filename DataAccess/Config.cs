@@ -11,20 +11,20 @@ public class Config
     public int CarFeePerHour { get; set; }
     public int McFeePerHour { get; set; }
 
-    string appSettingsPath = Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json");
+    //string appSettingsPath = Path.Combine(System.IO.Directory.GetCurrentDirectory(), "appsettings.json");
 
-    public void ReadFromJson()
-    {
-        var config = new ConfigurationBuilder()
-            .AddJsonFile(appSettingsPath).Build();
+    //public void ReadFromJson()
+    //{
+    //    var config = new ConfigurationBuilder()
+    //        .AddJsonFile(appSettingsPath).Build();
 
-        var section = config.GetSection(nameof(Config));
-        var values = section.Get<Config>();
+    //    var section = config.GetSection(nameof(Config));
+    //    var values = section.Get<Config>();
 
-        CarFeePerHour = values.CarFeePerHour;
-        McFeePerHour = values.McFeePerHour;
-        ParkingSpotSize = values.ParkingSpotSize;
-        ParkingLotSize = values.ParkingLotSize;
-    }
+    //    CarFeePerHour = values.CarFeePerHour;
+    //    McFeePerHour = values.McFeePerHour;
+    //    ParkingSpotSize = values.ParkingSpotSize;
+    //    ParkingLotSize = values.ParkingLotSize;
+    //}
 
 }

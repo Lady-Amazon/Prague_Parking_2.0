@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Microsoft.Extensions.Configuration;
 using ParkingGarageLibrary;
 using System.Data;
 using UI.Methods;
@@ -9,12 +10,12 @@ public partial class FormParkingLot : Form
 {
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     ParkingContext parkingContext = new ParkingContext();
-    Config config = new Config();
+    //Config config = new Config();
     public FormParkingLot()
     {
         InitializeComponent();
         populateParking();
-        config.ReadFromJson();
+        //config.ReadFromJson();
     }
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
@@ -112,6 +113,12 @@ public partial class FormParkingLot : Form
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build()
+            .Get<Config>();
+
         DateTime checkOut = pickTimeOut.Value;
         double price = 0;
         using (parkingContext = new ParkingContext())
@@ -151,7 +158,6 @@ public partial class FormParkingLot : Form
                                 .Where(l => l.LicenseNum == licenseNum)
                                 .Select(t => t.ParkingSpot)
                                 .FirstOrDefault();
-
 
                     var hour = ((int)timeParked.TotalHours).ToString();
                     var Minute = timeParked.Minutes.ToString();
@@ -262,7 +268,7 @@ public partial class FormParkingLot : Form
             return result;
         }
     }
-    public void Calculation()
+    public void Calculation()//Kollar om ett vist fordon går att parkera på rutan man tryckt på
     {
         int maxCarSize = 4;
         int maxMcSize = 2;

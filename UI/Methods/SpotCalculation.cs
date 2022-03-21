@@ -1,13 +1,19 @@
 ﻿using DataAccess;
+using Microsoft.Extensions.Configuration;
 
 namespace UI.Methods
 {
     public class SpotCalculation
     {
-        Config config = new Config();
+       // Config config = new Config();
         public void OccupationCalc(Label label, Label parkingLot)
         {
-            config.ReadFromJson();
+            var config = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build()
+            .Get<Config>();
+            //config.ReadFromJson();
             using (var parkingContext = new ParkingContext())
             {
                 string parkingSpaces = config.ParkingLotSize.ToString(); //ReadsFomJson

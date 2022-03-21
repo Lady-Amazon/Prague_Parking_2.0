@@ -100,6 +100,7 @@ public partial class FormMainMenu : Form
             .AddJsonFile("appsettings.json")
             .Build()
             .Get<Config>();
+
         label100.Text = config.ParkingLotSize.ToString();
 
         //TopMost = true;
