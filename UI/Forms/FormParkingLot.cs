@@ -525,10 +525,7 @@ public partial class FormParkingLot : Form
     {
         label.BackColor = color;
     }
-    private void btnExit_Click(object sender, EventArgs e)
-    {
-        Application.Exit();
-    }
+ 
 
     private void btnExit_Click_1(object sender, EventArgs e)
     {

@@ -9,11 +9,14 @@ namespace UI.Methods
 {
     public  class SpotCalculator
     {
+        Config config = new Config();
         public void OccupationCalc(Label label, Label parkingLot)
         {
+            config.ReadFromJson();
+            
             using (var context = new ParkingContext())
             {
-                string parkingSpaces = "100"; //Change to config value to string 
+                string parkingSpaces = config.ParkingLotSize.ToString(); //ReadsFomJson
                 var takenSpaces = (from p in context.ParkingGarage
                                    select p.ParkingSpot).Count();
 
