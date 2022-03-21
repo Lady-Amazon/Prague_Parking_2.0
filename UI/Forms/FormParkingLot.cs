@@ -24,10 +24,8 @@ public partial class FormParkingLot : Form
         string vehicleTypeMc = boxCheckMc.Text;
         try
         {
-            if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
+            if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
-                available = available - 1;
-                occupied = occupied + 1;
                 using (parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
@@ -45,12 +43,9 @@ public partial class FormParkingLot : Form
                     MessageBox.Show("Car Parked");
                 }
                 ClearFields();
-                AvailabilityCount();
             }
-            else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
-            {
-                available = available - 1;
-                occupied = occupied + 1;
+            else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
+            {  
                 using (parkingContext = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
@@ -67,7 +62,6 @@ public partial class FormParkingLot : Form
                     MessageBox.Show("Mc Parked");
                 }
                 ClearFields();
-                AvailabilityCount();
             }
             else
             {
@@ -96,10 +90,8 @@ public partial class FormParkingLot : Form
                 .Where(l => l.LicenseNum == licenseNum)
                 .Select(t => t.CheckedIn)
                 .FirstOrDefault();
-            if (occupied > 0)
-            {
-                available = available + 1;
-                occupied = occupied - 1;
+            
+            
                 // var checkOut = DateTime.Parse(pickTimeOut.Text);
                 var checkOut = DateTime.Parse(pickTimeOut.Text)/*.AddMinutes(-10)*/;
 
@@ -118,24 +110,19 @@ public partial class FormParkingLot : Form
                 parkingContext.SaveChanges();
                 MessageBox.Show("Vehicle has been picke up");
 
-                AvailabilityCount();
-            }
-
         }
-
-
-        double Cost(double tid)
+         double Cost(double tid)
         {
             double price = 0;
             TimeSpan time = TimeSpan.FromMinutes(tid);
 
-            if (boxCheckCar.Checked && occupied > 0)
+            if (boxCheckCar.Checked)
             {
                 price = Math.Round(((double)time.TotalHours * 20), 2);
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
             }
-            else if (boxCheckMc.Checked && occupied > 0)
+            else if (boxCheckMc.Checked)
             {
                 price = Math.Round(((double)time.TotalHours * 10), 2);
                 txtBoxLicenseNum.Clear();
