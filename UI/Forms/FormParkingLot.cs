@@ -11,6 +11,7 @@ public partial class FormParkingLot : Form
     //public List<ParkingFee> parkingFees = new List<ParkingFee>();
     ParkingContext parkingContext = new ParkingContext();
     SpotCalculator calc = new SpotCalculator();
+    Config config = new Config();
 
     int occupied = 0;
     int available = 100;
@@ -18,6 +19,7 @@ public partial class FormParkingLot : Form
     {
         InitializeComponent();
         populateParking();
+        config.ReadFromJson();
 
     }
     private void btnCheckIn_Click(object sender, EventArgs e)
@@ -154,9 +156,9 @@ public partial class FormParkingLot : Form
                    
                 if(vehicleType == "Car")
                     {
-                        price = Math.Round(((double)timeParked.TotalHours * 20), 2);
+                        price = Math.Round(((double)timeParked.TotalHours * config.CarFeePerHour), 2); // CHANGES ACCORDING TO JSON
 
-                        txtBoxLicenseNum.Clear();
+                    txtBoxLicenseNum.Clear();
 
                         var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
                         parkingContext.ParkingGarage.Remove(vehicle);
@@ -191,7 +193,7 @@ public partial class FormParkingLot : Form
                     }
                 else if(vehicleType =="Mc")
                     {
-                        price = Math.Round(((double)timeParked.TotalHours * 10), 2);
+                        price = Math.Round(((double)timeParked.TotalHours * config.McFeePerHour), 2); // CHANGES ACCORDING TO JSON
                         txtBoxLicenseNum.Clear();
                         var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
                         parkingContext.ParkingGarage.Remove(vehicle);

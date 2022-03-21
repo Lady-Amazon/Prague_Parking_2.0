@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using ParkingGarageLibrary;
 
 namespace DataAccess;
@@ -10,13 +11,14 @@ public class ParkingContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        //    IConfigurationRoot configuration = new ConfigurationBuilder()
-        //           .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-        //           .AddJsonFile("appsettings.json")
-        //           .Build();
-        //    optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-        optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PragueParking;Integrated Security=True");
+        if (!optionsBuilder.IsConfigured)
+        {
+            IConfigurationBuilder configurationBuilder = new ConfigurationBuilder().AddJsonFile("appSettings.json");
+            IConfiguration configuration = configurationBuilder.Build();
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnectionString"));
+        }
     }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
