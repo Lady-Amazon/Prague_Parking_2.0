@@ -43,9 +43,28 @@ public partial class FormParkingLot : Form
                     parkingContext.ParkingGarage.Add(car);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Car Parked");
+
+                    
                 }
                 ClearFields();
-                AvailabilityCount();
+                
+
+                using(parkingContext = new ParkingContext())
+                    {
+                    var parkingLotStatus = (from p in parkingContext.ParkingGarage
+                                            select p.ParkingSpot).ToList();
+
+                    foreach (var parkingSpot in parkingLotStatus)
+                    {
+                        for (int i = 0; i < parkingLotStatus.Count; i++)
+                        {
+                            string spot = parkingSpot.ToString();
+                            Button myButton = Controls.Find(spot, true).FirstOrDefault() as Button;
+                            SpotsStatus(parkingSpot, myButton);
+                        }
+                    }
+
+                }
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty && available > 0)
             {
@@ -65,9 +84,28 @@ public partial class FormParkingLot : Form
                     parkingContext.ParkingGarage.Add(mc);
                     parkingContext.SaveChanges();
                     MessageBox.Show("Mc Parked");
+
+                    
                 }
                 ClearFields();
-                AvailabilityCount();
+                
+
+                using (parkingContext = new ParkingContext())
+                {
+                    var parkingLotStatus = (from p in parkingContext.ParkingGarage
+                                            select p.ParkingSpot).ToList();
+
+                    foreach (var parkingSpot in parkingLotStatus)
+                    {
+                        for (int i = 0; i < parkingLotStatus.Count; i++)
+                        {
+                            string spot = parkingSpot.ToString();
+                            Button myButton = Controls.Find(spot, true).FirstOrDefault() as Button;
+                            SpotsStatus(parkingSpot, myButton);
+                        }
+                    }
+
+                }
             }
             else
             {
@@ -116,9 +154,25 @@ public partial class FormParkingLot : Form
                 parkingContext.ParkingGarage.Remove(vehicle);
 
                 parkingContext.SaveChanges();
-                MessageBox.Show("Vehicle has been picke up");
+                MessageBox.Show("Vehicle has been picked up");
 
-                AvailabilityCount();
+       
+                using (parkingContext = new ParkingContext())
+                {
+                    var parkingLotStatus = (from p in parkingContext.ParkingGarage
+                                            select p.ParkingSpot).ToList();
+
+                    foreach (var parkingSpot in parkingLotStatus)
+                    {
+                        for (int i = 0; i < parkingLotStatus.Count; i++)
+                        {
+                            string spot = parkingSpot.ToString();
+                            Button myButton = Controls.Find(spot, true).FirstOrDefault() as Button;
+                            SpotsStatus(parkingSpot, myButton);
+                        }
+                    }
+
+                }
             }
 
         }
@@ -315,13 +369,7 @@ public partial class FormParkingLot : Form
             }
         }
     }
-    public void AvailabilityCount()
-    {
-        available = available - 1;
-        occupied = occupied + 1;
-        label100.Text = available.ToString("D3");
-        label000.Text = occupied.ToString("D3");
-    }
+  
     public void ClearFields()
     {
         txtBoxLicenseNum.Clear();

@@ -1,6 +1,6 @@
 using DataAccess;
 using System.Runtime.InteropServices;
-
+using UI.Forms;
 
 namespace UI;
 
@@ -14,6 +14,8 @@ public partial class FormMainMenu : Form
         parkingContext.Database.EnsureCreated();
         //Occupation();
         InitializeComponent();
+        OpenChildForm(new FormParkingLot());
+        OccupationCalc(label000,label100);
 
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
@@ -87,6 +89,26 @@ public partial class FormMainMenu : Form
     private extern static void ReleaseCapture();
     [DllImport("user32.dll", EntryPoint = "SendMessage")]
     private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+    private void btnExit_Click_1(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
+
+    private void OccupationCalc(Label label, Label parkingLot)
+    {
+        using(var context = new ParkingContext())
+        {
+            string parkingSpaces = "100"; //Change to config value to string 
+            var takenSpaces = (from p in context.ParkingGarage
+                               select p.ParkingSpot).Count();
+            
+            //Label for taken spaces
+            label.Text = takenSpaces.ToString("000");
+
+            parkingLot.Text = parkingSpaces; 
+        }
+    }
 
     //private void FormMainMenu_Load(object sender, EventArgs e)
     //{

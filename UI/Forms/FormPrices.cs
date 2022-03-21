@@ -17,4 +17,6 @@ public partial class FormPrices : Form
     {
         Application.Exit();
     }
+
+   
 }
