@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using Microsoft.Extensions.Configuration;
 using ParkingGarageLibrary;
 using System.Data;
 
@@ -93,7 +94,7 @@ public partial class FormParkingLot : Form
             
             
                 // var checkOut = DateTime.Parse(pickTimeOut.Text);
-                var checkOut = DateTime.Parse(pickTimeOut.Text)/*.AddMinutes(-10)*/;
+                var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
 
                 var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
                 var span = TimeSpan.FromMinutes(duration);
@@ -108,7 +109,7 @@ public partial class FormParkingLot : Form
                 parkingContext.ParkingGarage.Remove(vehicle);
 
                 parkingContext.SaveChanges();
-                MessageBox.Show("Vehicle has been picke up");
+                MessageBox.Show("Vehicle has been picked up");
 
         }
          double Cost(double tid)
@@ -116,20 +117,35 @@ public partial class FormParkingLot : Form
             double price = 0;
             TimeSpan time = TimeSpan.FromMinutes(tid);
 
+            var config = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build()
+                .Get<Config>();
+
             if (boxCheckCar.Checked)
             {
-                price = Math.Round(((double)time.TotalHours * 20), 2);
+                price = Math.Round(((double)time.TotalHours * config.CarFeePerHour), 2);
                 txtBoxLicenseNum.Clear();
                 boxCheckCar.Checked = false;
             }
             else if (boxCheckMc.Checked)
             {
-                price = Math.Round(((double)time.TotalHours * 10), 2);
+                price = Math.Round(((double)time.TotalHours * config.McFeePerHour), 2);
                 txtBoxLicenseNum.Clear();
                 boxCheckMc.Checked = false;
             }
 
-            txtBoxTotalCharge.Text = "CZK" + price;
+            if (price < 0)
+            {
+                price = 0;
+                txtBoxTotalCharge.Text = "CZK" + price;
+            }
+            else
+            {
+                txtBoxTotalCharge.Text = "CZK" + price;
+            }
+            
             return price;
         }
     }
