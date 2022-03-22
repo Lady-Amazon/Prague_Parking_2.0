@@ -15,6 +15,13 @@ public partial class FormMainMenu : Form
         //Occupation();
         InitializeComponent();
 
+        bool dbEmpty = ValidateData.IsDbEmpty();
+
+        if (dbEmpty)
+        {
+            TestData.PopulateDb();
+        }
+
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
