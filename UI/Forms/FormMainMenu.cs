@@ -1,5 +1,4 @@
 using DataAccess;
-using Microsoft.Extensions.Configuration;
 using System.Runtime.InteropServices;
 using UI.Methods;
 
@@ -12,24 +11,31 @@ public partial class FormMainMenu : Form
     SpotCalculation calc = new SpotCalculation();
     public FormMainMenu()
     {
-        parkingContext.Database.EnsureCreated();
         InitializeComponent();
+        parkingContext.Database.EnsureCreated();
         calc.OccupationCalc(label000, label100);
+        bool dbEmpty = ValidateData.IsDbEmpty();
+        if (dbEmpty)
+        {
+            TestData.PopulateDb();
+        }
     }
     private void btnParkingLotView_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormParkingLot());
-        calc.OccupationCalc(label000, label100);
+        panelCount.Visible = false;
     }
     private void btnPrices_Click(object sender, EventArgs e)
     {
         OpenChildForm(new FormPrices());
         labelTitle.Text = activeForm.Text;
+        panelCount.Visible = false;
     }
     private void btnSettings_Click(object sender, EventArgs e)
     {
         OpenChildForm(new FormSettings());
         labelTitle.Text = activeForm.Text;
+        panelCount.Visible = false;
         MessageBox.Show("Be aware of making changes!!!!");
     }
     private void btnExit_Click(object sender, EventArgs e)
@@ -81,7 +87,7 @@ public partial class FormMainMenu : Form
     {
         ReleaseCapture();
         SendMessage(this.Handle, 0x112, 0xf012, 0);
-    }
+    }//To let you move the window with the mouse
 
 
     [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -95,15 +101,7 @@ public partial class FormMainMenu : Form
 
     private void FormMainMenu_Load(object sender, EventArgs e)
     {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build()
-            .Get<Config>();
-
-        label100.Text = config.ParkingLotSize.ToString();
-
-        //TopMost = true;
+        //TopMost = true;                 //To open application in fullscreen
         //FormBorderStyle = FormBorderStyle.None;
         //WindowState = FormWindowState.Maximized;
     }

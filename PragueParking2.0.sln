@@ -10,9 +10,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{8AE9
 		{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3} = {83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{83C0F71B-B38B-48A0-9DA3-D4D9C45CB5E3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0B5FE094-C240-4436-9952-E667290AC3C2} = {0B5FE094-C240-4436-9952-E667290AC3C2}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F43C1C60-A28A-479F-AFEA-0383E2FAA864}"
+	ProjectSection(SolutionItems) = preProject
+		UI\bin\Debug\net6.0-windows\20_fordon_-_Blad1.csv = UI\bin\Debug\net6.0-windows\20_fordon_-_Blad1.csv
 	EndProjectSection
 EndProject
 Global

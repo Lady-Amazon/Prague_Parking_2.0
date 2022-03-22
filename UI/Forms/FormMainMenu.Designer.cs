@@ -68,7 +68,7 @@
             this.panelMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1188, 154);
+            this.panelMenu.Size = new System.Drawing.Size(1188, 181);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
             // 
@@ -120,7 +120,7 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelTitle.Location = new System.Drawing.Point(835, 47);
+            this.labelTitle.Location = new System.Drawing.Point(835, 60);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(154, 55);
             this.labelTitle.TabIndex = 6;
@@ -136,7 +136,7 @@
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSettings.Location = new System.Drawing.Point(467, 0);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(118, 154);
+            this.btnSettings.Size = new System.Drawing.Size(118, 181);
             this.btnSettings.TabIndex = 5;
             this.btnSettings.Text = "SETTINGS";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -152,7 +152,7 @@
             this.btnSales.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSales.Location = new System.Drawing.Point(350, 0);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(117, 154);
+            this.btnSales.Size = new System.Drawing.Size(117, 181);
             this.btnSales.TabIndex = 7;
             this.btnSales.Text = "PRICES";
             this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -168,7 +168,7 @@
             this.btnParkingLotView.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnParkingLotView.Location = new System.Drawing.Point(210, 0);
             this.btnParkingLotView.Name = "btnParkingLotView";
-            this.btnParkingLotView.Size = new System.Drawing.Size(140, 154);
+            this.btnParkingLotView.Size = new System.Drawing.Size(140, 181);
             this.btnParkingLotView.TabIndex = 1;
             this.btnParkingLotView.Text = "PARKING LOT";
             this.btnParkingLotView.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -183,7 +183,7 @@
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(210, 154);
+            this.panelLogo.Size = new System.Drawing.Size(210, 181);
             this.panelLogo.TabIndex = 0;
             // 
             // lblTitleParking
@@ -191,7 +191,7 @@
             this.lblTitleParking.AutoSize = true;
             this.lblTitleParking.Font = new System.Drawing.Font("Segoe Print", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.lblTitleParking.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblTitleParking.Location = new System.Drawing.Point(22, 87);
+            this.lblTitleParking.Location = new System.Drawing.Point(22, 96);
             this.lblTitleParking.Name = "lblTitleParking";
             this.lblTitleParking.Size = new System.Drawing.Size(155, 31);
             this.lblTitleParking.TabIndex = 1;
@@ -202,7 +202,7 @@
             this.lblTitlePP.AutoSize = true;
             this.lblTitlePP.Font = new System.Drawing.Font("Segoe Print", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.lblTitlePP.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblTitlePP.Location = new System.Drawing.Point(57, 22);
+            this.lblTitlePP.Location = new System.Drawing.Point(57, 31);
             this.lblTitlePP.Name = "lblTitlePP";
             this.lblTitlePP.Size = new System.Drawing.Size(80, 65);
             this.lblTitlePP.TabIndex = 0;
@@ -214,9 +214,9 @@
             this.panelDesktop.Controls.Add(this.panelCount);
             this.panelDesktop.Controls.Add(this.labelWelcome);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(0, 154);
+            this.panelDesktop.Location = new System.Drawing.Point(0, 181);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1188, 636);
+            this.panelDesktop.Size = new System.Drawing.Size(1188, 609);
             this.panelDesktop.TabIndex = 2;
             // 
             // panelCount
@@ -230,8 +230,8 @@
             this.panelCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelCount.Location = new System.Drawing.Point(0, 0);
             this.panelCount.Name = "panelCount";
-            this.panelCount.Size = new System.Drawing.Size(210, 636);
-            this.panelCount.TabIndex = 24;
+            this.panelCount.Size = new System.Drawing.Size(210, 609);
+            this.panelCount.TabIndex = 26;
             // 
             // btnExit
             // 
@@ -240,7 +240,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Location = new System.Drawing.Point(0, 549);
+            this.btnExit.Location = new System.Drawing.Point(0, 522);
             this.btnExit.Name = "btnExit";
             this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnExit.Size = new System.Drawing.Size(210, 87);
@@ -299,7 +299,7 @@
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Palatino Linotype", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(106)))), ((int)(((byte)(138)))));
-            this.labelWelcome.Location = new System.Drawing.Point(448, 240);
+            this.labelWelcome.Location = new System.Drawing.Point(528, 190);
             this.labelWelcome.Name = "labelWelcome";
             this.labelWelcome.Size = new System.Drawing.Size(284, 81);
             this.labelWelcome.TabIndex = 0;

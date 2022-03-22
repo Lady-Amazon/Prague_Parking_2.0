@@ -5,17 +5,18 @@ using System.Data;
 using UI.Methods;
 
 namespace UI.Forms;
-
 public partial class FormParkingLot : Form
 {
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
     ParkingContext parkingContext = new ParkingContext();
-    //Config config = new Config();
+    Config config = new Config();
+    SpotCalculation calc = new SpotCalculation();
     public FormParkingLot()
     {
         InitializeComponent();
         populateParking();
-        //config.ReadFromJson();
+        calc.OccupationCalc(label000, label100);
+        config.ReadFromJson();
     }
     private void btnCheckIn_Click(object sender, EventArgs e)
     {
@@ -43,6 +44,8 @@ public partial class FormParkingLot : Form
                     MessageBox.Show("Car Parked");
                 }
                 ClearFields();
+                calc.OccupationCalc(label000, label100);
+
                 using (parkingContext = new ParkingContext())
                 {
                     var parkingLotStatus = (from p in parkingContext.ParkingGarage
@@ -57,7 +60,6 @@ public partial class FormParkingLot : Form
                             SpotsStatus(parkingSpot, myButton);
                         }
                     }
-
                 }
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
@@ -78,7 +80,9 @@ public partial class FormParkingLot : Form
                     MessageBox.Show("Mc Parked");
                 }
                 ClearFields();
-                using (parkingContext = new ParkingContext())//Denna ska refresha men de gör den inte
+                calc.OccupationCalc(label000, label100);
+
+                using (parkingContext = new ParkingContext())
                 {
                     var parkingLotStatus = (from p in parkingContext.ParkingGarage
                                             select p.ParkingSpot).ToList();
@@ -98,29 +102,23 @@ public partial class FormParkingLot : Form
             {
                 MessageBox.Show("You have to enter LicenseNum, VehicleType and ParkingSpot!");
             }
-
         }
         catch (Exception ex)
         {
-
+            MessageBox.Show(Text, ex.Message);
         }
+
         using (parkingContext = new ParkingContext())
         {
             parkingGarages = parkingContext.ParkingGarage.ToList();
         }
         dataGridView1.DataSource = parkingGarages;
-
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
-        var config = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-            .AddJsonFile("appsettings.json")
-            .Build()
-            .Get<Config>();
-
         DateTime checkOut = pickTimeOut.Value;
         double price = 0;
+
         using (parkingContext = new ParkingContext())
         {
             var licenseNum = txtBoxLicenseNum.Text;
@@ -129,9 +127,9 @@ public partial class FormParkingLot : Form
                 .Where(l => l.LicenseNum == licenseNum)
                 .Select(t => t.CheckedIn)
                 .FirstOrDefault();
+
             if (checkIn != null)
             {
-
                 TimeSpan timeParked = TimeParkedCalc(licenseNum, checkOut);
                 string vehicleType = VehicleType(licenseNum);
 
@@ -144,7 +142,9 @@ public partial class FormParkingLot : Form
                     var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
                     parkingContext.ParkingGarage.Remove(vehicle);
                     parkingContext.SaveChanges();
+
                     MessageBox.Show("Vehicle has been picked up");
+
                     if (price > 0)
                     {
                         txtBoxTotalCharge.Text = "CZK" + price;
@@ -153,33 +153,33 @@ public partial class FormParkingLot : Form
                     {
                         txtBoxTotalCharge.Text = "Free Parking";
                     }
-
                     var spot = parkingContext.ParkingGarage
                                 .Where(l => l.LicenseNum == licenseNum)
                                 .Select(t => t.ParkingSpot)
                                 .FirstOrDefault();
 
                     var hour = ((int)timeParked.TotalHours).ToString();
-                    var Minute = timeParked.Minutes.ToString();
+                    var minute = timeParked.Minutes.ToString();
 
-                    txtBoxDuration.Text = hour + "hr " + Minute + "min";
+                    txtBoxDuration.Text = hour + "hr " + minute + "min";
 
                     string takenSpot = spot.ToString();
-
                     Button myButton = Controls.Find(takenSpot, true).FirstOrDefault() as Button;
 
                     SpotsStatus(spot, myButton);
-
                 }
                 else if (vehicleType == "Mc")
                 {
                     price = Math.Round((double)timeParked.TotalHours * config.McFeePerHour, 2); // CHANGES ACCORDING TO JSON
+
                     txtBoxLicenseNum.Clear();
+
                     var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
                     parkingContext.ParkingGarage.Remove(vehicle);
                     parkingContext.SaveChanges();
 
                     MessageBox.Show("Vehicle has been picked up");
+
                     if (price > 0)
                     {
                         txtBoxTotalCharge.Text = "CZK" + price;
@@ -190,22 +190,21 @@ public partial class FormParkingLot : Form
                     }
 
                     var hour = ((int)timeParked.TotalHours).ToString();
-                    var Minute = timeParked.Minutes.ToString();
+                    var minute = timeParked.Minutes.ToString();
 
-                    txtBoxDuration.Text = hour + "hr " + Minute + "min";
+                    txtBoxDuration.Text = hour + "hr " + minute + "min";
 
                     var spot = parkingContext.ParkingGarage
                               .Where(l => l.LicenseNum == licenseNum)
                               .Select(t => t.ParkingSpot)
                               .FirstOrDefault();
+
                     string takenSpot = spot.ToString();
 
                     Button myButton = Controls.Find(takenSpot, true).FirstOrDefault() as Button;
 
                     SpotsStatus(spot, myButton);
-
                 }
-
             }
         }
     }
@@ -213,9 +212,9 @@ public partial class FormParkingLot : Form
     {
         using (parkingContext = new ParkingContext())
         {
-            var checkIn = (from t in parkingContext.ParkingGarage
-                           where t.LicenseNum == licensePlate
-                           select t.CheckedIn).FirstOrDefault();
+            var checkIn = (from l in parkingContext.ParkingGarage
+                           where l.LicenseNum == licensePlate
+                           select l.CheckedIn).FirstOrDefault();
 
             var payTime = checkOut.AddMinutes(-10);
             var duration = payTime - checkIn;
@@ -223,7 +222,6 @@ public partial class FormParkingLot : Form
             return duration;
         }
     }
-
     public string VehicleType(string licensePlate)
     {
         using (parkingContext = new ParkingContext())
@@ -238,19 +236,15 @@ public partial class FormParkingLot : Form
     }
     private void boxCheckCar_CheckedChanged(object sender, EventArgs e)
     {
-
         btnCheckIn.Enabled = boxCheckCar.Checked;
     }
-
     private void boxCheckMc_CheckedChanged(object sender, EventArgs e)
     {
-
         btnCheckIn.Enabled = boxCheckMc.Checked;
     }
-
-    private void PickParkingSpot_Click(object sender, EventArgs e)//För att få vilken av knapparna man tryckt på. Valet skrivs ut i en label
+    private void PickParkingSpot_Click(object sender, EventArgs e)//To check witch spot is clicked. The click event shows in a label
     {
-        string vehicles;
+        //string vehicles;
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
         labelParkingSpot.Text = Space.Substring(Space.Count() - 2, 2);
@@ -258,23 +252,23 @@ public partial class FormParkingLot : Form
         GetSumVehicleSize();
         Calculation();
     }
-    public int GetSumVehicleSize()
+    public int GetSumVehicleSize()//
     {
-        using (ParkingContext context = new ParkingContext())
+        using (parkingContext = new ParkingContext())
         {
-            var result = context.ParkingGarage
+            var result = parkingContext.ParkingGarage
                  .Where(p => p.ParkingSpot.Equals(int.Parse(labelParkingSpot.Text)))
                  .Sum(p => p.VehicleSize);
             return result;
         }
     }
-    public void Calculation()//Kollar om ett vist fordon går att parkera på rutan man tryckt på
+    public void Calculation()//Checks if a type of wehicle can be parked in the parkingspot
     {
         int maxCarSize = 4;
         int maxMcSize = 2;
         int minSize = 0;
 
-        if (boxCheckCar.Checked)//Nu fungerar denna som det ska.
+        if (boxCheckCar.Checked)//Use the checkboxes to see if the vehicle type can park
         {
             if (GetSumVehicleSize() <= minSize)
             {
@@ -298,7 +292,7 @@ public partial class FormParkingLot : Form
                 parkingavailability.Text = "Empty spot";
                 btnCheckIn.Enabled = true;
             }
-            else if (GetSumVehicleSize() >= maxCarSize)//Ändrade här til >= så nu säger den ifrån om 2 mc står på samma ruta
+            else if (GetSumVehicleSize() >= maxCarSize) 
             {
                 ChangeColor(labelParkingSpot, Color.Red, maxCarSize);
                 parkingavailability.Text = "Parking spot is already taken";
@@ -306,10 +300,11 @@ public partial class FormParkingLot : Form
             }
         }
     }
-    private void populateParking()
+    private void populateParking()//Displays the grid for parkinspots. 
     {
         var rowCount = 10;
         var columnCount = 10;
+        int counter = 0;
 
         viewParkingLot.ColumnCount = columnCount;
         viewParkingLot.RowCount = rowCount;
@@ -325,8 +320,6 @@ public partial class FormParkingLot : Form
         {
             viewParkingLot.RowStyles.Add(new RowStyle(SizeType.Percent, 100 / rowCount));
         }
-
-        int counter = 0;
         for (int i = 0; i < rowCount; i++)
         {
             for (int j = 0; j < columnCount; j++)
@@ -346,7 +339,6 @@ public partial class FormParkingLot : Form
             }
         }
     }
-
     private void FormParkingLot_Load(object sender, EventArgs e)
     {
         using (parkingContext = new ParkingContext())
@@ -373,7 +365,7 @@ public partial class FormParkingLot : Form
 
         }
     }
-    public void SpotsStatus(int parkingSpot, Button buttonStatus)
+    public void SpotsStatus(int parkingSpot, Button buttonStatus)//Changes the color of the parkinspot depending on status
     {
         using (var db = new ParkingContext())
         {
@@ -413,19 +405,29 @@ public partial class FormParkingLot : Form
         labelParkingSpot.ResetText();
         parkingavailability.ResetText();
     }
-    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//To let you use the datagrid to pick licensnumber for the checkout
     {
         if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
         {
             txtBoxLicenseNum.Text = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
         }
     }
-    static void ChangeColor(Label label, Color color, int size)
+    static void ChangeColor(Label label, Color color, int size)//To change the color of the label when parkingspot is clicked
     {
         label.BackColor = color;
     }
-    private void btnExit_Click(object sender, EventArgs e)
+    private void btnExit_Click_1(object sender, EventArgs e)
     {
         Application.Exit();
+    }
+
+    private void btnHowTo_Click(object sender, EventArgs e)
+    {
+        string title = "How To";
+        string msg = "How To Use Parking Managment Check In System." +
+            "- Check In: Enter License Number, choose Car/Mc in checkbox, pick parkingspot. Click check in." +
+            "- Check Out: Click the license number in the list, use check box for Car/Mc. Click Check out. " +
+            "Total Cost and Duration will be displayed";
+        MessageBox.Show(msg, title);
     }
 }
