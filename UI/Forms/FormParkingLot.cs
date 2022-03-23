@@ -229,7 +229,7 @@ public partial class FormParkingLot : Form
 
                     SpotsStatus(spot, myButton);
                 }
-                else if (vehicleType == "Mc")
+                else if (vehicleType == "MC")
                 {
                     price = Math.Round((double)timeParked.TotalHours * config.McFeePerHour, 2); // CHANGES ACCORDING TO JSON
 
