@@ -14,7 +14,7 @@ public partial class FormMainMenu : Form
         InitializeComponent();
         parkingContext.Database.EnsureCreated();
         calc.OccupationCalc(label000, label100);
-        bool dbEmpty = ValidateData.IsDbEmpty();
+        bool dbEmpty = ValidateData.IsDbEmpty();//Puts testdata in the db 
         if (dbEmpty)
         {
             TestData.PopulateDb();

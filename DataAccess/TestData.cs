@@ -6,7 +6,7 @@ public class TestData
 {
     public static void PopulateDb()
     {
-        string[] parkedVehicles = File.ReadAllLines("20 fordon - Blad1.csv");
+        string[] parkedVehicles = File.ReadAllLines("TestData.csv");
 
         List<string[]> cleanedList = parkedVehicles
             .Skip(1)

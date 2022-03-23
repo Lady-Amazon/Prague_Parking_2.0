@@ -16,9 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F43C1C60-A28A-479F-AFEA-0383E2FAA864}"
-	ProjectSection(SolutionItems) = preProject
-		UI\bin\Debug\net6.0-windows\20_fordon_-_Blad1.csv = UI\bin\Debug\net6.0-windows\20_fordon_-_Blad1.csv
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
