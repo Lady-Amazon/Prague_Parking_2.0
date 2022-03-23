@@ -38,6 +38,18 @@ public partial class FormMainMenu : Form
         panelCount.Visible = false;
         MessageBox.Show("Be aware of making changes!!!!");
     }
+    private void btnAbout_Click(object sender, EventArgs e)
+    {
+        OpenChildForm(new Forms.FormAbout());
+        labelTitle.Text=activeForm.Text;
+        panelCount.Visible = true;
+    }
+    private void btnHome_Click(object sender, EventArgs e)
+    {
+        activeForm.Close();
+        panelCount.Visible = true;
+        labelTitle.Text = activeForm.Text;
+    }
     private void btnExit_Click(object sender, EventArgs e)
     {
         Application.Exit();
@@ -105,5 +117,7 @@ public partial class FormMainMenu : Form
         //FormBorderStyle = FormBorderStyle.None;
         //WindowState = FormWindowState.Maximized;
     }
+
+   
 }
 
