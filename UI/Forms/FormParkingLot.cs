@@ -8,7 +8,6 @@ namespace UI.Forms;
 public partial class FormParkingLot : Form
 {
     public List<ParkingGarage> parkingGarages = new List<ParkingGarage>();
-    ParkingContext parkingContext = new ParkingContext();
     Config config = new Config();
     SpotCalculation calc = new SpotCalculation();
     public FormParkingLot()
@@ -27,7 +26,7 @@ public partial class FormParkingLot : Form
         {
             if (boxCheckCar.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
-                using (parkingContext = new ParkingContext())
+                using (var parkingContext = new ParkingContext())
                 {
                     var car = new ParkingGarage()
                     {
@@ -46,7 +45,7 @@ public partial class FormParkingLot : Form
                 ClearFields();
                 calc.OccupationCalc(label000, label100);
 
-                using (parkingContext = new ParkingContext())
+                using (var parkingContext = new ParkingContext())
                 {
                     var parkingLotStatus = (from p in parkingContext.ParkingGarage
                                             select p.ParkingSpot).ToList();
@@ -64,7 +63,7 @@ public partial class FormParkingLot : Form
             }
             else if (boxCheckMc.Checked && PickParkingSpot_Click != null && txtBoxLicenseNum.Text != string.Empty)
             {
-                using (parkingContext = new ParkingContext())
+                using (var parkingContext = new ParkingContext())
                 {
                     var mc = new ParkingGarage()
                     {
@@ -82,7 +81,7 @@ public partial class FormParkingLot : Form
                 ClearFields();
                 calc.OccupationCalc(label000, label100);
 
-                using (parkingContext = new ParkingContext())
+                using (var parkingContext = new ParkingContext())
                 {
                     var parkingLotStatus = (from p in parkingContext.ParkingGarage
                                             select p.ParkingSpot).ToList();
@@ -108,7 +107,7 @@ public partial class FormParkingLot : Form
             MessageBox.Show(Text, ex.Message);
         }
 
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             parkingGarages = parkingContext.ParkingGarage.ToList();
         }
@@ -181,7 +180,7 @@ public partial class FormParkingLot : Form
         DateTime checkOut = pickTimeOut.Value;
         double price = 0;
 
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             var licenseNum = txtBoxLicenseNum.Text;
 
@@ -272,7 +271,7 @@ public partial class FormParkingLot : Form
     }
     public TimeSpan TimeParkedCalc(string licensePlate, DateTime checkOut)
     {
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             var checkIn = (from l in parkingContext.ParkingGarage
                            where l.LicenseNum == licensePlate
@@ -286,7 +285,7 @@ public partial class FormParkingLot : Form
     }
     public string VehicleType(string licensePlate)
     {
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             var vehicleType = (from t in parkingContext.ParkingGarage
                                where t.LicenseNum == licensePlate
@@ -316,7 +315,7 @@ public partial class FormParkingLot : Form
     }
     public int GetSumVehicleSize()//
     {
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             var result = parkingContext.ParkingGarage
                  .Where(p => p.ParkingSpot.Equals(int.Parse(labelParkingSpot.Text)))
@@ -403,14 +402,14 @@ public partial class FormParkingLot : Form
     }
     private void FormParkingLot_Load(object sender, EventArgs e)
     {
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             parkingGarages = parkingContext.ParkingGarage.ToList();
 
         }
         dataGridView1.DataSource = parkingGarages;
 
-        using (parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             var parkingLotStatus = (from p in parkingContext.ParkingGarage
                                     select p.ParkingSpot).ToList();
