@@ -115,68 +115,6 @@ public partial class FormParkingLot : Form
     }
     private void btnCheckOut_Click_1(object sender, EventArgs e)
     {
-        //using (parkingContext = new ParkingContext())
-        //{
-        //    var licenseNum = txtBoxLicenseNum.Text;
-        //    var checkIn = parkingContext.ParkingGarage
-        //        .Where(l => l.LicenseNum == licenseNum)
-        //        .Select(t => t.CheckedIn)
-        //        .FirstOrDefault();
-
-        //    var checkOut = DateTime.Parse(pickTimeOut.Text).AddMinutes(-10);
-
-        //    var duration = float.Parse((checkOut - checkIn).TotalMinutes.ToString());
-        //    var span = TimeSpan.FromMinutes(duration);
-        //    var hour = ((int)span.TotalHours).ToString();
-        //    var Minute = span.Minutes.ToString();
-
-        //    txtBoxDuration.Text = hour + "hr " + Minute + "min";
-
-        //    Cost(duration);
-
-        //    var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
-        //    parkingContext.ParkingGarage.Remove(vehicle);
-
-        //    parkingContext.SaveChanges();
-        //    MessageBox.Show("Vehicle has been picked up");
-
-        //}
-        //double Cost(double tid)
-        //{
-        //    double price = 0;
-        //    TimeSpan time = TimeSpan.FromMinutes(tid);
-
-        //    var config = new ConfigurationBuilder()
-        //        .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-        //        .AddJsonFile("appsettings.json")
-        //        .Build()
-        //        .Get<Config>();
-
-        //    if (boxCheckCar.Checked)
-        //    {
-        //        price = Math.Round(((double)time.TotalHours * config.CarFeePerHour), 2);
-        //        txtBoxLicenseNum.Clear();
-        //        boxCheckCar.Checked = false;
-        //    }
-        //    else if (boxCheckMc.Checked)
-        //    {
-        //        price = Math.Round(((double)time.TotalHours * config.McFeePerHour), 2);
-        //        txtBoxLicenseNum.Clear();
-        //        boxCheckMc.Checked = false;
-        //    }
-
-        //    if (price < 0)
-        //    {
-        //        price = 0;
-        //        txtBoxTotalCharge.Text = "CZK" + price;
-        //    }
-        //    else
-        //    {
-        //        txtBoxTotalCharge.Text = "CZK" + price;
-        //    }
-
-        //    return price;
-        //}
         DateTime checkOut = pickTimeOut.Value;
         double price = 0;
 
