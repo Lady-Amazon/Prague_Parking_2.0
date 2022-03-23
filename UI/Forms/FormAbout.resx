@@ -57,13 +57,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="parkingGarageBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
-  </metadata>
-  <metadata name="parkingGarageBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>277, 17</value>
-  </metadata>
-  <metadata name="parkingContextBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>In this Parking Managment System you can
+- Park vehicles of the typ Car or Mc. 
+-Choose wich parking spot you want to park in.
+-Park 2 Mc at the same spot.
+-See overview of the whole parkinglot.
+-See how many vehicles that are already parked.
+-See wich parkingspots that are already taken.
+-Get total price for vehicle when it is picked up.
+-See the current prices for parking vehicles.
+-Change curent prices and add parkingspots to the lot.
+-Every vehicle is save in the database when the work day is over.
+
+
+And a little thanks to the Mighty Knights for helping to complete 
+this program! =D
+
+
+</value>
+  </data>
 </root>

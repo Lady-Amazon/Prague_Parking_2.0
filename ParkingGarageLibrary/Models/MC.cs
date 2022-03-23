@@ -13,6 +13,7 @@ public class MC : IVehicle
         LicenseNum = licenseNum;
         VehicleType = vehicleType;
         Size = 2;
+
     }
 
     public MC()

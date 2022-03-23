@@ -1,37 +1,39 @@
 ﻿using DataAccess;
-using Microsoft.Extensions.Configuration;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
-namespace UI.Forms;
+using UI.Forms;
+namespace UI;
 
 public partial class FormSettings : Form
 {
-    ConfigurationBuilder _config = new ConfigurationBuilder();
+    Config config = new Config();
     public FormSettings()
     {
         InitializeComponent();
     }
-
-    private void button1_Click(object sender, EventArgs e)
+    private void btnSavesetting_Click(object sender, EventArgs e)
     {
-        var config = new ConfigurationBuilder()
-          .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
-          .AddJsonFile("appsettings.json")
-          .Build()
-          .Get<Config>();
+        string CarFeePerHour = txtChangeFeeCar.Text;
+        string McFeePerHour = txtChangeFeeMc.Text;
+        string parkingLotSize = txtChangeLotSize.Text;
+        ParkinglotSize(int.Parse(parkingLotSize));
+        config.UpdateJson(CarFeePerHour, McFeePerHour, parkingLotSize);
+        MessageBox.Show("New configuration is set! Everything is saved");
 
-        config.DebugEnabled = bool.Parse(textBox1.Text);
+    }
 
-        var jsonWriteOptions = new JsonSerializerOptions()
+    void ParkinglotSize(int parkingSize)
+    {
+        config.ReadFromJson();
+
+        using (var context = new ParkingContext())
         {
-            WriteIndented = true
-        };
-        jsonWriteOptions.Converters.Add(new JsonStringEnumConverter());
-        var newJson = JsonSerializer.Serialize(_config, jsonWriteOptions);
+            parkingSize = config.ParkingLotSize; //ReadsFomJson
+        }
 
-        var appsettingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, newJson);
-        File.WriteAllText(appsettingsPath, newJson);
+    }
+
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
     }
 }
-
