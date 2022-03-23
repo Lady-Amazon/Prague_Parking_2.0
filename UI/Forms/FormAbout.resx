@@ -68,7 +68,7 @@
 -Get total price for vehicle when it is picked up.
 -See the current prices for parking vehicles.
 -Change curent prices and add parkingspots to the lot.
--Every vehicle is save in the database when the work day is over.
+-Every vehicle is saved in the database when the work day is over.
 
 
 And a little thanks to the Mighty Knights for helping to complete 

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.btnAbout = new System.Windows.Forms.Button();
             this.labelMaximize = new System.Windows.Forms.Label();
             this.labelMinimize = new System.Windows.Forms.Label();
             this.labelExit = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.labelAvailable = new System.Windows.Forms.Label();
             this.label000 = new System.Windows.Forms.Label();
             this.labelWelcome = new System.Windows.Forms.Label();
-            this.btnAbout = new System.Windows.Forms.Button();
-            this.btnHome = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelDesktop.SuspendLayout();
@@ -72,9 +72,41 @@
             this.panelMenu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(1188, 181);
+            this.panelMenu.Size = new System.Drawing.Size(1188, 161);
             this.panelMenu.TabIndex = 0;
             this.panelMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelMenu_MouseMove);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnHome.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnHome.Location = new System.Drawing.Point(684, 0);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(99, 161);
+            this.btnHome.TabIndex = 12;
+            this.btnHome.Text = "HOME";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAbout.FlatAppearance.BorderSize = 0;
+            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbout.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAbout.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAbout.Location = new System.Drawing.Point(585, 0);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(99, 161);
+            this.btnAbout.TabIndex = 11;
+            this.btnAbout.Text = "ABOUT";
+            this.btnAbout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAbout.UseVisualStyleBackColor = true;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // labelMaximize
             // 
@@ -124,7 +156,7 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.Gainsboro;
-            this.labelTitle.Location = new System.Drawing.Point(892, 72);
+            this.labelTitle.Location = new System.Drawing.Point(892, 62);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(154, 55);
             this.labelTitle.TabIndex = 6;
@@ -140,7 +172,7 @@
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnSettings.Location = new System.Drawing.Point(467, 0);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(118, 181);
+            this.btnSettings.Size = new System.Drawing.Size(118, 161);
             this.btnSettings.TabIndex = 5;
             this.btnSettings.Text = "SETTINGS";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -156,7 +188,7 @@
             this.btnSales.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnSales.Location = new System.Drawing.Point(350, 0);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(117, 181);
+            this.btnSales.Size = new System.Drawing.Size(117, 161);
             this.btnSales.TabIndex = 7;
             this.btnSales.Text = "PRICES";
             this.btnSales.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -172,7 +204,7 @@
             this.btnParkingLotView.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnParkingLotView.Location = new System.Drawing.Point(210, 0);
             this.btnParkingLotView.Name = "btnParkingLotView";
-            this.btnParkingLotView.Size = new System.Drawing.Size(140, 181);
+            this.btnParkingLotView.Size = new System.Drawing.Size(140, 161);
             this.btnParkingLotView.TabIndex = 1;
             this.btnParkingLotView.Text = "PARKING LOT";
             this.btnParkingLotView.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -187,7 +219,7 @@
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(210, 181);
+            this.panelLogo.Size = new System.Drawing.Size(210, 161);
             this.panelLogo.TabIndex = 0;
             // 
             // lblTitleParking
@@ -218,9 +250,9 @@
             this.panelDesktop.Controls.Add(this.panelCount);
             this.panelDesktop.Controls.Add(this.labelWelcome);
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(0, 181);
+            this.panelDesktop.Location = new System.Drawing.Point(0, 161);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1188, 609);
+            this.panelDesktop.Size = new System.Drawing.Size(1188, 629);
             this.panelDesktop.TabIndex = 2;
             // 
             // panelCount
@@ -234,7 +266,7 @@
             this.panelCount.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelCount.Location = new System.Drawing.Point(0, 0);
             this.panelCount.Name = "panelCount";
-            this.panelCount.Size = new System.Drawing.Size(210, 609);
+            this.panelCount.Size = new System.Drawing.Size(210, 629);
             this.panelCount.TabIndex = 26;
             // 
             // btnExit
@@ -244,7 +276,7 @@
             this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExit.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnExit.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnExit.Location = new System.Drawing.Point(0, 522);
+            this.btnExit.Location = new System.Drawing.Point(0, 542);
             this.btnExit.Name = "btnExit";
             this.btnExit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.btnExit.Size = new System.Drawing.Size(210, 87);
@@ -303,43 +335,11 @@
             this.labelWelcome.AutoSize = true;
             this.labelWelcome.Font = new System.Drawing.Font("Palatino Linotype", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(106)))), ((int)(((byte)(138)))));
-            this.labelWelcome.Location = new System.Drawing.Point(528, 190);
+            this.labelWelcome.Location = new System.Drawing.Point(528, 200);
             this.labelWelcome.Name = "labelWelcome";
             this.labelWelcome.Size = new System.Drawing.Size(284, 81);
             this.labelWelcome.TabIndex = 0;
             this.labelWelcome.Text = "Welcome";
-            // 
-            // btnAbout
-            // 
-            this.btnAbout.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAbout.FlatAppearance.BorderSize = 0;
-            this.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbout.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAbout.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAbout.Location = new System.Drawing.Point(585, 0);
-            this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(99, 181);
-            this.btnAbout.TabIndex = 11;
-            this.btnAbout.Text = "ABOUT";
-            this.btnAbout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAbout.UseVisualStyleBackColor = true;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
-            // 
-            // btnHome
-            // 
-            this.btnHome.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnHome.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnHome.Location = new System.Drawing.Point(684, 0);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(99, 181);
-            this.btnHome.TabIndex = 12;
-            this.btnHome.Text = "HOME";
-            this.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // FormMainMenu
             // 

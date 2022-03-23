@@ -46,6 +46,7 @@
             // 
             // labelPriceList
             // 
+            this.labelPriceList.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelPriceList.AutoSize = true;
             this.labelPriceList.Font = new System.Drawing.Font("Palatino Linotype", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPriceList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(0)))));
@@ -57,6 +58,7 @@
             // 
             // labelCarFee
             // 
+            this.labelCarFee.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelCarFee.AutoSize = true;
             this.labelCarFee.BackColor = System.Drawing.Color.DarkCyan;
             this.labelCarFee.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -69,6 +71,7 @@
             // 
             // labelChargeCar
             // 
+            this.labelChargeCar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelChargeCar.AutoSize = true;
             this.labelChargeCar.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelChargeCar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(0)))));
@@ -79,6 +82,7 @@
             // 
             // labelMcFee
             // 
+            this.labelMcFee.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelMcFee.AutoSize = true;
             this.labelMcFee.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelMcFee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(0)))));
@@ -90,6 +94,7 @@
             // 
             // labelChargeMc
             // 
+            this.labelChargeMc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelChargeMc.AutoSize = true;
             this.labelChargeMc.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelChargeMc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(153)))), ((int)(((byte)(0)))));
@@ -126,6 +131,7 @@
             // 
             // textBoxInfo
             // 
+            this.textBoxInfo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBoxInfo.BackColor = System.Drawing.Color.DarkCyan;
             this.textBoxInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxInfo.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

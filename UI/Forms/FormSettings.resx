@@ -57,4 +57,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>Here yo can change the current parking fee. 
+You can check the current fee on the Price tab. 
+
+If renovation of the parking garage is needed you can change the amount of 
+available parkingspots here.
+
+TAKE NOTICE!
+If you need to change anything, all the boxes needs to be filled before 
+saving any changes!
+</value>
+  </data>
 </root>
