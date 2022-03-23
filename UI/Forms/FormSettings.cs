@@ -21,11 +21,11 @@ public partial class FormSettings : Form
         MessageBox.Show("New configuration is set! Everything is saved");
 
     }
-   void ParkingLotSize(int parkingSize)
+    void ParkingLotSize(int parkingSize)
     {
         config.ReadFromJson();
 
-        using(var parkingContext = new ParkingContext())
+        using (var parkingContext = new ParkingContext())
         {
             parkingSize = config.ParkingLotSize;
         }

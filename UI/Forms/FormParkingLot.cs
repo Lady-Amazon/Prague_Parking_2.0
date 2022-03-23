@@ -1,5 +1,4 @@
 ﻿using DataAccess;
-using Microsoft.Extensions.Configuration;
 using ParkingGarageLibrary;
 using System.Data;
 using UI.Methods;
@@ -97,81 +96,78 @@ public partial class FormParkingLot : Form
                 .Select(t => t.CheckedIn)
                 .FirstOrDefault();
 
-            if (checkIn != null)
+            TimeSpan timeParked = TimeParkedCalc(licenseNum, checkOut);
+            string vehicleType = VehicleType(licenseNum);
+
+            if (vehicleType == "Car")
             {
-                TimeSpan timeParked = TimeParkedCalc(licenseNum, checkOut);
-                string vehicleType = VehicleType(licenseNum);
+                price = Math.Round(((double)timeParked.TotalHours * config.CarFeePerHour), 2); // CHANGES ACCORDING TO JSON
 
-                if (vehicleType == "Car")
+                txtBoxLicenseNum.Clear();
+
+                var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
+                parkingContext.ParkingGarage.Remove(vehicle);
+                parkingContext.SaveChanges();
+
+                MessageBox.Show("Vehicle has been picked up");
+
+                if (price > 0)
                 {
-                    price = Math.Round(((double)timeParked.TotalHours * config.CarFeePerHour), 2); // CHANGES ACCORDING TO JSON
-
-                    txtBoxLicenseNum.Clear();
-
-                    var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
-                    parkingContext.ParkingGarage.Remove(vehicle);
-                    parkingContext.SaveChanges();
-
-                    MessageBox.Show("Vehicle has been picked up");
-
-                    if (price > 0)
-                    {
-                        txtBoxTotalCharge.Text = "CZK" + price;
-                    }
-                    else
-                    {
-                        txtBoxTotalCharge.Text = "Free Parking";
-                    }
-                    var spot = parkingContext.ParkingGarage
-                                .Where(l => l.LicenseNum == licenseNum)
-                                .Select(t => t.ParkingSpot)
-                                .FirstOrDefault();
-
-                    var hour = ((int)timeParked.TotalHours).ToString();
-                    var minute = timeParked.Minutes.ToString();
-
-                    txtBoxDuration.Text = hour + "hr " + minute + "min";
-
-                    string takenSpot = spot.ToString();
-                    Button myButton = Controls.Find(takenSpot, true).FirstOrDefault() as Button;
-                    SpotsStatus(spot, myButton);
+                    txtBoxTotalCharge.Text = "CZK" + price;
                 }
-                else if (vehicleType == "MC")
+                else
                 {
-                    price = Math.Round((double)timeParked.TotalHours * config.McFeePerHour, 2); // CHANGES ACCORDING TO JSON
-
-                    txtBoxLicenseNum.Clear();
-
-                    var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
-                    parkingContext.ParkingGarage.Remove(vehicle);
-                    parkingContext.SaveChanges();
-
-                    MessageBox.Show("Vehicle has been picked up");
-
-                    if (price > 0)
-                    {
-                        txtBoxTotalCharge.Text = "CZK" + price;
-                    }
-                    else
-                    {
-                        txtBoxTotalCharge.Text = "Free Parking";
-                    }
-
-                    var hour = ((int)timeParked.TotalHours).ToString();
-                    var minute = timeParked.Minutes.ToString();
-
-                    txtBoxDuration.Text = hour + "hr " + minute + "min";
-
-                    var spot = parkingContext.ParkingGarage
-                              .Where(l => l.LicenseNum == licenseNum)
-                              .Select(t => t.ParkingSpot)
-                              .FirstOrDefault();
-
-                    string takenSpot = spot.ToString();
-
-                    Button myButton = Controls.Find(takenSpot, true).FirstOrDefault() as Button;
-                    SpotsStatus(spot, myButton);
+                    txtBoxTotalCharge.Text = "Free Parking";
                 }
+                var spot = parkingContext.ParkingGarage
+                            .Where(l => l.LicenseNum == licenseNum)
+                            .Select(t => t.ParkingSpot)
+                            .FirstOrDefault();
+
+                var hour = ((int)timeParked.TotalHours).ToString();
+                var minute = timeParked.Minutes.ToString();
+
+                txtBoxDuration.Text = hour + "hr " + minute + "min";
+
+                string takenSpot = spot.ToString();
+                Button myButton = Controls.Find(takenSpot, true).FirstOrDefault() as Button;
+                SpotsStatus(spot, myButton);
+            }
+            else if (vehicleType == "Mc")
+            {
+                price = Math.Round((double)timeParked.TotalHours * config.McFeePerHour, 2); // CHANGES ACCORDING TO JSON
+
+                txtBoxLicenseNum.Clear();
+
+                var vehicle = parkingContext.ParkingGarage.FirstOrDefault(x => x.LicenseNum == licenseNum);
+                parkingContext.ParkingGarage.Remove(vehicle);
+                parkingContext.SaveChanges();
+
+                MessageBox.Show("Vehicle has been picked up");
+
+                if (price > 0)
+                {
+                    txtBoxTotalCharge.Text = "CZK" + price;
+                }
+                else
+                {
+                    txtBoxTotalCharge.Text = "Free Parking";
+                }
+
+                var hour = ((int)timeParked.TotalHours).ToString();
+                var minute = timeParked.Minutes.ToString();
+
+                txtBoxDuration.Text = hour + "hr " + minute + "min";
+
+                var spot = parkingContext.ParkingGarage
+                          .Where(l => l.LicenseNum == licenseNum)
+                          .Select(t => t.ParkingSpot)
+                          .FirstOrDefault();
+
+                string takenSpot = spot.ToString();
+
+                Button myButton = Controls.Find(takenSpot, true).FirstOrDefault() as Button;
+                SpotsStatus(spot, myButton);
             }
         }
     }
@@ -219,7 +215,7 @@ public partial class FormParkingLot : Form
         string title = "How To";
         string msg = "How To Use Parking Managment Check In System." +
             "- Check In: Enter License Number, choose Car/Mc in checkbox, pick parkingspot. Click check in." +
-            "- Check Out: Click the license number in the list, use check box for Car/Mc. Click Check out. " +
+            "- Check Out: Click the license number in the list and click Check out. " +
             "Total Cost and Duration will be displayed";
         MessageBox.Show(msg, title);
     }
@@ -227,7 +223,7 @@ public partial class FormParkingLot : Form
     {
         Button clickedButton = (Button)sender;
         string Space = clickedButton.Tag.ToString();
-        labelParkingSpot.Text = Space.Substring(Space.Count() - 3, 3)/*.Trim()*/;
+        labelParkingSpot.Text = Space.Substring(Space.Count() - 3, 3).Trim();
 
         GetSumVehicleSize();
         Calculation();
@@ -298,7 +294,7 @@ public partial class FormParkingLot : Form
                 parkingavailability.Text = "Empty spot";
                 btnCheckIn.Enabled = true;
             }
-            else if (GetSumVehicleSize() >= maxCarSize) 
+            else if (GetSumVehicleSize() >= maxCarSize)
             {
                 ChangeColor(labelParkingSpot, Color.Red, maxCarSize);
                 parkingavailability.Text = "Spot Taken!";
@@ -424,5 +420,5 @@ public partial class FormParkingLot : Form
     {
         label.BackColor = color;
     }
-   
+
 }

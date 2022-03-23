@@ -25,7 +25,7 @@ public class ParkingContext : DbContext
         {
             entity.HasKey(e => e.Id);
         });
-        
+
     }
 
 }

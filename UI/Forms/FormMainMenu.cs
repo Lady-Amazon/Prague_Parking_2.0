@@ -41,7 +41,7 @@ public partial class FormMainMenu : Form
     private void btnAbout_Click(object sender, EventArgs e)
     {
         OpenChildForm(new Forms.FormAbout());
-        labelTitle.Text=activeForm.Text;
+        labelTitle.Text = activeForm.Text;
         panelCount.Visible = true;
     }
     private void btnHome_Click(object sender, EventArgs e)
@@ -118,6 +118,6 @@ public partial class FormMainMenu : Form
         //WindowState = FormWindowState.Maximized;
     }
 
-   
+
 }
 
