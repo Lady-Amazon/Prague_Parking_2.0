@@ -216,7 +216,8 @@ public partial class FormParkingLot : Form
         string msg = "How To Use Parking Managment Check In System." +
             "- Check In: Enter License Number, choose Car/Mc in checkbox, pick parkingspot. Click check in." +
             "- Check Out: Click the license number in the list and click Check out. " +
-            "Total Cost and Duration will be displayed";
+            "Total Cost and Duration will be displayed" +
+            "(When a check out is done, click on Parkinglot button to refresh)";
         MessageBox.Show(msg, title);
     }
     private void PickParkingSpot_Click(object sender, EventArgs e)//To check witch spot is clicked. The click event shows in a label
