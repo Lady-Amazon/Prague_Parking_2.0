@@ -11,6 +11,7 @@ public partial class FormSettings : Form
     }
     private void btnSavesetting_Click(object sender, EventArgs e)
     {
+        //To let the user change the current fee and amount och available parkingspots. 
         string CarFeePerHour = txtChangeFeeCar.Text;
         string McFeePerHour = txtChangeFeeMc.Text;
         string parkingLotSize = txtChangeLotSize.Text;
@@ -21,7 +22,7 @@ public partial class FormSettings : Form
         MessageBox.Show("New configuration is set! Everything is saved");
 
     }
-    void ParkingLotSize(int parkingSize)
+    void ParkingLotSize(int parkingSize)//To change amount of parkingspots that are display in parkinglotview
     {
         config.ReadFromJson();
 

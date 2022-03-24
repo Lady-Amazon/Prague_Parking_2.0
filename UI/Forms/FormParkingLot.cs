@@ -172,7 +172,7 @@ public partial class FormParkingLot : Form
         }
     }
     private void FormParkingLot_Load(object sender, EventArgs e)
-    {
+    {//Loads the form from db and displays every parkinsspots status
         using (var parkingContext = new ParkingContext())
         {
             parkingGarages = parkingContext.ParkingGarage.ToList();
@@ -218,7 +218,7 @@ public partial class FormParkingLot : Form
             "Total Cost and Duration will be displayed" +
             "(When a check out is done, click on Parkinglot button to refresh)";
         MessageBox.Show(msg, title);
-    }
+    }//Instructions of how to use the checkin/out system
     private void PickParkingSpot_Click(object sender, EventArgs e)//To check witch spot is clicked. The click event shows in a label
     {
         Button clickedButton = (Button)sender;
@@ -228,7 +228,7 @@ public partial class FormParkingLot : Form
         GetSumVehicleSize();
         Calculation();
     }
-    public TimeSpan TimeParkedCalc(string licensePlate, DateTime checkOut)
+    public TimeSpan TimeParkedCalc(string licensePlate, DateTime checkOut)//Calculation of time in parkinglot
     {
         using (var parkingContext = new ParkingContext())
         {
@@ -254,7 +254,7 @@ public partial class FormParkingLot : Form
         }
 
     }
-    public int GetSumVehicleSize()//
+    public int GetSumVehicleSize()//To get the size of the vehicle
     {
         using (var parkingContext = new ParkingContext())
         {
@@ -341,7 +341,7 @@ public partial class FormParkingLot : Form
             }
         }
     }
-    public void generateParkingSpots()
+    public void generateParkingSpots()//To change the amount of buttons tablelayoutpanel if a change is made in settings
     {
         config.ReadFromJson();
 

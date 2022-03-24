@@ -8,10 +8,10 @@ public partial class FormPrices : Form
     public FormPrices()
     {
         InitializeComponent();
-        config.ReadFromJson();
+        config.ReadFromJson();//Reads the json file
     }
 
-    private void FormPrices_Load(object sender, EventArgs e)
+    private void FormPrices_Load(object sender, EventArgs e)//Shows the current prices for parking
     {
         labelChargeCar.Text = config.CarFeePerHour.ToString();
         labelChargeMc.Text = config.McFeePerHour.ToString();

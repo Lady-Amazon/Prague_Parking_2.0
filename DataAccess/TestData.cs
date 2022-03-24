@@ -4,7 +4,7 @@ namespace DataAccess;
 
 public class TestData
 {
-    public static void PopulateDb()
+    public static void PopulateDb()//Reads the csv file with testdata
     {
         string[] parkedVehicles = File.ReadAllLines("TestData.csv");
 
